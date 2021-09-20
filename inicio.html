@@ -1,373 +1,416 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Caompatible" content="ie=edge">
     <link rel="shortcut icon" href="img/MediHelp.png">
+    <title>MediHelp | Inicio</title>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+        * {
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-
-      body,
-      button {
-        font-family: "Poppins", sans-serif;
-      }
-
-      .container {
-        min-height: 100vh;
-        width: 100%;
-        background-color: #485461;
-        background-image: linear-gradient(135deg, #a4c0df 0%, #132d70 74%);
-        overflow-x: hidden;
-        transform-style: preserve-3d;
-      }
-
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 10;
-        height: 3rem;
-      }
-
-      .menu {
-        max-width: 72rem;
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #fff;
-      }
-
-      .logo {
-        font-size: 1.1rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        line-height: 4rem;
-      }
-
-      .logo span {
-        font-weight: 300;
-      }
-
-      .hamburger-menu {
-        height: 4rem;
-        width: 3rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-      }
-
-      .bar {
-        width: 1.9rem;
-        height: 1.5px;
-        border-radius: 2px;
-        background-color: #eee;
-        transition: 0.5s;
-        position: relative;
-      }
-
-      .bar:before,
-      .bar:after {
-        content: "";
-        position: absolute;
-        width: inherit;
-        height: inherit;
-        background-color: #eee;
-        transition: 0.5s;
-      }
-
-      .bar:before {
-        transform: translateY(-9px);
-      }
-
-      .bar:after {
-        transform: translateY(9px);
-      }
-
-      .main {
-        position: relative;
-        width: 100%;
-        left: 0;
-        z-index: 5;
-        overflow: hidden;
-        transform-origin: left;
-        transform-style: preserve-3d;
-        transition: 0.5s;
-      }
-
-      header {
-        min-height: 100vh;
-        width: 100%;
-        background: url("img/bg.jpg") no-repeat top center / cover;
-        position: relative;
-      }
-
-      .overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: rgba(53, 79, 104, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .inner{
-        max-width: 35rem;
+        body{ 
+            min-height: 100vh;
+            background-image: linear-gradient(-45deg, #abb6f1 50%, #4177b6 50%);
+            font-family: 'Poppins', sans-serif;
+        }
+        .topnav{
+            position: sticky;
+            top: 0;
+            z-index: 11;
+        }
+        ul.topnav {
+            list-style-type: none;
+            margin: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            overflow: hidden;
+            background-color: #698ab6;
+        }
+        ul.topnav li {float: left;}
+        ul.topnav li a {
+        display: block;
+        color: white;
         text-align: center;
-        color: rgb(252, 252, 252);
-        padding: 0 2rem;
-      }
-
-      .title {
-        font-size: 5rem;
-        color: rgb(28, 28, 61);
-      }
-
-      .container.active .bar {
-        transform: rotate(360deg);
-        background-color: transparent;
-      }
-
-      .container.active .bar:before {
-        transform: translateY(0) rotate(45deg);
-      }
-
-      .container.active .bar:after {
-        transform: translateY(0) rotate(-45deg);
-      }
-
-      .container.active .main {
-        animation: main-animation 0.5s ease;
-        cursor: pointer;
-        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
-      }
-
-      @keyframes main-animation {
-        from {
-          transform: translate(0);
-        }
-
-        to {
-          transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
-        }
-      }
-
-      .links {
-        position: absolute;
-        width: 30%;
-        right: 0;
-        top: 0;
-        height: 100vh;
-        z-index: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      ul {
-        list-style: none;
-      }
-
-      .links a {
+        padding: 10px 12px;
         text-decoration: none;
-        color: #eee;
-        padding: 0.7rem 0;
-        display: inline-block;
-        font-size: 1rem;
-        font-weight: 300;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: 0.3s;
-        opacity: 0;
-        transform: translateY(10px);
-        animation: hide 0.5s forwards ease;
-      }
-
-      .links a:hover {
-        color: #fff;
-      }
-
-      .container.active .links a {
-        animation: appear 0.5s forwards ease var(--i);
-      }
-
-      @keyframes appear {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
+        font-size: 14px;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0px);
+        ul.topnav li a:hover:not(.active) {
+            font-weight: bold;
         }
-      }
-
-      @keyframes hide {
-        from {
-          opacity: 1;
-          transform: translateY(0px);
+        ul.topnav li a.active {
+            border-bottom: 4px solid white;
         }
-        to {
-          opacity: 0;
-          transform: translateY(10px);
+        ul.topnav li.right {
+            float: right;
         }
-      }
-
-      .shadow {
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        transform-style: preserve-3d;
-        transform-origin: left;
-        transition: 0.5s;
-        background-color: white;
-      }
-
-      .shadow.one {
-        z-index: -1;
-        opacity: 0.15;
-      }
-
-      .shadow.two {
-        z-index: -2;
-        opacity: 0.1;
-      }
-
-      .container.active .shadow.one {
-        animation: shadow-one 0.6s ease-out;
-        transform: perspective(1300px) rotateY(20deg) translateZ(215px) scale(0.5);
-      }
-
-      @keyframes shadow-one {
-        0% {
-          transform: translate(0);
+        .buscar{
+            margin-top: 5px;
+        }
+        .btn{
+            color: white;
+            border: 2px solid white;
+            margin-right: 5px;
+        }
+        .btn:hover{
+            background-color: white;
+            color: #698ab6;
+            border: 2px solid #698ab6;
+        }
+        .login{
+            color: #194b8d;
+            background-color: #698ab6;
+            margin: 0px 20px;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        .login:hover{
+            background-color: #ffffff;
+            color: #698ab6;
+        }
+        .logo{
+            padding: 0px;
+        }
+        .logo img{
+            width: 60px;
+        }
+        @media screen and (max-width: 600px) {
+        ul.topnav li.right, 
+        ul.topnav li {
+            float: none;
+        }
+        .logo{
+            left: 50vh;
+        }
+        }
+        .subtitulo {
+            margin: 0;
+            color: white;
+            display: inline;
+            font-size: 40px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0d4c70c9;
+            padding: 10px 58px;
         }
 
-        5% {
-          transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+        .ir{ 
+            color: #fff;
+            margin: 7px 0;
+            font-size: 40px;
+            font-weight: 600;
+            text-shadow: 2px 2px 1px rgba(1, 17, 61, 0.973);
+            font-family: 'Poppins', sans-serif;
+            margin-top: 10px;
+            background-color: #636cc9;
+            border-radius: 10px;
+            padding: 0px 30px;
+            box-shadow: 0px 0px 20px black;
         }
 
-        100% {
-          transform: perspective(1300px) rotateY(20deg) translateZ(215px) scale(0.5);
+        .linea-division {
+            width: 70%;
+            height: 5px;
+            background-color: #608ac2;
         }
-      }
-
-      .container.active .shadow.two {
-        animation: shadow-two 0.6s ease-out;
-        transform: perspective(1300px) rotateY(20deg) translateZ(120px) scale(0.5);
-      }
-
-      @keyframes shadow-two {
-        0% {
-          transform: translate(0);
+        .carousel {
+            min-height: 450px;
         }
 
-        20% {
-          transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+        .carousel .carousel-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            width: 450px;
+            height: 450px;
+            background-color:white;
+            border-radius: 20px;
         }
 
-        100% {
-          transform: perspective(1300px) rotateY(20deg) translateZ(120px) scale(0.5);
+        .carousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            border-radius: 15px;
         }
-      }
 
-      .container.active .main:hover + .shadow.one {
-        transform: perspective(1300px) rotateY(20deg) translateZ(230px) scale(0.5);
-      }
-
-      .container.active .main:hover {
-        transform: perspective(1300px) rotateY(20deg) translateZ(340px) scale(0.5);
-      }
-      @media screen and (max-width:420px) {
-        .links{
-          width: 100%;
-          height: auto;
-          position: sticky;
-          bottom: 0;
-          z-index: 2;
-          padding: 0px 0px;
-          display: block;
-          text-align: center;
-          margin-bottom: 30px;
-
+        .carousel .indicators .indicator-item {
+            border-radius: 0;
+            transform: rotate(45deg);
+            margin: 0 15px;
+            background: #444fc4;
         }
-        .link a{
-          display: inline-block;
-          width: 33%;
+
+        footer{
+            width: 100%;
+            background: #0a1227;
+            color: white;   
+            
         }
-      }
+
+        .container-footer-all{
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .container-body{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .colum1{
+            max-width: 400px;
+        }
+
+        .colum1 h1{
+            font-size: 22px;
+        }
+
+        .colum1 p{
+            font-size: 14px;
+            color: #C7C7C7;
+            margin-top: 20px;
+        }
+
+        .colum1 img{
+            margin: 10px 50px;
+        }
+
+        .colum2{
+            max-width: 400px;
+            
+        }
+
+        .colum2 h1{
+            font-size: 22px;
+        }
+
+        .row{
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .row img{
+            width: 36px;
+            height: 36px;
+        }
+
+        .row label{
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #C7C7C7;
+        }
+
+        .colum3{
+            max-width: 400px;
+        }
+
+        .colum3 h1{
+            font-size: 22px;
+        }
+
+        .row2{
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .row2 img{
+            width: 36px;
+            height: 36px;
+        }
+
+        .row2 label{
+            margin-top: 10px;
+            margin-left: 20px;
+            max-width: 140px;
+        }
+
+        .container-footer{
+            width: 100%;  
+            background: #101010;
+        }
+
+        .footer{
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;  
+            padding: 20px;
+        }
+
+        .copyright{
+            color: #C7C7C7;
+        }
+
+        .copyright a{
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .information a{
+            text-decoration: none;
+            color: #C7C7C7;
+        }
+
+
+        @media screen and (max-width: 1100px){
+            
+            .container-body{
+                flex-wrap: wrap;
+            }
+            
+            .colum1{
+                max-width: 100%;
+            }
+            
+            .colum2,
+            .colum3{
+                margin-top: 40px;
+            }
+        }
     </style>
-    <title>MediHelp</title>
-    
-  </head>
-  <body>
-
+</head>
+<body>
+    <ul class="topnav">
+        <li class="logo"><img src="img/MediHelp.png" alt="logo"></li>
+        <li class="right buscar"><form class="d-flex">
+            <a href="login.html" class="login" target="blank">Login</a>
+          </form>
+        </li>
+        <li class="right"><a href="contacto.html" target="blank">Contact</a></li>
+        <li class="right"><a href="index.html">Home</a></li> 
+    </ul>
     <div class="container">
-      <div class="navbar">
-        <div class="menu">
-          <h3 class="logo">Medi<span>Help</span></h3>
-          <div class="hamburger-menu">
-            <div class="bar"></div>
-          </div>
-        </div>
-      </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="carousel center-align">
+                    <div class="carousel-item">
+                        <h2 class="subtitulo">Tratamientos Médicos</h2>
+                        <div class="linea-division"></div>
+                        <img src="img/tratamientos.png" alt=""></a>
+                        <a class="ir" href="Tratamientos.html">Ir</a>
+                    </div>
 
-      <div class="main-container">
-        <div class="main">
-          <header>
-            <div class="overlay">
-              <div class="inner">
-                <h2 class="title">MediHelp</h2>
-                <p>
-                  MediHelp es un software que te ayuda a definir, comprender y analizar términos médicos en diferentes áreas.<br>
-                  El lenguaje médico es cambiante y se modifica al ritmo, cada vez más vertiginoso, de los nuevos avances científicos. Por eso nuestra versión dígital se mantiene en constante actualización de contenidos y mejoras.
-                </p>
-              </div>
+                    <div class="carousel-item">
+                        <h2 class="subtitulo">Medicamentos</h2>
+                        <div class= "linea-division"></div>         
+                        <img src="img/medicamentos.png" width="400" alt="">
+                        <a class="ir" href="Medicamentos.html">Ir</a>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <h2 class="subtitulo">Enfermedades</h2>
+                        <div class= "linea-division"></div>        
+                        <img src="img/enfermedades.png" width="400" alt="">
+                        <a class="ir" href="enfermedades.html">Ir</a>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <h2 class="subtitulo">Virus y Bacterias</h2>
+                        <div class= "linea-division"></div>          
+                        <img src="img/virus.png" width="400" alt="">
+                        <a class="ir" href="microorganismos.html">Ir</a>
+                    </div>
+                </div>
             </div>
-          </header>
         </div>
-        <div class="shadow one"></div>
-        <div class="shadow two"></div>
-      </div>
-
-      <div class="links">
-        <ul>
-          <li>
-            <a href="index.html" style="--i: 0.1s;">INICIO</a>
-          </li>
-          <li>
-            <a href="login.html" style="--i: 0.15s;" target="blank">LOGIN</a>
-          </li>
-          <li>
-            <a href="contacto.html" style="--i: 0.2s;" target="blank">CONTACTO</a>
-          </li>
-        </ul>
-      </div>
     </div>
-
+    <footer>
+       
+        <div class="container-footer-all">
+         
+             <div class="container-body">
+ 
+                 <div class="colum1">
+                     <h1>Mas informacion de MediHelp</h1>
+ 
+                     <p>MediHelp es un software que te ayuda  a definir, comprender y analizar  términos médicos en diferentes áreas. El lenguaje médico es cambiante y se modifica al ritmo, cada vez más vertiginoso, de los nuevos avances científicos. Por eso nuestra versión dígital se mantiene en constante actualización de contenidos y mejoras.</p>
+                     <img src="img/MediHelp.png " width="200px">
+                 </div>
+ 
+                 <div class="colum2">
+ 
+                     <h1>Redes Sociales</h1>
+ 
+                     <div class="row">
+                         <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/FaceB.png"></a>
+                         <label>Siguenos en Facebook</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://twitter.com/home?lang=es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"></a>
+                         <label>Siguenos en Twitter</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://www.instagram.com"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png"></a>
+                         <label>Siguenos en Instagram</label>
+                     </div>
+                     <div class="row">
+                         <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Google_plus_circle_icon_%282011-2015%29.png"></a>
+                         <label>Siguenos en Google Plus</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://www.pinterest.es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png"></a>
+                         <label>Siguenos en Pinteres</label>
+                     </div>
+                 </div>
+                 <div class="colum3">
+                     <h1>Informacion Contactos</h1>
+                     <div class="row2">
+                         <img src="https://w7.pngwing.com/pngs/598/408/png-transparent-computer-icons-mobile-phones-phone-miscellaneous-telephone-call-logo.png">
+                         <label>+504 9988-3344</label>
+                     </div>
+                     <div class="row2">
+                         <img src="https://logos-marcas.com/wp-content/uploads/2020/11/Gmail-Logo.png">
+                          <label>AtencionAlCliente_MediHelp@gmail.com</label>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="container-footer">
+                <div class="footer">
+                     <div class="copyright">
+                         © 2021 Todos los Derechos Reservados | <a href="#">MediHelp</a>
+                     </div>
+ 
+                     <div class="information">
+                         <a href="#">Informacion Compañia</a> | <a href="#">Privacion y Politica</a> | <a href="#">Terminos y Condiciones</a>
+                     </div>
+                 </div>
+ 
+             </div>
+         
+     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-      const hamburger_menu = document.querySelector(".hamburger-menu");
-      const container = document.querySelector(".container");
-
-      hamburger_menu.addEventListener("click", () => {
-        container.classList.toggle("active");
-      });
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementosCarousel = document.querySelectorAll('.carousel');
+            M.Carousel.init(elementosCarousel, {
+                duration: 150,
+                dist: -80,
+                shift: 3,
+                padding: 5,
+                numVisible: 5,
+                indicators: true,
+                noWrap: false
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
