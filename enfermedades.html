@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/MediHelp.png">
+    <title>MediHelp | Enfermedades</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+        }
+        .topnav{
+            position: sticky;
+            top: 0;
+            z-index: 11;
+        }
+        ul.topnav {
+            list-style-type: none;
+            margin: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            overflow: hidden;
+            background-color: #698ab6;
+        }
+        ul.topnav li {float: left;}
+        ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 10px 12px;
+        text-decoration: none;
+        font-size: 14px;
+        }
+        ul.topnav li a:hover:not(.active) {
+            font-weight: bold;
+        }
+        ul.topnav li a.active {
+            border-bottom: 4px solid white;
+        }
+        ul.topnav li.right {
+            float: right;
+        }
+        .buscar{
+            margin-top: 5px;
+        }
+        .btn{
+            color: white;
+            border: 2px solid white;
+            margin-right: 5px;
+        }
+        .btn:hover{
+            background-color: white;
+            color: #698ab6;
+            border: 2px solid #698ab6;
+        }
+        .login{
+            color: #194b8d;
+            background-color: #698ab6;
+            margin: 0px 20px;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        .login:hover{
+            background-color: #ffffff;
+            color: #698ab6;
+        }
+        .logo{
+            padding: 0px;
+        }
+        .logo img{
+            width: 60px;
+        }
+        .titulo{
+            text-shadow: 5px 5px 10px rgb(129, 172, 212);
+            letter-spacing: 10px;
+            text-align: center;
+            font-size: 500%;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .abc{
+            width: 100%;
+            padding: 20px 15px;
+            text-align: center;
+            line-height: 2;
+        }
+        .abc a{
+            padding: 5px 10px;
+            background-color: lightblue;
+            border-radius: 50%;
+            text-decoration: none;
+            color: black;
+            font-size: 90%;
+        }
+        .abc a:hover{
+            background-color: rgb(12, 58, 209);
+            color: #fff;
+            padding: 10px 13px;
+            font-weight: bold;
+        }
+        .arriba a:hover{
+            background-color: rgb(12, 58, 209);
+            color: #fff;
+        }
+        .desplegable{
+            display: none;
+        }
+        .container-box{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .box{
+            width: 250px;
+            height: 250px;
+            margin: 10px;
+            padding: 20px;
+            border: 2px solid #408688;
+            border-radius: 14px;
+            text-align: center;
+            margin-top: 100px;
+            position: relative;
+            background-color: #86b1b3;
+
+        }
+
+        .box img{
+            width: 60%;
+            transition: all 400ms;
+        }
+
+        .box h2{
+            font-size: 16px;
+            margin-top: 10px;
+            transition: all 500ms;
+        }
+
+        .box .container-p{
+            width: 100%;
+            height: 150px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            padding: 0px 10px;
+            border-radius: 0px 0px 14px 14px;
+        }
+
+        .box p{
+            font-size: 14px;
+            color: #7a7a7a;
+            opacity: 0;
+            transform: translateY(150px);
+            transition: all 600ms;
+        }
+
+        .box .check{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%);
+            border: 2px solid #f5f5f5;
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            background: white;
+        }
+
+        .box .check i{
+            margin-top: 6px;
+            display: none;
+            color: white
+            
+        }
+
+
+        .box:hover{
+            background: #fbfbfe;
+        }
+
+        .box:hover img{
+            transform: translateY(-90px);
+        }
+
+        .box:hover h2{
+            transform: translateY(-90px);
+        }
+
+        .box:hover .container-p p{
+            transform: translateY(0px);
+            opacity: 1;
+        }
+
+        .box-selected{
+            border-color: red;
+            transition: all 600ms;
+        }
+
+        .icon-check{
+            display: block !important;
+        }
+
+        .check-selected{
+            background: red !important;
+            border: none;
+            transition: all 600ms;
+        }
+        .container-p p{
+            color: #fff;
+        }
+        .aa:hover{
+            background-color: deepskyblue;
+        }
+        .bb:hover{
+            background-color: rgb(11, 204, 186);
+        }
+        .cc:hover{
+            background-color: rgb(129, 172, 212);
+        }
+        .dd:hover{
+            background-color: LightSeaGreen;
+        }
+        .ee:hover{
+            background-color: MediumAquamarine;
+        }
+        .ff:hover{
+            background-color: DarkTurquoise;
+        }
+        .gg:hover{
+            background-color: cornflowerblue;
+        }
+        .hh:hover{
+            background-color: #698ab6;
+        }
+        .ii:hover{
+            background-color: LightSkyBlue;
+        }
+        .arriba{
+            position: fixed;
+            text-align: right;
+            bottom: 0px;
+            width: 100%;
+            padding: 20px;
+        }
+        .arriba a{
+            text-decoration: none;
+            color: white;
+            background-color: #698ab6;
+            border-radius: 50%;
+            padding: 7px 15px;
+            font-size: 90%;
+            font-weight: bolder;
+        }
+        .subt{
+            color: #698ab6;
+            font-weight: bolder;
+            margin-left: 12%;
+        }
+        .No-Hay{
+            padding: 100px 0px;
+            color: gray;
+        }
+
+        @media screen and (max-width:868px) {
+            .topnav{
+                display: none;
+            }
+            ul.topnav li.right, 
+            ul.topnav li {
+                float: none;
+            }
+            .titulo{
+                font-size: 25px;
+            }
+            .abc a{
+                background-color: lightblue;
+                border-radius: 50%;
+                text-decoration: none;
+                color: black;
+            }
+            #sidebar {
+                position: fixed;
+                width: 200px;
+                height: 100%;
+                background: #698ab6;
+                left: -200px;
+                transition: all 500ms linear;
+                z-index: 10;
+                top: 5px;
+            }
+            #sidebar.active {
+                left: 0px;
+            }
+            #sidebar ul li {
+                color: rgba(230, 230, 230, .9);
+                list-style: none;
+                padding: 15px 10px;
+                border-bottom: 1px solid rgba(6, 38, 87, 0.3);
+                text-align: center;
+            }
+            #sidebar ul li a.op:hover{
+                font-weight: bold;
+            }
+            .op{
+                color: white;
+                text-decoration: none;
+            }
+            #toggle-btn {
+                position: absolute;
+                left: 215px;
+                top: 12px;
+                background: #151719;
+                cursor: pointer;
+                transition: all 0.5s linear;
+            }
+            #toggle-btn span {
+                display: block;
+                width: 40px;
+                text-align: center;
+                font-size: 30px;
+                color: #fff;
+            }
+            #toggle-btn.active {
+                left:5px;
+                top: 5px;
+                background:#777;
+            }
+            .desplegable{
+                background-color: #698ab6;
+                text-align: center;
+                display: block;
+                top: 0px;
+                width: 100%;
+            }
+            .desplegable img{
+                width: 20%;
+            }
+            .abc{
+                position: relative;
+            }
+            
+        }
+        @media screen and (max-width: 420px) {
+        .topnav{
+            display: none;
+        }
+        ul.topnav li.right, 
+        ul.topnav li {
+            float: none;
+        }
+        .titulo{
+            font-size: 20px;
+        }
+        .abc a{
+            background-color: lightblue;
+            border-radius: 50%;
+            text-decoration: none;
+            color: black;
+        }
+        #sidebar {
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            background: #698ab6;
+            left: -200px;
+            transition: all 500ms linear;
+            z-index: 10;
+            top: 5px;
+        }
+        #sidebar.active {
+            left: 0px;
+        }
+        #sidebar ul li {
+            color: rgba(230, 230, 230, .9);
+            list-style: none;
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(6, 38, 87, 0.3);
+            text-align: center;
+        }
+        #sidebar ul li a.op:hover{
+            font-weight: bold;
+        }
+        .op{
+            color: white;
+            text-decoration: none;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto; 
+            width: 60%;
+        }  
+        #toggle-btn {
+            position: absolute;
+            left: 215px;
+            top: 12px;
+            background: #151719;
+            cursor: pointer;
+            transition: all 0.5s linear;
+        }
+        #toggle-btn span {
+            display: block;
+            width: 40px;
+            text-align: center;
+            font-size: 30px;
+            color: #fff;
+        }
+        #toggle-btn.active {
+            left:5px;
+            top: 5px;
+            background:#777;
+        }
+        .desplegable{
+            background-color: #698ab6;
+            text-align: center;
+            display: block;
+        }
+        .desplegable img{
+            width: 20%;
+        }
+        .subt{
+            left: 10%;
+        }
+        .box4{
+            display: none;
+        }
+        }
+        footer{
+            width: 100%;
+            background: #0a1227;
+            color: white; 
+            font-size: 13px;  
+            
+        }
+
+        .container-footer-all{
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .container-body{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .colum1{
+            max-width: 400px;
+        }
+
+        .colum1 h1{
+            font-size: 22px;
+        }
+
+        .colum1 p{
+            font-size: 14px;
+            color: #C7C7C7;
+            margin-top: 20px;
+        }
+
+        .colum1 img{
+            margin: 10px 50px;
+        }
+
+        .colum2{
+            max-width: 400px;
+            
+        }
+
+        .colum2 h1{
+            font-size: 22px;
+        }
+
+        .row{
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .row img{
+            width: 36px;
+            height: 36px;
+        }
+
+        .row label{
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #C7C7C7;
+        }
+
+        .colum3{
+            max-width: 400px;
+        }
+
+        .colum3 h1{
+            font-size: 22px;
+        }
+
+        .row2{
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .row2 img{
+            width: 36px;
+            height: 36px;
+        }
+
+        .row2 label{
+            margin-top: 10px;
+            margin-left: 20px;
+            max-width: 140px;
+        }
+
+        .container-footer{
+            width: 100%;  
+            background: #101010;
+        }
+
+        .footer{
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;  
+            padding: 20px;
+        }
+
+        .copyright{
+            color: #C7C7C7;
+        }
+
+        .copyright a{
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .information a{
+            text-decoration: none;
+            color: #C7C7C7;
+        }
+
+
+        @media screen and (max-width: 1100px){
+            
+            .container-body{
+                flex-wrap: wrap;
+            }
+            
+            .colum1{
+                max-width: 100%;
+            }
+            
+            .colum2,
+            .colum3{
+                margin-top: 40px;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let btn = document.getElementById('toggle-btn');
+            let side = document.getElementById('sidebar');
+            btn.addEventListener('click', function() {
+              btn.classList.toggle('active');
+              side.classList.toggle('active');
+            });
+          }
+          document.querySelector(".box1").addEventListener("click", box_selected1);
+          document.querySelector(".box2").addEventListener("click", box_selected2);
+          document.querySelector(".box3").addEventListener("click", box_selected3);
+          document.querySelector(".box4").addEventListener("click", box_selected4);
+          
+          //box1  
+          box1 = document.querySelector(".box1");
+          check_bg1 = document.querySelector(".box1 .check");
+          icon_check1 = document.querySelector(".box1 .fa-check");
+          
+          //box2
+          box2 = document.querySelector(".box2");
+          check_bg2 = document.querySelector(".box2 .check");
+          icon_check2 = document.querySelector(".box2 .fa-check");
+          
+          //box3
+          box3 = document.querySelector(".box3");
+          check_bg3 = document.querySelector(".box3 .check");
+          icon_check3 = document.querySelector(".box3 .fa-check");
+          
+          //box4
+          box4 = document.querySelector(".box4");
+          check_bg4 = document.querySelector(".box4 .check");
+          icon_check4 = document.querySelector(".box4 .fa-check");
+
+          value_box = 0;
+          
+          function box_selected1 () {
+              box2.classList.remove('box-selected');
+              check_bg2.classList.remove('check-selected');
+              icon_check2.classList.remove('icon-check');
+          
+              box3.classList.remove('box-selected');
+              check_bg3.classList.remove('check-selected');
+              icon_check3.classList.remove('icon-check');
+          
+              box1.classList.toggle('box-selected');
+              check_bg1.classList.toggle('check-selected');
+              icon_check1.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 1;
+              console.log(value_box);
+          }
+          function box_selected2 () {
+          
+              box1.classList.remove('box-selected');
+              check_bg1.classList.remove('check-selected');
+              icon_check1.classList.remove('icon-check');
+          
+              box3.classList.remove('box-selected');
+              check_bg3.classList.remove('check-selected');
+              icon_check3.classList.remove('icon-check');
+          
+              box2.classList.toggle('box-selected');
+              check_bg2.classList.toggle('check-selected');
+              icon_check2.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 2;
+              console.log(value_box);
+          }
+          function box_selected3 () {
+              box1.classList.remove('box-selected');
+              check_bg1.classList.remove('check-selected');
+              icon_check1.classList.remove('icon-check');
+          
+              box2.classList.remove('box-selected');
+              check_bg2.classList.remove('check-selected');
+              icon_check2.classList.remove('icon-check');
+          
+              box3.classList.toggle('box-selected');
+              check_bg3.classList.toggle('check-selected');
+              icon_check3.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 3;
+              console.log(value_box);
+          }
+          function box_selected4 () {
+            box1.classList.remove('box-selected');
+            check_bg1.classList.remove('check-selected');
+            icon_check1.classList.remove('icon-check');
+        
+            box2.classList.remove('box-selected');
+            check_bg2.classList.remove('check-selected');
+            icon_check2.classList.remove('icon-check');
+        
+            box3.classList.toggle('box-selected');
+            check_bg3.classList.toggle('check-selected');
+            icon_check3.classList.toggle('icon-check');
+
+            box4.classList.toggle('box-selected');
+            check_bg4.classList.toggle('check-selected');
+            icon_check4.classList.toggle('icon-check');
+        
+            value_box = 4;
+            console.log(value_box);
+        }
+    </script>
+</head>
+<body>
+    <a name="arriba"></a>
+    <ul class="topnav">
+        <li class="logo"><img src="img/MediHelp.png" alt="logo"></li>
+        <li class="right buscar"><form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn " type="submit">Search</button>
+            <a href="login.html" class="login" target="blank">Login</a>
+          </form>
+        </li>
+        <li class="right"><a href="contacto.html">Contact</a></li>
+        <li class="right"><a href="microorganismos.html">Microorganismos</a></li>
+        <li class="right"><a href="enfermedades.html" class="active">Enfermedades</a></li>
+        <li class="right"><a href="Tratamientos.html">Tratamientos</a></li>
+        <li class="right"><a href="Medicamentos.html">Medicamentos</a></li>
+        <li class="right"><a href="index.html">Home</a></li> 
+    </ul>
+    <div class="desplegable">
+        <a href="inicio.html"><img src="img/MediHelp.png" alt=""></a>
+        <div id="sidebar">
+            <div id="toggle-btn">
+              <span>&#9776</span>
+            </div>
+            <ul>
+              <li>
+                <img src="img/MediHelp.png"  class="logo2">
+              </li>
+              <li><a href="index.html" class="op">Home</a></li>
+              <li><a href="Medicamentos.html" class="op active">Medicamentos</a></li>
+              <li><a href="Tratamientos.html" class="op">Tratamientos</a></li>
+              <li><a href="enfermedades.html" class="op">Enfermedades</a></li>
+              <li><a href="microorganismos.html" class="op">Microorganismo</a></li>
+              <li><a href="contacto.html" class="op">Contact</a></li>
+              <li><a href="login.html" class="op" target="blank">Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <h1 class="titulo">ENFERMEDADES</h1>
+    <div class="abc"><p><a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a href="#D">D</a> <a href="#E">E</a> <a href="#F">F</a> <a href="#G">G</a> <a href="#H">H</a> <a href="#I">I</a> <a href="#J">J</a> <a href="#K">K</a> <a href="#L">L</a> <a href="#M">M</a> <a href="#N">N</a> <a href="#O">O</a> <a href="#P">P</a> <a href="#Q">Q</a> <a href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> <a href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a> <a href="#X">X</a> <a href="#Y">Y</a> <a href="#Z">Z</a> </p>
+    </div>
+    <!--A-->
+    <h2 class="subt"> A</h2>
+    <a name="A"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/aerofagia.png" alt="">
+            <h2><b>Aerofagia</b></h2>
+            <div class="container-p">
+                <p>Es un fenómeno fisiológico producido por la ingesta excesiva de aire en el tracto digestivo, especialmente durante las comidas.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/amenorrea.png" alt="">
+            <h2><b>Amenorrea</b></h2>
+            <div class="container-p">
+                <p>Es la falta de menstruación tanto en la mujer que aún no ha experimentado su primera menarquia, regla, como en aquella que ya menstrua pero en la que se retira la regla durante más de 3 ó 6 meses.</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/alopecia.png" alt="">
+            <h2><b>Alopecia</b></h2>
+            <div class="container-p">
+                <p>Es la pérdida anormal del cabello, es decir cuando una persona pierde más de 100 cabellos diarios.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/ataxia.png" alt="">
+            <h2><b>Ataxia de Friedreich </b></h2>
+            <div class="container-p">
+                <p>Es una enfermedad heredada que ocasiona daño progresivo al sistema nervioso ocasionando síntomas que oscilan entre debilidad muscular y problemas de dicción, por un lado, y enfermedad cardíaca, por el otro. </p>
+            </div>
+        </div>
+    </div>
+    <!--B-->
+    <h2 class="subt"> B</h2>
+    <a name="B"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/balantis.png" alt="">
+            <h2><b>Balanitis</b></h2>
+            <div class="container-p">
+                <p>Es el término médico  que se usa para hacer referencia a la inflamación del glande (en un hombre) o, menos frecuente, el clítoris (en una mujer).</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/bartolinitis.png" alt="">
+            <h2><b>Bartolinitis</b></h2>
+            <div class="container-p">
+                <p>se desencadena por una infección de las glándulas de Bartolino, localizadas a cada lado de la abertura vaginal. </p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/botulismo.png.opdownload" alt="">
+            <h2><b>Botulismo</b></h2>
+            <div class="container-p">
+                <p>Es una enfermedad causada por la bacteria Clostridium botulinum, ésta puede entrar en el organismo debido a heridas o por ingerirla a través de alimentos.</p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/bulimia.png" alt="">
+            <h2><b>Bulimia nerviosa </b></h2>
+            <div class="container-p">
+                <p>es un trastorno de la conducta alimentaria (TCA) que se caracteriza porque las personas que la padecen suelen darse atracones recurrentes en los que ingieren grandes cantidades de comida en un espacio corto de tiempo. </p>
+            </div>
+        </div>
+    </div>
+    <!--C-->
+    <h2 class="subt"> C</h2>
+    <a name="C"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/colecistitis.png" alt="">
+            <h2><b>colecistitis</b></h2>
+            <div class="container-p">
+                <p>En aproximadamente el 90-95% de los casos, la colecistitis aguda ocurre como consecuencia de la obstrucción de la salida de la vesícula biliar</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/cervicitis.png" alt="">
+            <h2><b>Cervicitis</b></h2>
+            <div class="container-p">
+                <p>es una afección que conlleva la inflamación del cuello del útero. Este cuello uterino está situado en  la parte baja de la matriz y, por tanto, en la parte superior de la vagina.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/conjuntivitis.png" alt="">
+            <h2><b>Conjuntivitis</b></h2>
+            <div class="container-p">
+                <p> Es una inflamación de la conjuntiva, una membrana mucosa fina y transparente que cubre la superficie del ojo. </p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/citomegalovirus.png" alt="">
+            <h2><b>Citomegalovirus (CMV)</b></h2>
+            <div class="container-p">
+                <p>Es un virus que pertenece a la familia de los herpes (Herpesviridae), de la que también forma parte el herpes labial.</p>
+            </div>
+        </div>
+    </div>
+    <!--D-->
+    <h2 class="subt"> D</h2>
+    <a name="D"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/dislexia.png" alt="">
+            <h2><b>Dislexia </b></h2>
+            <div class="container-p">
+                <p><br>Es un trastorno específico en el aprendizaje de la lectura.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/difteria.png" alt="">
+            <h2><b>Difteria</b></h2>
+            <div class="container-p">
+                <p><br>Es una infección aguda muy contagiosa Afecta a las vías respiratorias altas, a la garganta y a la nariz, que provoca dificultades respiratorias al acumularse. </p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/dismofofobia.png" alt="">
+            <h2><b>dismorfofobia </b></h2>
+            <div class="container-p">
+                <p>es un trastorno clínico común, pero poco estudiado, que hace que la persona que lo padece sienta y piense que tiene un defecto físico.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/dermatitis.png" alt="">
+            <h2><b>Dermatitis atópica </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad de la piel que aparece en la cara y el cuerpo. Se caracteriza porque las personas que la padecen sufren anomalías y lesiones en su piel.</p>
+            </div>
+        </div>
+    </div>
+    <!--E-->
+    <h2 class="subt"> E</h2>
+    <a name="E"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/eccema.png" alt="">
+            <h2><b>Eccema</b></h2>
+            <div class="container-p">
+                <p>Hace referencia a un proceso descamativo y asociado al picor que afecta a la piel.</p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/endocarditis.png" alt="">
+            <h2><b>Endocarditis</b></h2>
+            <div class="container-p">
+                <p>es la inflamación del revestimiento interior de las válvulas y cámaras cardiacas, que forman el endocardio.</p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/endometritis.png" alt="">
+            <h2><b>Endometriosis</b></h2>
+            <div class="container-p">
+                <p>Es la presencia de tejido endometrial fuera del útero. </p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/esofagitis.png" alt="">
+            <h2><b>Esofagitis </b></h2>
+            <div class="container-p">
+                <p>Inflamación de la mucosa que se encuentra en el esófago, es decir, de la capa interna que reviste el esófago y es una afección que puede deberse a diversas causas.</p>
+            </div>
+        </div>
+    </div>
+    <!--F-->
+    <h2 class="subt"> F</h2>
+    <a name="F"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/fibromialgia.png" alt="">
+            <h2><b>Fibromialgia </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad reumática crónica caracterizada por dolor generalizado del aparato locomotor que se acompaña de cansancio intenso, disminución de la capacidad funcional</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/fiebre.png" alt="">
+            <h2><b>Fiebre tifoidea </b></h2>
+            <div class="container-p">
+                <p><br><br>Es una enfermedad infecciosa sistémica que se caracteriza por que el paciente presenta fiebre elevada y síntomas abdominales. </p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/fenilcetonuria.png" alt="">
+            <h2><b>Fenilcetonuria </b></h2>
+            <div class="container-p">
+                <p>es una afección rara producida por las mutaciones en el gen de la fenilalanina hidroxilasa, en la que un bebé nace sin la capacidad para descomponer un aminoácido llamado fenilalanina. </p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/fimosis.png" alt="">
+            <h2><b>Fimosis </b></h2>
+            <div class="container-p">
+                <p>Se produce cuando el orificio del prepucio, la piel que recubre a todo el pene, es demasiado estrecho para dejar salir al glande. </p>
+            </div>
+        </div>
+    </div>
+    <!--G-->
+    <h2 class="subt"> G</h2>
+    <a name="G"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/glaucoma.png" alt="">
+            <h2><b>Glaucoma</b></h2>
+            <div class="container-p">
+                <p>es una enfermedad neurodegenerativa del nervio óptico que produce una pérdida de visión progresiva y que, en general, está relacionada con un aumento de la tensión ocular.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/gastritits.png" alt="">
+            <h2><b>Gastritis </b></h2>
+            <div class="container-p">
+                <p>es la inflamación aguda o crónica de la mucosa que recubre las paredes del estómago.</p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/gastroenteritis.png" alt="">
+            <h2><b>Gastroenteritis </b></h2>
+            <div class="container-p">
+                <p>es una infección o inflamación del revestimiento interno (mucosa) del estómago y el intestino delgado que puede estar causada por agentes infecciosos.</p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/gonorrea.png" alt="">
+            <h2><b>Gonorrea </b></h2>
+            <div class="container-p">
+                <p>es una infección de transmisión sexual (ITS) causada por una bacteria denominada Neisseria gonorrhoeae, que afecta al tracto genital, la boca y el ano. </p>
+            </div>
+        </div>
+    </div>
+    <!--H-->
+    <h2 class="subt"> H</h2>
+    <a name="H"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/hafefobia.png" alt="">
+            <h2><b>Hafefobia </b></h2>
+            <div class="container-p">
+                <p>Viene del griego y literalmente significa ‘miedo a ser tocado’.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/hepatitis c.png" alt="">
+            <h2><b>Hepatitis C </b></h2>
+            <div class="container-p">
+                <p>Es una enfermedad del hígado provocada por la infección del VHC (virus de la hepatitis C). </p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/hemofilia.png" alt="">
+            <h2><b>Hemofilia </b></h2>
+            <div class="container-p">
+                <p><br><br><br>Es un trastorno hemorrágico donde la coagulación de la sangre está alterada</p>
+            </div>
+        </div>
+        <div class="box box4 hh">
+            <img src="img/hipermetropia.png" alt="">
+            <h2><b>Hipermetropía </b></h2>
+            <div class="container-p">
+                <p>es un defecto de refracción que consiste en que las imágenes se enfocan por detrás de la retina.</p>
+            </div>
+        </div>
+    </div>
+    <!--I-->
+    <h2 class="subt"> I</h2>
+    <a name="I"></a>
+    <div class="container-box">
+        <div class="box box1 ii">
+            <img src="img/ictus.png" alt="">
+            <h2><b>Ictus </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad cerebrovascular que afecta a los vasos sanguíneos que suministran sangre al cerebro.</p>
+            </div>
+        </div>
+        <div class="box box2 ii">
+            <img src="img/impetigo.png" alt="">
+            <h2><b>Impétigo</b></h2>
+            <div class="container-p">
+                <p>consiste en una infección bacteriana por la cual la parte superficial de la piel (epidermis) sufre una inflamación.</p>
+            </div>
+        </div>
+        <div class="box box3 ii">
+            <img src="img/insuficiencia cardiaca.png" alt="">
+            <h2><b>Insuficiencia cardiaca</b></h2>
+            <div class="container-p">
+                <p> cuando la función del corazón está alterada o el músculo cardiaco no es capaz de bombear suficiente sangre.</p>
+            </div>
+        </div>
+        <div class="box box4 ii">
+            <img src="img/insomnio.png" alt="">
+            <h2><b>Insomnio </b></h2>
+            <div class="container-p">
+                <p>o la agripnia es un trastorno que consiste en la incapacidad para conciliar el sueño o para mantenerlo. </p>
+            </div>
+        </div>
+    </div>
+    <!--J-->
+    <h2 class="subt"> J</h2>
+    <a name="J"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/juanetes.png" alt="">
+            <h2><b>Juanetes </b></h2>
+            <div class="container-p">
+                <p>(hallux valgus) son una deformidad del dedo gordo, o del primer dedo del pie, que produce una protuberancia en el borde externo del mismo.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--K-->
+    <h2 class="subt"> K</h2>
+    <a name="K"></a>
+    <div class="container-box">
+        <div class="No-Hay">No se ha encontrado enfermedades.</div>
+    </div>
+    <!--L-->
+    <h2 class="subt"> L</h2>
+    <a name="L"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/lipotimia.png" alt="">
+            <h2><b>Lipotimia </b></h2>
+            <div class="container-p">
+                <p>es una pérdida breve del conocimiento debido a una disminución del flujo sanguíneo del cerebro.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/legionella.png.opdownload" alt="">
+            <h2><b>Legionella o legionelosis </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad causada por la bacteria Legionella pneumophila que presenta fundamentalmente dos formas clínicas totalmente diferenciadas.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/listeriosis.png" alt="">
+            <h2><b>Listeriosis</b></h2>
+            <div class="container-p">
+                <p>es la infección que puede producirse cuando una persona ingiere alimentos que han sido contaminados por la bacteria  Listeria monocytogenes.</p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/litiasis.png" alt="">
+            <h2><b>Litiasis renal</b></h2>
+            <div class="container-p">
+                <p>es una enfermedad causada por la presencia de cálculos o piedras en el interior de los riñones o de las vías urinarias (uréteres o vejiga).</p>
+            </div>
+        </div>
+    </div>
+    <!--M-->
+    <h2 class="subt"> M</h2>
+    <a name="M"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/melasma.webp" alt="">
+            <h2><b>Melasma </b></h2>
+            <div class="container-p">
+                <p><br>es una enfermedad que produce unas manchas simétricas principalmente en la cara.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/miomatosis uterina.png" alt="">
+            <h2><b>Miomas uterinos</b></h2>
+            <div class="container-p">
+                <p>son tumores benignos ricos en matriz extracelular y que derivan de los miocitos, que se encuentran presentes en el miometrio.Son muy comunes.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/mononeucleosis.png" alt="">
+            <h2><b>Mononucleosis infecciosa</b></h2>
+            <div class="container-p">
+                <p>También conocida como la enfermedad del beso, causa fiebre, dolor de garganta e inflamación de los ganglios linfáticos, signo que suele producirse en el cuello.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/miocardiotopia.png" alt="">
+            <h2><b>Miocardiopatía</b></h2>
+            <div class="container-p">
+                <p>es una enfermedad relativamente frecuente que se produce cuando el músculo cardiaco está afectado.</p>
+            </div>
+        </div>
+    </div>
+    <!--N-->
+    <h2 class="subt"> N</h2>
+    <a name="N"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/narcolepsia.png" alt="">
+            <h2><b>Narcolepsia </b></h2>
+            <div class="container-p">
+                <p>es un trastorno crónico del sueño, que pertenece al grupo de las hipersomnias, caracterizado por una excesiva somnolencia diurna.</p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/neumonia.png" alt="">
+            <h2><b>Neumonía </b></h2>
+            <div class="container-p">
+                <p>es una infección en uno o en los dos pulmones caracterizada por la multiplicación de microorganismos en el interior de los alvéolos.</p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/neumotorax.png" alt="">
+            <h2><b>Neumotorax</b></h2>
+            <div class="container-p">
+                <p>La pleura parietal está en contacto directo con el tórax, y la pleura visceral envuelve directamente a los pulmones. Cuando entre ambas membranas se introduce aire, ambas pleuras se alejan, provocando así el neumotórax.</p>
+            </div>
+        </div>
+    </div>
+    <!--O-->
+    <h2 class="subt"> O</h2>
+    <a name="O"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/obesidad.png" alt="">
+            <h2><b>Obesidad </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad crónica tratable que aparece cuando existe un exceso de tejido adiposo (grasa) en el cuerpo.</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/osteoporosis.png" alt="">
+            <h2><b>Osteoporosis</b></h2>
+            <div class="container-p">
+                <p> es una enfermedad sistémica esquelética que se caracteriza por una disminución de la masa ósea y un deterioro de la microarquitectura de los huesos.</p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/ortorexia.png" alt="">
+            <h2><b>Ortorexia </b></h2>
+            <div class="container-p">
+                <p>es un trastorno de la conducta alimentaria que consiste en la obsesión por la comida sana.</p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/osteosarcama.png" alt="">
+            <h2><b>Osteosarcoma </b></h2>
+            <div class="container-p">
+                <p>es un tumor óseo maligno muy poco común que afecta principalmente a niños y a adolescentes. </p>
+            </div>
+        </div>
+    </div>
+    <!--P-->
+    <h2 class="subt"> P</h2>
+    <a name="P"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/pancreatitis.png" alt="">
+            <h2><b>Pancreatitis</b></h2>
+            <div class="container-p">
+                <p>es una inflamación del páncreas y puede ser aguda o crónica.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/prostatitis.png" alt="">
+            <h2><b>Prostatitis </b></h2>
+            <div class="container-p">
+                <p>es una inflamación de la próstata, que puede estar asociada o no a una infección bacteriana.</p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/preeclamsia.png" alt="">
+            <h2><b>Preeclampsia </b></h2>
+            <div class="container-p">
+                <p><br><br><br>es una enfermedad del embarazo que afecta a diferentes órganos y sistemas y se manifiesta principalmente por la tensión arterial alta. </p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/presbicia.png" alt="">
+            <h2><b>Presbicia o vista cansada </b></h2>
+            <div class="container-p">
+                <p>es la dificultad que tiene el ojo para enfocar bien de cerca como consecuencia de la edad. Esta afección suele aparecer en torno a los 40-45 años.</p>
+            </div>
+        </div>
+    </div>
+    <!--Q-->
+    <h2 class="subt"> Q</h2>
+    <a name="Q"></a>
+    <div class="container-box">
+        <div class="box box2 hh">
+            <img src="img/quiste.png" alt="">
+            <h2><b>Quiste</b></h2>
+            <div class="container-p">
+                <p>Bolsa de tejido cerrada en forma de saco que se puede formar en cualquier parte del cuerpo. A veces está llena de líquido, aire, pus u otro material. La mayoría de los quistes son benignos (no cancerosos).</p>
+            </div>
+        </div>
+    </div>
+    <!--R-->
+    <h2 class="subt"> R</h2>
+    <a name="R"></a>
+    <div class="container-box">
+        <div class="box box1 ii">
+            <img src="img/rotavirus.png" alt="">
+            <h2><b>Rotavirus </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad infecciosa que causa en los afectados gastroenteritis o infección intestinal.</p>
+            </div>
+        </div>
+        <div class="box box2 ii">
+            <img src="img/rectocele.jpg" alt="">
+            <h2><b>Rectocele o prolapso vaginal</b></h2>
+            <div class="container-p">
+                <p>es una herniación del recto hacia la vagina.</p>
+            </div>
+        </div>
+        <div class="box box3 ii">
+            <img src="img/retinoblastoma.png" alt="">
+            <h2><b>Retinoblastoma </b></h2>
+            <div class="container-p">
+                <p>es un tipo raro de cáncer que afecta a los tejidos de la retina del ojo.</p>
+            </div>
+        </div>
+        <div class="box box4 ii">
+            <img src="img/rosacea.png" alt="">
+            <h2><b>Rosácea </b></h2>
+            <div class="container-p">
+                <p>Es una enfermedad de la piel que produce que la cara se vuelva de color rojo.  A veces puede parecer acné.</p>
+            </div>
+        </div>
+    </div>
+    <!--S-->
+    <h2 class="subt"> S</h2>
+    <a name="S"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/salmonelosis.png" alt="">
+            <h2><b>Salmonelosis </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad infecciosa transmitida por la bacteria Salmonella. Es una de las enfermedades de transmisión alimentaria más común y más extendida.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/sarampion.png" alt="">
+            <h2><b>Sarampión </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad altamente contagiosa causada por la infección del virus del sarampión, que en ausencia de vacunación afecta principalmente a niños.</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/sindromediogenes.jpeg" alt="">
+            <h2><b>Síndrome de Diógenes</b></h2>
+            <div class="container-p">
+                <p>La observación de casos repetidos de personas con comportamientos extremadamente huraños que vivían recluidos en sus propios hogares y rehuían cualquier contacto con otras personas motivó la aparición en la década de los 60 de un trabajo científico que detallaba este patrón de conducta.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/quistepilonidal.png" alt="">
+            <h2><b>Sinus pilonidal o quiste pilonidal</b></h2>
+            <div class="container-p">
+                <p><br><br><br>Aparece en el pliegue interglúteo, entre las nalgas, contiene piel y folículos pilosos (pelo).</p>
+            </div>
+        </div>
+    </div>
+    <!--T-->
+    <h2 class="subt"> T</h2>
+    <a name="T"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/tendonitis.png" alt="">
+            <h2><b>Tendinitis </b></h2>
+            <div class="container-p">
+                <p>es la inflamación de un tendón, la estructura fibrosa que une el músculo con el hueso. Generalmente, se producen por sobreuso de los tendones. </p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/toxoplasmosis.png" alt="">
+            <h2><b>Toxoplasmosis </b></h2>
+            <div class="container-p">
+                <p>es una enfermedad infecciosa ocasionada por el parasito intracelular. Puede aparecer en animales, principalmente en los gatos y animales de granja, y en humanos.</p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/torticulis.png" alt="">
+            <h2><b>Torticulis</b></h2>
+            <div class="container-p">
+                <p>una contractura de la musculatura cervical unilateral que genera una actitud mantenida del cuello en rotación y lateralización. </p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/tumor cerebral.png" alt="">
+            <h2><b>Tumor cerebral</b></h2>
+            <div class="container-p">
+                <p>Se conoce como tumor cerebral a la masa que crece dentro del cerebro. Si ésta se origina en el propio cerebro se denomina tumor primario</p>
+            </div>
+        </div>
+    </div>
+    <!--U-->
+    <h2 class="subt"> U</h2>
+    <a name="U"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/uñas-encarnadas.png" alt="">
+            <h2><b>Uñas encarnadas </b></h2>
+            <div class="container-p">
+                <p>son el resultado de la interacción entre la uña y la carne, produciendo inflamación, dolor y, en ocasiones, infección. </p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/uretritis.png" alt="">
+            <h2><b>Uretritis </b></h2>
+            <div class="container-p">
+                <p>produce la inflamación de la mucosa de la uretra. Se trata de una enfermedad de transmisión sexual.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/urticaria.png" alt="">
+            <h2><b>Urticaria</b></h2>
+            <div class="container-p">
+                <p> es la reacción de la piel caracterizada por la presencia de pequeñas elevaciones, ronchas, de color más claro o rojizo que el resto de la piel que las rodea.</p>
+            </div>
+        </div>
+    </div>
+    <!--V-->
+    <h2 class="subt"> V</h2>
+    <a name="V"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/varices.png" alt="">
+            <h2><b>Varices</b></h2>
+            <div class="container-p">
+                <p><br>son venas hinchadas a causa de una acumulación anormal de sangre debido a la debilidad, a menudo heredada, en las paredes y válvulas de las venas superficiales.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/varicocele.png" alt="">
+            <h2><b>Varicocele</b></h2>
+            <div class="container-p">
+                <p>es la “dilatación de la vena espermática”, informa Francisco José Anglada, urólogo del Hospital San Juan de Dios en Córdoba.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/vasculitis.png" alt="">
+            <h2><b>Vasculitis </b></h2>
+            <div class="container-p">
+                <p>hacen referencia a un grupo de enfermedades diversas que producen la inflamación de los vasos sanguíneos.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/vigorexia.png" alt="">
+            <h2><b>Vigorexia</b></h2>
+            <div class="container-p">
+                <p>es un trastorno mental que se caracteriza por la obsesión por ganar masa muscular. </p>
+            </div>
+        </div>
+    </div>
+    <!--W-->
+    <h2 class="subt"> W</h2>
+    <a name="W"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/Sindrome-W.png.opdownload" alt="">
+            <h2><b>W</b></h2>
+            <div class="container-p">
+                <p>El síndrome W se caracteriza por un déficit intelectual, ataques epilépticos y dismorfismo facial.</p>
+            </div>
+        </div>
+    </div>
+    <!--X-->
+    <h2 class="subt"> X</h2>
+    <a name="X"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/xerostomia.png" alt="">
+            <h2><b>Xerostomía</b></h2>
+            <div class="container-p">
+                <p><br>es frecuentemente llamada sequedad en la boca. Se produce cuando las glándulas salivales no producen suficiente saliva como para mantener la boca húmeda.</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/xeroftalmia.png" alt="">
+            <h2><b>Xeroftalmía </b></h2>
+            <div class="container-p">
+                <p>es la sequedad de la conjuntiva (la membrana que recubre los párpados y cubre la parte blanca del ojo) y la córnea. </p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/xerodermia.png" alt="">
+            <h2><b>Xerodermia</b></h2>
+            <div class="container-p">
+                <p>(xerosis) es una sequedad de la piel no hereditaria ni asociada con anomalías sistémicas.</p>
+            </div>
+        </div>
+    </div>
+    <!--Y-->
+    <h2 class="subt"> Y</h2>
+    <a name="Y"></a>
+    <div class="container-box">
+        <div class="No-Hay">No se ha encontrado enferemdades.</div>
+    </div>
+    <!--Z-->
+    <h2 class="subt"> Z</h2>
+    <a name="Z"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/zika.png" alt="">
+            <h2><b>Zika</b></h2>
+            <div class="container-p">
+                <p>Los síntomas más comunes del zika son fiebre, sarpullido, dolor de cabeza, dolor en las articulaciones, ojos enrojecidos y dolor muscular.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/zoster.png" alt="">
+            <h2><b>Zóster</b></h2>
+            <div class="container-p">
+                <p> es una erupción cutánea vesicante (ampollas) y dolorosa. Es causada por el virus varicella-zoster.</p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/zoonosis.png" alt="">
+            <h2><b>Zoonosis </b></h2>
+            <div class="container-p">
+                <p>hace referencia a las enfermedades que pueden transmitirse de animales a humanos, y viceversa. </p>
+            </div>
+        </div>
+    </div>
+    <h4 class="arriba"><a href="#arriba">&Icirc;</a></h4>
+    <footer>
+       
+        <div class="container-footer-all">
+         
+             <div class="container-body">
+ 
+                 <div class="colum1">
+                     <h1>Mas informacion de MediHelp</h1>
+ 
+                     <p>MediHelp es un software que te ayuda  a definir, comprender y analizar  términos médicos en diferentes áreas. El lenguaje médico es cambiante y se modifica al ritmo, cada vez más vertiginoso, de los nuevos avances científicos. Por eso nuestra versión dígital se mantiene en constante actualización de contenidos y mejoras.</p>
+                     <img src="img/MediHelp.png " width="200px">
+                 </div>
+ 
+                 <div class="colum2">
+ 
+                     <h1>Redes Sociales</h1>
+ 
+                     <div class="row">
+                         <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/FaceB.png"></a>
+                         <label>Siguenos en Facebook</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://twitter.com/home?lang=es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"></a>
+                         <label>Siguenos en Twitter</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://www.instagram.com"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png"></a>
+                         <label>Siguenos en Instagram</label>
+                     </div>
+                     <div class="row">
+                         <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Google_plus_circle_icon_%282011-2015%29.png"></a>
+                         <label>Siguenos en Google Plus</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://www.pinterest.es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png"></a>
+                         <label>Siguenos en Pinteres</label>
+                     </div>
+                 </div>
+                 <div class="colum3">
+                     <h1>Informacion Contactos</h1>
+                     <div class="row2">
+                         <img src="https://w7.pngwing.com/pngs/598/408/png-transparent-computer-icons-mobile-phones-phone-miscellaneous-telephone-call-logo.png">
+                         <label>+504 9988-3344</label>
+                     </div>
+                     <div class="row2">
+                         <img src="https://logos-marcas.com/wp-content/uploads/2020/11/Gmail-Logo.png">
+                          <label>AtencionAlCliente_MediHelp@gmail.com</label>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="container-footer">
+                <div class="footer">
+                     <div class="copyright">
+                         © 2021 Todos los Derechos Reservados | <a href="#">MediHelp</a>
+                     </div>
+ 
+                     <div class="information">
+                         <a href="#">Informacion Compañia</a> | <a href="#">Privacion y Politica</a> | <a href="#">Terminos y Condiciones</a>
+                     </div>
+                 </div>
+ 
+             </div>
+         
+     </footer>
+</body>
+</html>

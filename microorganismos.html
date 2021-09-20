@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/logo.png">
+    <title>MediHelp | Microorganismo</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    background-color: #698ab6;
+}
+ul.topnav li {float: left;}
+ul.topnav li a {
+display: block;
+color: white;
+text-align: center;
+padding: 10px 12px;
+text-decoration: none;
+font-size: 14px;
+}
+ul.topnav li a:hover:not(.active) {
+    font-weight: bold;
+}
+ul.topnav li a.active {
+    border-bottom: 4px solid white;
+}
+ul.topnav li.right {
+    float: right;
+}
+.buscar{
+    margin-top: 5px;
+}
+.btn{
+    color: white;
+    border: 2px solid white;
+    margin-right: 5px;
+}
+.btn:hover{
+    background-color: white;
+    color: #698ab6;
+    border: 2px solid #698ab6;
+}
+.login{
+            color: #194b8d;
+            background-color: #698ab6;
+            margin: 0px 20px;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        .login:hover{
+            background-color: #ffffff;
+            color: #698ab6;
+        }
+.logo{
+    padding: 0px;
+}
+.logo img{
+    width: 60px;
+}
+.titulo{
+    text-shadow: 5px 5px 10px #698ab6;
+    letter-spacing: 10px;
+    text-align: center;
+    font-size: 500%;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.abc{
+    width: 100%;
+    padding: 20px 15px;
+    text-align: center;
+    line-height: 2;
+}
+.abc a:hover{
+            background-color: rgb(12, 58, 209);
+            color: #fff;
+            padding: 10px 13px;
+            font-weight: bold;
+        }
+        .arriba a:hover{
+            background-color: rgb(12, 58, 209);
+            color: #fff;
+        }
+.abc a{
+    padding: 5px 10px;
+    background-color: lightblue;
+    border-radius: 50%;
+    text-decoration: none;
+    color: black;
+    font-size: 90%;
+}
+.desplegable{
+    display: none;
+}
+.container-box{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box{
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    padding: 20px;
+    background: rgb(130, 131, 199);
+    border: 2px solid #14169c;
+    border-radius: 14px;
+    text-align: center;
+    margin-top: 100px;
+    position: relative;
+
+}
+
+.box img{
+    width: 60%;
+    transition: all 400ms;
+}
+
+.box h2{
+    font-size: 16px;
+    margin-top: 10px;
+    transition: all 500ms;
+}
+
+.box .container-p{
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding: 0px 10px;
+    border-radius: 0px 0px 14px 14px;
+}
+
+.box p{
+    font-size: 14px;
+    color: #7a7a7a;
+    opacity: 0;
+    transform: translateY(150px);
+    transition: all 600ms;
+}
+
+.box .check{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    border: 2px solid #f5f5f5;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background: lightcyan;
+}
+
+.box .check i{
+    margin-top: 6px;
+    display: none;
+    color: lightcyan
+    
+}
+
+
+.box:hover{
+    background: #fbfbfe;
+}
+
+.box:hover img{
+    transform: translateY(-90px);
+}
+
+.box:hover h2{
+    transform: translateY(-90px);
+}
+
+.box:hover .container-p p{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.box-selected{
+    border-color: red;
+    transition: all 600ms;
+}
+
+.icon-check{
+    display: block !important;
+}
+
+.check-selected{
+    background: red !important;
+    border: none;
+    transition: all 600ms;
+}
+.container-p p{
+    color: #fff;
+}
+.aa:hover{
+    background-color: deepskyblue;
+}
+.bb:hover{
+    background-color: rgb(11, 204, 186);
+}
+.cc:hover{
+    background-color: SpringGreen;
+}
+.dd:hover{
+    background-color: LightSeaGreen;
+}
+.ee:hover{
+    background-color: MediumAquamarine;
+}
+.ff:hover{
+    background-color: DarkTurquoise;
+}
+.gg:hover{
+    background-color: cornflowerblue;
+}
+.hh:hover{
+    background-color: #698ab6;
+}
+.ii:hover{
+    background-color: LightSkyBlue;
+}
+.arriba{
+    position: fixed;
+    text-align: right;
+    bottom: 0px;
+    width: 100%;
+    padding: 20px;
+}
+.arriba a{
+    text-decoration: none;
+    color: white;
+    background-color: #698ab6;
+    border-radius: 50%;
+    padding: 7px 15px;
+    font-size: 90%;
+    font-weight: bolder;
+}
+.subt{
+    color: #698ab6;
+    font-weight: bolder;
+    margin-left: 12%;
+}
+@media screen and (max-width:868px) {
+    .topnav{
+        display: none;
+    }
+    ul.topnav li.right, 
+    ul.topnav li {
+        float: none;
+    }
+    .titulo{
+        font-size: 25px;
+    }
+    .abc a{
+        background-color: lightblue;
+        border-radius: 50%;
+        text-decoration: none;
+        color: black;
+    }
+    #sidebar {
+        position: fixed;
+        width: 200px;
+        height: 100%;
+        background: #698ab6;
+        left: -200px;
+        transition: all 500ms linear;
+        z-index: 10;
+        top: 5px;
+      }
+    #sidebar.active {
+        left: 0px;
+      }
+    #sidebar ul li {
+        color: rgba(230, 230, 230, .9);
+        list-style: none;
+        padding: 15px 10px;
+        border-bottom: 1px solid rgba(6, 38, 87, 0.3);
+        text-align: center;
+      }
+      #sidebar ul li a.op:hover{
+          font-weight: bold;
+      }
+    .op{
+        color: white;
+        text-decoration: none;
+      }
+    #toggle-btn {
+        position: absolute;
+        left: 215px;
+        top: 12px;
+        background: #151719;
+        cursor: pointer;
+        transition: all 0.5s linear;
+      }
+    #toggle-btn span {
+        display: block;
+        width: 40px;
+        text-align: center;
+        font-size: 30px;
+        color: #fff;
+      }
+    #toggle-btn.active {
+        left:5px;
+        top: 5px;
+        background:#777;
+      }
+    .desplegable{
+        background-color: #698ab6;
+        text-align: center;
+        display: block;
+        top: 0px;
+        width: 100%;
+    }
+    .desplegable img{
+        width: 20%;
+    }
+    .abc{
+        position: relative;
+    }
+    
+}
+@media screen and (max-width: 420px) {
+.topnav{
+    display: none;
+}
+ul.topnav li.right, 
+ul.topnav li {
+    float: none;
+}
+.titulo{
+    font-size: 20px;
+}
+.abc a{
+    background-color: lightblue;
+    border-radius: 50%;
+    text-decoration: none;
+    color: black;
+}
+#sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #698ab6;
+    left: -200px;
+    transition: all 500ms linear;
+    z-index: 10;
+    top: 5px;
+  }
+#sidebar.active {
+    left: 0px;
+  }
+#sidebar ul li {
+    color: rgba(230, 230, 230, .9);
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(6, 38, 87, 0.3);
+    text-align: center;
+  }
+  #sidebar ul li a.op:hover{
+      font-weight: bold;
+  }
+.op{
+    color: white;
+    text-decoration: none;
+  }
+.logo {
+    display: block;
+    margin: 0 auto; 
+    width: 60%;
+  }  
+#toggle-btn {
+    position: absolute;
+    left: 215px;
+    top: 12px;
+    background: #151719;
+    cursor: pointer;
+    transition: all 0.5s linear;
+  }
+#toggle-btn span {
+    display: block;
+    width: 40px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+  }
+#toggle-btn.active {
+    left:5px;
+    top: 5px;
+    background:#777;
+  }
+.desplegable{
+    background-color: #698ab6;
+    text-align: center;
+    display: block;
+}
+.desplegable img{
+    width: 20%;
+}
+.subt{
+    left: 10%;
+}
+.box4{
+    display: none;
+}
+}
+
+
+
+
+        footer{
+           width: 100%;
+           background: #0a1227;
+           color: white;  
+           font-size: 13px 
+           
+       }
+
+       .container-footer-all{
+           width: 100%;
+           max-width: 1200px;
+           margin: auto;
+           padding: 20px;
+       }
+
+       .container-body{
+           display: flex;
+           justify-content: space-between;
+       }
+
+       .colum1{
+           max-width: 400px;
+       }
+
+       .colum1 h1{
+           font-size: 22px;
+       }
+
+       .colum1 p{
+           font-size: 14px;
+           color: #C7C7C7;
+           margin-top: 20px;
+       }
+
+       .colum1 img{
+           margin: 10px 50px;
+       }
+
+       .colum2{
+           max-width: 400px;
+           
+       }
+
+       .colum2 h1{
+           font-size: 22px;
+       }
+
+       .row{
+           margin-top: 20px;
+           display: flex;
+       }
+
+       .row img{
+           width: 36px;
+           height: 36px;
+       }
+
+       .row label{
+           margin-top: 10px;
+           margin-left: 20px;
+           color: #C7C7C7;
+       }
+
+       .colum3{
+           max-width: 400px;
+       }
+
+       .colum3 h1{
+           font-size: 22px;
+       }
+
+       .row2{
+           margin-top: 20px;
+           display: flex;
+       }
+
+       .row2 img{
+           width: 36px;
+           height: 36px;
+       }
+
+       .row2 label{
+           margin-top: 10px;
+           margin-left: 20px;
+           max-width: 140px;
+       }
+
+       .container-footer{
+           width: 100%;  
+           background: #101010;
+       }
+
+       .footer{
+           max-width: 1200px;
+           margin: auto;
+           display: flex;
+           justify-content: space-between;  
+           padding: 20px;
+       }
+
+       .copyright{
+           color: #C7C7C7;
+       }
+
+       .copyright a{
+           text-decoration: none;
+           color: white;
+           font-weight: bold;
+       }
+
+       .information a{
+           text-decoration: none;
+           color: #C7C7C7;
+       }
+
+
+       @media screen and (max-width: 1100px){
+           
+           .container-body{
+               flex-wrap: wrap;
+           }
+           
+           .colum1{
+               max-width: 100%;
+           }
+           
+           .colum2,
+           .colum3{
+               margin-top: 40px;
+           }
+       }
+   </style>
+
+    <script>
+        window.onload = function() {
+            let btn = document.getElementById('toggle-btn');
+            let side = document.getElementById('sidebar');
+            btn.addEventListener('click', function() {
+              btn.classList.toggle('active');
+              side.classList.toggle('active');
+            });
+          }
+          document.querySelector(".box1").addEventListener("click", box_selected1);
+          document.querySelector(".box2").addEventListener("click", box_selected2);
+          document.querySelector(".box3").addEventListener("click", box_selected3);
+          document.querySelector(".box4").addEventListener("click", box_selected4);
+          
+          //box1  
+          box1 = document.querySelector(".box1");
+          check_bg1 = document.querySelector(".box1 .check");
+          icon_check1 = document.querySelector(".box1 .fa-check");
+          
+          //box2
+          box2 = document.querySelector(".box2");
+          check_bg2 = document.querySelector(".box2 .check");
+          icon_check2 = document.querySelector(".box2 .fa-check");
+          
+          //box3
+          box3 = document.querySelector(".box3");
+          check_bg3 = document.querySelector(".box3 .check");
+          icon_check3 = document.querySelector(".box3 .fa-check");
+          
+          //box4
+          box4 = document.querySelector(".box4");
+          check_bg4 = document.querySelector(".box4 .check");
+          icon_check4 = document.querySelector(".box4 .fa-check");
+
+          value_box = 0;
+          
+          function box_selected1 () {
+              box2.classList.remove('box-selected');
+              check_bg2.classList.remove('check-selected');
+              icon_check2.classList.remove('icon-check');
+          
+              box3.classList.remove('box-selected');
+              check_bg3.classList.remove('check-selected');
+              icon_check3.classList.remove('icon-check');
+          
+              box1.classList.toggle('box-selected');
+              check_bg1.classList.toggle('check-selected');
+              icon_check1.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 1;
+              console.log(value_box);
+          }
+          function box_selected2 () {
+          
+              box1.classList.remove('box-selected');
+              check_bg1.classList.remove('check-selected');
+              icon_check1.classList.remove('icon-check');
+          
+              box3.classList.remove('box-selected');
+              check_bg3.classList.remove('check-selected');
+              icon_check3.classList.remove('icon-check');
+          
+              box2.classList.toggle('box-selected');
+              check_bg2.classList.toggle('check-selected');
+              icon_check2.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 2;
+              console.log(value_box);
+          }
+          function box_selected3 () {
+              box1.classList.remove('box-selected');
+              check_bg1.classList.remove('check-selected');
+              icon_check1.classList.remove('icon-check');
+          
+              box2.classList.remove('box-selected');
+              check_bg2.classList.remove('check-selected');
+              icon_check2.classList.remove('icon-check');
+          
+              box3.classList.toggle('box-selected');
+              check_bg3.classList.toggle('check-selected');
+              icon_check3.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 3;
+              console.log(value_box);
+          }
+          function box_selected4 () {
+            box1.classList.remove('box-selected');
+            check_bg1.classList.remove('check-selected');
+            icon_check1.classList.remove('icon-check');
+        
+            box2.classList.remove('box-selected');
+            check_bg2.classList.remove('check-selected');
+            icon_check2.classList.remove('icon-check');
+        
+            box3.classList.toggle('box-selected');
+            check_bg3.classList.toggle('check-selected');
+            icon_check3.classList.toggle('icon-check');
+
+            box4.classList.toggle('box-selected');
+            check_bg4.classList.toggle('check-selected');
+            icon_check4.classList.toggle('icon-check');
+        
+            value_box = 4;
+            console.log(value_box);
+        }
+    </script>
+</head>
+<body>
+    <a name="arriba"></a>
+    <ul class="topnav">
+        <li class="logo"><img src="img/logo.png" alt="logo"></li>
+        <li class="right buscar"><form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn " type="submit">Search</button>
+            <a href="login.html" class="login" target="blank">Login</a>
+          </form>
+        </li>
+        <li class="right"><a href="contacto.html" target="blank">Contact</a></li>
+        <li class="right"><a class="active" href="microorganismos.html">Microorganismos</a></li>
+        <li class="right"><a href="enfermedades.html">Enfermedades</a></li>
+        <li class="right"><a href="Tratamientos.html">Tratamientos</a></li>
+        <li class="right"><a href="Medicamentos.html">Medicamentos</a></li>
+        <li class="right"><a href="index.html">Home</a></li> 
+    </ul>
+    <div class="desplegable">
+        <img src="img/logo.png" alt="">
+        <div id="sidebar">
+            <div id="toggle-btn">
+              <span>&#9776</span>
+            </div>
+            <ul>
+              <li>
+                <img src="img/logo.png"  class="logo2">
+              </li>
+              <li><a href="index.html" class="op">Home</a></li>
+              <li><a href="Medicamentos.html" class="op active">Medicamentos</a></li>
+              <li><a href="Tratamientos.html" class="op">Tratamientos</a></li>
+              <li><a href="enfermedades.html" class="op">Enfermedades</a></li>
+              <li><a href="microorganismos.html" class="op">Microorganismo</a></li>
+              <li><a href="contacto.html" class="op" target="blank">Contact</a></li>
+              <li><a href="login.html" class="op" target="blank">Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <h1 class="titulo">VIRUS Y BACTERIAS</h1>
+    <div class="abc"><p><a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a href="#D">D</a> <a href="#E">E</a> <a href="#F">F</a> <a href="#G">G</a> <a href="#H">H</a> <a href="#I">I</a> <a href="#J">J</a> <a href="#K">K</a> <a href="#L">L</a> <a href="#M">M</a> <a href="#N">N</a> <a href="#O">O</a> <a href="#P">P</a> <a href="#Q">Q</a> <a href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> <a href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a> <a href="#X">X</a> <a href="#Y">Y</a> <a href="#Z">Z</a> </p>
+    </div>
+    <!--A-->
+    <h2 class="subt"> A</h2>
+    <a name="A"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/Adenovirus.png" alt="">
+            <h2><b>Adenovirus</b></h2>
+            <div class="container-p">
+                <p>Son virus no encapsulados de ADN bicatenario que pueden provocar enfermedades o malestares como infecciones en las vías respiratorias, conjuntivitis, cistitis hemorrágica y gastroenteritis.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/arbovirus.png" alt="">
+            <h2><b>Arbovirus</b></h2>
+            <div class="container-p">
+                <p>Son todos los virus que se transmiten al ser humano o a otros vertebrados por ciertas especies de artrópodos hematófagos, especialmente insectos (moscas y mosquitos) y arácnidos (garrapatas).</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/AH1N1.png" alt="">
+            <h2><b>A/H1N1</b></h2>
+            <div class="container-p">
+                <p>H1N1 es un tipo de virus de la gripe A y es una dentro de una variedad de cepas del virus de la gripe que pueden causar la gripe de temporada.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/Arenaviridae.png" alt="">
+            <h2><b>Arenaviridae</b></h2>
+            <div class="container-p">
+                <p>Arenaviridae es una familia de virus caracterizados por poseer un genoma lineal de ARN de cadena simple.</p>
+            </div>
+        </div>
+    </div>
+    <!--B-->
+    <h2 class="subt"> B</h2>
+    <a name="B"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/Baculoviridae.png" alt="">
+            <h2><b>Baculoviridae</b></h2>
+            <div class="container-p">
+                <p>Baculoviridae es una familia de virus infectivos para artrópodos. Poseen un genoma con ADN de cadena doble como ácido nucleico.</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/Borrelia.png" alt="">
+            <h2><b>Borrelia</b></h2>
+            <div class="container-p">
+                <p>Borrelia es un género de bacterias del filo espiroqueta, que se caracteriza por su forma helicoidal.</p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/bor.png" alt="">
+            <h2><b>Bornholm</b></h2>
+            <div class="container-p">
+                <p>es una enfermedad causada por el virus Coxsackie grupo B. Recibe su nombre de la isla danesa Bornholm donde se describió el primer caso.</p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/blota.png" alt="">
+            <h2><b>Bronchitis</b></h2>
+            <div class="container-p">
+                <p>Inflamación del revestimiento de los conductos bronquiales que transportan el aire dentro y fuera de los pulmones.</p>
+            </div>
+        </div>
+    </div>
+    <!--C-->
+    <h2 class="subt"> C</h2>
+    <a name="C"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/Chikungunya.png" alt="">
+            <h2><b>Chikungunya</b></h2>
+            <div class="container-p">
+                <p>Es un virus que se transmite a los humanos a través de la picadura de mosquitos infectados. Los síntomas pueden incluir fiebre y dolor fuerte en las articulaciones.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/Corio.png" alt="">
+            <h2><b>Coriomeningitis</b></h2>
+            <div class="container-p">
+                <p>La coriomeningitis linfocítica es una infección vírica que suele causar una enfermedad similar a la gripe, a veces con erupción, dolor en las articulaciones</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/COVID.png" alt="">
+            <h2><b>COVID-19</b></h2>
+            <div class="container-p">
+                <p>La mayoría de las personas infectadas por el virus de la COVID-19 presentan cuadros respiratorios de leves a moderados y se recuperan sin tratamiento especial. </p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/Cyto.png" alt="">
+            <h2><b>Cytomegalovirus</b></h2>
+            <div class="container-p">
+                <p>Citomegalovirus, es un género de herpesvirus dentro de la subfamilia Betaherpesvirinae, de la familia Herpesviridae.</p>
+            </div>
+        </div>
+    </div>
+    <!--D-->
+    <h2 class="subt"> D</h2>
+    <a name="D"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/Daturia.png" alt="">
+            <h2><b>Daturia Stramonium</b></h2>
+            <div class="container-p">
+                <p><br>Son un grupo de virus relacionados entre sí. </p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/Dengue.png" alt="">
+            <h2><b>Dengue</b></h2>
+            <div class="container-p">
+                <p><br>Enfermedad viral transmitida por los mosquitos y de prevalencia en las áreas tropicales y subtropicales.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/Diplococo.png" alt="">
+            <h2><b>Diplococo</b></h2>
+            <div class="container-p">
+                <p>Son un conjunto de bacterias que se caracterizan por ser cocos que tienen típicamente la forma de dos células unidas.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/Disenteria.png" alt="">
+            <h2><b>Disenteria basilar</b></h2>
+            <div class="container-p">
+                <p>La disentería bacilar es una enfermedad causada por bacterias del genero Shigella. </p>
+            </div>
+        </div>
+    </div>
+    <!--E-->
+    <h2 class="subt"> E</h2>
+    <a name="E"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/Echo.png" alt="">
+            <h2><b>Echovirus</b></h2>
+            <div class="container-p">
+                <p>El Echovirus es un tipo de virus ARN que pertenece al género Enterovirus, de la familia Picornaviridae.</p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/Ectima.png" alt="">
+            <h2><b>Ectima Conatagioso</b></h2>
+            <div class="container-p">
+                <p>El ectima contagioso también se conoce como boquera, boca costrosa y dermatitis pustular contagiosa.</p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/Ence.png" alt="">
+            <h2><b>Encefalitis herpética</b></h2>
+            <div class="container-p">
+                <p>La encefalitis herpética es una grave infección del sistema nervioso central, con un riesgo elevado de provocar la muerte.</p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/epi.png" alt="">
+            <h2><b>Epidermodisplasia</b></h2>
+            <div class="container-p">
+                <p>La epidermodisplasia verruciforme (EV) es una genodermatosis hereditaria poco frecuente caracterizada por una infección crónica por el virus del papiloma</p>
+            </div>
+        </div>
+    </div>
+    <!--F-->
+    <h2 class="subt"> F</h2>
+    <a name="F"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/fiebre.png" alt="">
+            <h2><b>Fiebre de Lassa</b></h2>
+            <div class="container-p">
+                <p>La fiebre de Lassa es una enfermedad vírica hemorrágica aguda de 1 a 4 semanas de duración que ocurre en África Occidental. </p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/hemo.png" alt="">
+            <h2><b>Fiebre hemorrágica</b></h2>
+            <div class="container-p">
+                <p>Las fiebres hemorrágicas se contagian por contacto con animales, personas o insectos infectados. </p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/fie.png" alt="">
+            <h2><b>Fiebre Sindbis</b></h2>
+            <div class="container-p">
+                <p>El Virus Sindbis es un virus transmitido por mosquitos aislado en 1952 en El Cairo.</p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/fieama.png" alt="">
+            <h2><b>Flavivirus amaril</b></h2>
+            <div class="container-p">
+                <p>La fiebre amarilla se propaga mediante una especie de mosquito común en ciertas áreas de África y América del Sur. </p>
+            </div>
+        </div>
+    </div>
+    <!--G-->
+    <h2 class="subt"> G</h2>
+    <a name="G"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/gastro.png" alt="">
+            <h2><b>Gastroenteritis Vírica</b></h2>
+            <div class="container-p">
+                <p>La gastroenteritis viral es una inflamación o hinchazón del estómago y los intestinos a raíz de un virus.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/gingi.png" alt="">
+            <h2><b>Gingivoestomatitis</b></h2>
+            <div class="container-p">
+                <p>Afección que provoca hinchazón y llagas que causan dolor dentro de la boca.</p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/gloso.png" alt="">
+            <h2><b>Glosopeda</b></h2>
+            <div class="container-p">
+                <p>Enfermedad infecciosa de origen vírico que afecta al ganado y se caracteriza por la aparición de pequeñas ampollas cutáneas en la boca y entre las pezuñas.</p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/gripe.png" alt="">
+            <h2><b>Gripe</b></h2>
+            <div class="container-p">
+                <p>Infección viral común que puede ser mortal, especialmente en grupos de alto riesgo.</p>
+            </div>
+        </div>
+    </div>
+    <!--H-->
+    <h2 class="subt"> H</h2>
+    <a name="H"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/hepa.png" alt="">
+            <h2><b>Hepatitis</b></h2>
+            <div class="container-p">
+                <p>La hepatitis es la inflamación del hígado.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/herpa.png" alt="">
+            <h2><b>Herpangina</b></h2>
+            <div class="container-p">
+                <p>Enfermedad común de la niñez, ocasionada por el virus de Coxsackie del grupo A.</p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/herpes.png" alt="">
+            <h2><b>Herpes Zóster</b></h2>
+            <div class="container-p">
+                <p>Reactivación del virus de la varicela en el cuerpo que ocasiona un sarpullido doloroso.</p>
+            </div>
+        </div>
+        <div class="box box4 hh">
+            <img src="img/herpesviri.png" alt="">
+            <h2><b>Herpesviridae</b></h2>
+            <div class="container-p">
+                <p>Fácilmente contagiados y transmitidos de una persona a otra y de su recurrencia crónica.</p>
+            </div>
+        </div>
+    </div>
+    <!--I-->
+    <h2 class="subt"> I</h2>
+    <a name="I"></a>
+    <div class="container-box">
+        <div class="box box1 ii">
+            <img src="img/iaci.png" alt="">
+            <h2><b>Iacinetobacter</b></h2>
+            <div class="container-p">
+                <p>Es una especie de bacteria cocobacilo patógena gram-negativa, no fermentador y resistente a la mayoría de los antibióticos.</p>
+            </div>
+        </div>
+        <div class="box box2 ii">
+            <img src="img/iastra.png" alt="">
+            <h2><b>Iastraphylococcus</b></h2>
+            <div class="container-p">
+                <p>Staphylococcus aureus, conocido como estafilococo áureo o estafilococo dorado</p>
+            </div>
+        </div>
+        <div class="box box3 ii">
+            <img src="img/iesc.png" alt="">
+            <h2><b>Iescherichia</b></h2>
+            <div class="container-p">
+                <p>Escherichia coli es una bacteria miembro de la familia de las enterobacterias y forma parte de la microbiota</p>
+            </div>
+        </div>
+        <div class="box box4 ii">
+            <img src="img/imy.png" alt="">
+            <h2><b>Imycobacterium</b></h2>
+            <div class="container-p">
+                <p>Es el único género de la familia de las bacterias Mycobacteriaceae.</p>
+            </div>
+        </div>
+    </div>
+    <!--J-->
+    <h2 class="subt"> J</h2>
+    <a name="J"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/Jmonella.png" alt="">
+            <h2><b>Jmonella</b></h2>
+            <div class="container-p">
+                <p>Es un género bacteriano perteneciente a la familia Enterobacteriaceae constituido por bacilos</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/Jro.png" alt="">
+            <h2><b>Jrotavirus</b></h2>
+            <div class="container-p">
+                <p>Infección viral grave en los niños pequeños, pero de fácil prevención mediante una vacuna.</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/jeales.png" alt="">
+            <h2><b>Jeales Virus</b></h2>
+            <div class="container-p">
+                <p>Forma parte de la microbiota del tracto gastrointestinal de animales homeotermos, como por ejemplo el ser humano.​</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/jra.png" alt="">
+            <h2><b>Jravius</b></h2>
+            <div class="container-p">
+                <p>El virus de la rabia es una especie tipo del género</p>
+            </div>
+        </div>
+    </div>
+    <!--K-->
+    <h2 class="subt"> K</h2>
+    <a name="K"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/kala.png" alt="">
+            <h2><b>Kala-azar</b></h2>
+            <div class="container-p">
+                <p>Enfermedad infecciosa provocada por el parásito Leishmania.</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/kawa.png" alt="">
+            <h2><b>Kawasaki</b></h2>
+            <div class="container-p">
+                <p>Trastorno que produce inflamación en las paredes de algunos vasos sanguíneos del cuerpo.</p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/kli.png" alt="">
+            <h2><b>Klippel</b></h2>
+            <div class="container-p">
+                <p>Es un trastorno poco frecuente que se diagnostica al momento del nacimiento </p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/kuru.png" alt="">
+            <h2><b>Kuru</b></h2>
+            <div class="container-p">
+                <p>Infecciosa causada por un prion (partícula formada por una proteína priónica alterada del tejido cerebral).</p>
+            </div>
+        </div>
+    </div>
+    <!--L-->
+    <h2 class="subt"> L</h2>
+    <a name="L"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/lepi.png" alt="">
+            <h2><b>Ledipasvir</b></h2>
+            <div class="container-p">
+                <p>Infección crónica por el virus de la hepatitis</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/leufeli.png" alt="">
+            <h2><b>Leucemia Felina</b></h2>
+            <div class="container-p">
+                <p>El virus de la leucemia felina es un retrovirus que infecta a los gatos.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/leuco.png" alt="">
+            <h2><b>Leucoencefalopática multofocal progresiva</b></h2>
+            <div class="container-p">
+                <p>Es una infección rara del encéfalo causada por el virus de John Cunningham o virus JC. </p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/cli.png" alt="">
+            <h2><b>Clindamicina</b></h2>
+            <div class="container-p">
+                <p>Afecta a las personas de todas las edades, pero es más común en las mujeres jóvenes.</p>
+            </div>
+        </div>
+    </div>
+    <!--M-->
+    <h2 class="subt"> M</h2>
+    <a name="M"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/Adenovirus.png" alt="">
+            <h2><b>Menibgoencefalitis</b></h2>
+            <div class="container-p">
+                <p><br>Inflamación del cerebro y los tejidos que lo rodean, generalmente a causa de una infección.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/mie.png" alt="">
+            <h2><b>Mielocitomatosis</b></h2>
+            <div class="container-p">
+                <p><br>La Mielocitomatosis es una enfermedad neoplásica de origen viral que afecta a varias especies de aves</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/mixo.png" alt="">
+            <h2><b>Mixomatosis</b></h2>
+            <div class="container-p">
+                <p>La mixomatosis llamada vulgarmente tomatosis, es una enfermedad infecciosa de origen vírico que afecta a los conejos y a la liebre ibérica.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/molus.png" alt="">
+            <h2><b>Molusco contagioso</b></h2>
+            <div class="container-p">
+                <p>Infección cutánea viral que produce protuberancias redondas, indoloras y firmes.</p>
+            </div>
+        </div>
+    </div>
+    <!--N-->
+    <h2 class="subt"> N</h2>
+    <a name="N"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/necro.png" alt="">
+            <h2><b>Necrosis retiniana aguada</b></h2>
+            <div class="container-p">
+                <p>El síndrome de necrosis retiniana aguda (NRA) es una entidad poco frecuente que se caracteriza por retinitis vaso-oclusiva necrotizante</p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/nefro.png" alt="">
+            <h2><b>Nefropatía epidémica</b></h2>
+            <div class="container-p">
+                <p>Es una infección vírica provocada por el virus Puumala, un Hantavirus. </p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/neu.png" alt="">
+            <h2><b>Neumonía</b></h2>
+            <div class="container-p">
+                <p>Infección que inflama los sacos de aire de uno o ambos pulmones, los que pueden llenarse de fluido.</p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/noro.png" alt="">
+            <h2><b>Norovirus</b></h2>
+            <div class="container-p">
+                <p>Norovirus es un género de virus ARN de la familia Caliciviridae</p>
+            </div>
+        </div>
+    </div>
+    <!--O-->
+    <h2 class="subt"> O</h2>
+    <a name="O"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/ojo.png" alt="">
+            <h2><b>Ojo seco</b></h2>
+            <div class="container-p">
+                <p>Sequedad ocular que se produce cuando las lágrimas no logran suministrar la humedad necesaria.</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/tes.png" alt="">
+            <h2><b>Orquitis</b></h2>
+            <div class="container-p">
+                <p>es la inflamación de uno de los testículos o ambos. La orquitis se puede producir debido a infecciones por bacterias o virus</p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/orto.png" alt="">
+            <h2><b>Ortorexia</b></h2>
+            <div class="container-p">
+                <p>La finalidad es estar lo más sano posible, restringiendo los hábitos de comida hasta el punto de poner en peligro su vida.</p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/orz.png" alt="">
+            <h2><b>Orzuelo</b></h2>
+            <div class="container-p">
+                <p>Protuberancia roja y dolorosa cerca del borde del párpado</p>
+            </div>
+        </div>
+    </div>
+    <!--P-->
+    <h2 class="subt"> P</h2>
+    <a name="P"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/papo.png" alt="">
+            <h2><b>Papovavirus</b></h2>
+            <div class="container-p">
+                <p>Papovaviricetes es una clase de virus pequeños de ADN bicatenario infectivos para una gran variedad de animales, incluyendo los humanos.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/3352670ara.png" alt="">
+            <h2><b>Paramyxoviridae</b></h2>
+            <div class="container-p">
+                <p>Paramyxoviridae es una familia de virus, que poseen un genoma con ARN de cadena sencilla de polaridad negativa como ácido nucleico.​ </p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/pape.png" alt="">
+            <h2><b>Parotiditis</b></h2>
+            <div class="container-p">
+                <p>La parotiditis es una enfermedad viral sistémica aguda contagiosa que suele causar una hipertrofia dolorosa de las glándulas salivales</p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/pico.png" alt="">
+            <h2><b>Picornaviridae</b></h2>
+            <div class="container-p">
+                <p>Picornaviridae es una familia de virus infectivos para animales. </p>
+            </div>
+        </div>
+    </div>
+    <!--Q-->
+    <h2 class="subt"> Q</h2>
+    <a name="Q"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/Adenovirus.png" alt="">
+            <h2><b>Qadenovirus</b></h2>
+            <div class="container-p">
+                <p>Son virus no encapsulados de ADN bicatenario que pueden provocar enfermedades o malestares como infecciones en las vías respiratorias, conjuntivitis, cistitis hemorrágica y gastroenteritis.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/Daturia.png" alt="">
+            <h2><b>Qdurivirus</b></h2>
+            <div class="container-p">
+                <p>Son un grupo de virus relacionados entre sí.</p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/iaci.png" alt="">
+            <h2><b>Qiazi</b></h2>
+            <div class="container-p">
+                <p>Es una especie de bacteria cocobacilo patógena gram-negativa, no fermentador y resistente a la mayoría de los antibióticos.</p>
+            </div>
+        </div>
+        <div class="box box4 hh">
+            <img src="img/Diplococo.png" alt="">
+            <h2><b>Qplopo</b></h2>
+            <div class="container-p">
+                <p>son un conjunto de bacterias que se caracterizan por ser cocos que tienen típicamente la forma de dos células unidas.</p>
+            </div>
+        </div>
+    </div>
+    <!--R-->
+    <h2 class="subt"> R</h2>
+    <a name="R"></a>
+    <div class="container-box">
+        <div class="box box1 ii">
+            <img src="img/rabia.png" alt="">
+            <h2><b>Rabia</b></h2>
+            <div class="container-p">
+                <p>La rabia es una enfermedad zoonótica viral, de tipo aguda e infecciosa.</p>
+            </div>
+        </div>
+        <div class="box box2 ii">
+            <img src="img/resfri.png" alt="">
+            <h2><b>Resfriado común</b></h2>
+            <div class="container-p">
+                <p>Infección viral común de la nariz y la garganta.</p>
+            </div>
+        </div>
+        <div class="box box3 ii">
+            <img src="img/rose.png" alt="">
+            <h2><b>Roséola</b></h2>
+            <div class="container-p">
+                <p>Infección viral común en los niños pequeños que puede ocasionar fiebre alta y sarpullido.</p>
+            </div>
+        </div>
+        <div class="box box4 ii">
+            <img src="img/rube.png" alt="">
+            <h2><b></b>Rubeola</h2>
+            <div class="container-p">
+                <p>La rubéola es una enfermedad viral contagiosa que ocurre más seguido en niños.</p>
+            </div>
+        </div>
+    </div>
+    <!--S-->
+    <h2 class="subt"> S</h2>
+    <a name="S"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/saran.png" alt="">
+            <h2><b>Sarampión</b></h2>
+            <div class="container-p">
+                <p>El sarampión es una enfermedad altamente contagiosa causada por un virus que se reproduce en la nariz y en la garganta de un niño o adulto infectado.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/septi.png" alt="">
+            <h2><b>Septicemia Hermorrágica viral</b></h2>
+            <div class="container-p">
+                <p>La Septicemia Hemorrágica Viral es una enfermedad infectocontagiosa de origen vírico que afecta a peces, principalmente a salmónidos. </p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/sin.png" alt="">
+            <h2><b>Síndrome respiratorio agudo grave</b></h2>
+            <div class="container-p">
+                <p>Enfermedad respiratoria contagiosa y ocasionalmente fatal provocada por el coronavirus.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/ori.png" alt="">
+            <h2><b>Síndrome respiratorio de Oriente Medio</b></h2>
+            <div class="container-p">
+                <p>Enfermedad respiratoria viral ocasionada por el coronavirus.</p>
+            </div>
+        </div>
+    </div>
+    <!--T-->
+    <h2 class="subt"> T</h2>
+    <a name="T"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/AH1N1.png" alt="">
+            <h2><b>Tanapox</b></h2>
+            <div class="container-p">
+                <p>Tanapox es un virus del género Yatapoxvirus que produjo dos epidemias (1957 y 1962) de enfermedad febril aguda acompañada de lesiones.</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/noro.png" alt="">
+            <h2><b>Tetavirus</b></h2>
+            <div class="container-p">
+                <p>Es un género de virus ARN bicatenario de la familia Reoviridae que es la causa más común de diarrea grave en niños de hasta 5 años</p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/tetri.png" alt="">
+            <h2><b>Tetrivirus</b></h2>
+            <div class="container-p">
+                <p>Es una familia de virus que comprende los retrovirus.</p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/hum.png" alt="">
+            <h2><b>Transtornos de inmunodeficiencia</b></h2>
+            <div class="container-p">
+                <p>Cuando el sistema pierde su sentido de lo propio y empieza a atacar células exclusivas del huésped, el resultado es autoinmunidad.</p>
+            </div>
+        </div>
+    </div>
+    <!--U-->
+    <h2 class="subt"> U</h2>
+    <a name="U"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/tes.png" alt="">
+            <h2><b>Uretritis</b></h2>
+            <div class="container-p">
+                <p>Inflamación del conducto que transporta orina desde la vejiga al exterior del cuerpo.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/papo.png" alt="">
+            <h2><b>Urticaria</b></h2>
+            <div class="container-p">
+                <p>Sarpullido en la piel ocasionado por una reacción a la comida, los medicamentos y otros agentes irritantes.</p>
+            </div>
+        </div>
+    </div>
+    <!--V-->
+    <h2 class="subt"> V</h2>
+    <a name="V"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/rose.png" alt="">
+            <h2><b>Vaccinia</b></h2>
+            <div class="container-p">
+                <p><br>Vaccinia virus, VACV, VV o virus vacuna es un virus bien conocido por su papel como vacuna en la erradicación de la enfermedad de la viruela</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/vari.png" alt="">
+            <h2><b>Varicela</b></h2>
+            <div class="container-p">
+                <p><br>Infección viral muy contagiosa que provoca un sarpullido similar a las ampollas en la piel y que da comezón.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/verru.png" alt="">
+            <h2><b>Verruga</b></h2>
+            <div class="container-p">
+                <p>Virus erradicado que solía ser contagioso, causar deformaciones y usualmente provocar la muerte.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/viru.png" alt="">
+            <h2><b>Viruela</b></h2>
+            <div class="container-p">
+                <p>Virus erradicado que solía ser contagioso, causar deformaciones y usualmente provocar la muerte.</p>
+            </div>
+        </div>
+    </div>
+    <!--W-->
+    <h2 class="subt"> W</h2>
+    <a name="W"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/fiebre.png" alt="">
+            <h2><b>West Nilevirus</b></h2>
+            <div class="container-p">
+                <p>El virus del Nilo Occidental es un virus que provoca la fiebre del Nilo Occidental.</p>
+            </div>
+        </div>
+    </div>
+    <!--X-->
+    <h2 class="subt"> X</h2>
+    <a name="X"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/Echo.png" alt="">
+            <h2><b>Xescherichia</b></h2>
+            <div class="container-p">
+                <p>Es una bacteria miembro de la familia de las enterobacterias y forma parte de la microbiota del tracto gastrointestinal de animales homeotermos</p>
+            </div>
+        </div>
+    </div>
+    <!--Y-->
+    <h2 class="subt"> Y</h2>
+    <a name="Y"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/yersi.png" alt="">
+            <h2><b>Yersinia pestis</b></h2>
+            <div class="container-p">
+                <p>Yersinia pestis es un bacilo Gram negativo anaerobio facultativo y patógeno primario, del género Yersinia</p>
+            </div>
+        </div>
+    </div>
+    <!--Z-->
+    <h2 class="subt"> Z</h2>
+    <a name="Z"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/zica.png" alt="">
+            <h2><b>Zicavirus</b></h2>
+            <div class="container-p">
+                <p>Enfermedad provocada por el virus del Zika, que se transmite por picaduras de mosquito.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/rube.png" alt="">
+            <h2><b>Zóster</b></h2>
+            <div class="container-p">
+                <p>Reactivación del virus de la varicela en el cuerpo que ocasiona un sarpullido doloroso.</p>
+            </div>
+        </div>
+    </div>
+    <h4 class="arriba"><a href="#arriba">&Icirc;</a></h4>
+
+    <footer>
+       
+        <div class="container-footer-all">
+         
+             <div class="container-body">
+ 
+                 <div class="colum1">
+                     <h1>Mas informacion de MediHelp</h1>
+ 
+                     <p>MediHelp es un software que te ayuda  a definir, comprender y analizar  términos médicos en diferentes áreas. El lenguaje médico es cambiante y se modifica al ritmo, cada vez más vertiginoso, de los nuevos avances científicos. Por eso nuestra versión dígital se mantiene en constante actualización de contenidos y mejoras.</p>
+                     <img src="img/MediHelp.png " width="200px">
+                 </div>
+ 
+                 <div class="colum2">
+ 
+                     <h1>Redes Sociales</h1>
+ 
+                     <div class="row">
+                         <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/FaceB.png"></a>
+                         <label>Siguenos en Facebook</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://twitter.com/home?lang=es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"></a>
+                         <label>Siguenos en Twitter</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://www.instagram.com"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png"></a>
+                         <label>Siguenos en Instagram</label>
+                     </div>
+                     <div class="row">
+                         <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Google_plus_circle_icon_%282011-2015%29.png"></a>
+                         <label>Siguenos en Google Plus</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://www.pinterest.es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png"></a>
+                         <label>Siguenos en Pinteres</label>
+                     </div>
+                 </div>
+                 <div class="colum3">
+                     <h1>Informacion Contactos</h1>
+                     <div class="row2">
+                         <img src="https://w7.pngwing.com/pngs/598/408/png-transparent-computer-icons-mobile-phones-phone-miscellaneous-telephone-call-logo.png">
+                         <label>+504 9988-3344</label>
+                     </div>
+                     <div class="row2">
+                         <img src="https://logos-marcas.com/wp-content/uploads/2020/11/Gmail-Logo.png">
+                          <label>AtencionAlCliente_MediHelp@gmail.com</label>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="container-footer">
+                <div class="footer">
+                     <div class="copyright">
+                         © 2021 Todos los Derechos Reservados | <a href="#">MediHelp</a>
+                     </div>
+ 
+                     <div class="information">
+                         <a href="#">Informacion Compañia</a> | <a href="#">Privacion y Politica</a> | <a href="#">Terminos y Condiciones</a>
+                     </div>
+                 </div>
+ 
+             </div>
+         
+     </footer>
+</body>
+</html>

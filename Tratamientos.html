@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/MediHelp.png">
+    <title>MediHelp | Tratamientos</title>
+    <Style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+        }
+        .topnav{
+            position: sticky;
+            top: 0;
+            z-index: 11;
+        }
+        ul.topnav {
+            list-style-type: none;
+            margin: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            overflow: hidden;
+            background-color: #698ab6;
+        }
+        ul.topnav li {float: left;}
+        ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 10px 12px;
+        text-decoration: none;
+        font-size: 14px;
+        }
+        ul.topnav li a:hover:not(.active) {
+            font-weight: bold;
+        }
+        ul.topnav li a.active {
+            border-bottom: 4px solid white;
+        }
+        ul.topnav li.right {
+            float: right;
+        }
+        .buscar{
+            margin-top: 5px;
+        }
+        .btn{
+            color: white;
+            border: 2px solid white;
+            margin-right: 5px;
+        }
+        .btn:hover{
+            background-color: white;
+            color: #698ab6;
+            border: 2px solid #698ab6;
+        }
+        .login{
+            color: #194b8d;
+            background-color: #698ab6;
+            margin: 0px 20px;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        .login:hover{
+            background-color: #ffffff;
+            color: #698ab6;
+        }
+        .logo{
+            padding: 0px;
+        }
+        .logo img{
+            width: 60px;
+        }
+        .titulo{
+            text-shadow: 5px 5px 10px rgba(56, 113, 151, 0.801);
+            letter-spacing: 10px;
+            text-align: center;
+            font-size: 500%;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .abc{
+            width: 100%;
+            padding: 20px 15px;
+            text-align: center;
+            line-height: 2;
+        }
+        .abc a{
+            padding: 5px 10px;
+            background-color: lightblue;
+            border-radius: 50%;
+            text-decoration: none;
+            color: black;
+            font-size: 90%;
+        }
+        .abc a:hover{
+            background-color: rgb(12, 58, 209);
+            color: #fff;
+            padding: 10px 13px;
+            font-weight: bold;
+        }
+        .arriba a:hover{
+            background-color: rgb(12, 58, 209);
+            color: #fff;
+        }
+        body{
+            background-color: #fbfbfe;
+        }
+        .desplegable{
+            display: none;
+        }
+        .container-box{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .box{
+            width: 250px;
+            height: 250px;
+            margin: 10px;
+            padding: 20px;
+            border: 2px solid #3646a0;
+            border-radius: 14px;
+            text-align: center;
+            margin-top: 100px;
+            position: relative;
+            background-color: rgba(56, 113, 151, 0.801);
+        
+        }
+        
+        .box img{
+            width: 60%;
+            transition: all 400ms;
+        }
+        
+        .box h2{
+            font-size: 16px;
+            margin-top: 10px;
+            transition: all 500ms;
+        }
+        
+        .box .container-p{
+            width: 100%;
+            height: 150px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            padding: 0px 10px;
+            border-radius: 0px 0px 14px 14px;
+        }
+        
+        .box p{
+            font-size: 14px;
+            color: #7a7a7a;
+            opacity: 0;
+            transform: translateY(150px);
+            transition: all 600ms;
+        }
+        
+        .box .check{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%);
+            border: 2px solid #f5f5f5;
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            background: white;
+        }
+        
+        .box .check i{
+            margin-top: 6px;
+            display: none;
+            color: white
+            
+        }
+        
+        
+        .box:hover{
+            background: #fbfbfe;
+        }
+        
+        .box:hover img{
+            transform: translateY(-90px);
+        }
+        
+        .box:hover h2{
+            transform: translateY(-90px);
+        }
+        
+        .box:hover .container-p p{
+            transform: translateY(0px);
+            opacity: 1;
+        }
+        
+        .box-selected{
+            border-color: red;
+            transition: all 600ms;
+        }
+        
+        .icon-check{
+            display: block !important;
+        }
+        
+        .check-selected{
+            background:black !important;
+            border: none;
+            transition: all 600ms;
+        }
+        .container-p p{
+            color: #fff;
+        }
+        .aa:hover{
+            background-color: deepskyblue;
+        }
+        .bb:hover{
+            background-color: rgb(11, 204, 186);
+        }
+        .cc:hover{
+            background-color: rgb(66, 123, 158);
+        }
+        .dd:hover{
+            background-color: LightSeaGreen;
+        }
+        .ee:hover{
+            background-color: MediumAquamarine;
+        }
+        .ff:hover{
+            background-color: DarkTurquoise;
+        }
+        .gg:hover{
+            background-color: cornflowerblue;
+        }
+        .hh:hover{
+            background-color: #698ab6;
+        }
+        .ii:hover{
+            background-color: LightSkyBlue;
+        }
+        .No-Hay{
+            padding: 100px 0px;
+            color: gray;
+        }
+        .arriba{
+            position: sticky;
+            text-align: right;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+        }
+        .arriba a{
+            text-decoration: none;
+            color: white;
+            background-color: #698ab6;
+            border-radius: 50%;
+            padding: 7px 15px;
+            font-size: 90%;
+            font-weight: bolder;
+        }
+        .subt{
+            color: #698ab6;
+            font-weight: bolder;
+            margin-left: 12%;
+        }
+        footer{
+            width: 100%;
+            background: #0a1227;
+            color: white;   
+            
+        }
+        
+        .container-footer-all{
+            width: 100%;
+            max-width: 1200px;
+            margin: 0px;
+            padding: 20px;
+        }
+        
+        .container-body{
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .colum1{
+            max-width: 400px;
+        }
+        
+        .colum1 h1{
+            font-size: 22px;
+        }
+        
+        .colum1 p{
+            font-size: 14px;
+            color: #C7C7C7;
+            margin-top: 20px;
+        }
+        
+        .colum1 img{
+            margin: 10px 40px;
+        }
+        
+        .colum2{
+            max-width: 400px;
+            
+        }
+        
+        .colum2 h1{
+            font-size: 22px;
+        }
+        
+        .row{
+            margin-top: 20px;
+            display: flex;
+        }
+        
+        .row img{
+            width: 36px;
+            height: 36px;
+        }
+        
+        .row label{
+            margin-top: 10px;
+            margin-left: 15px;
+            color: #C7C7C7;
+        }
+        
+        .colum3{
+            max-width: 400px;
+        }
+        
+        .colum3 h1{
+            font-size: 22px;
+        }
+        
+        .row2{
+            margin-top: 20px;
+            display: flex;
+        }
+        
+        .row2 img{
+            width: 36px;
+            height: 36px;
+        }
+        
+        .row2 label{
+            margin-top: 10px;
+            margin-left: 15px;
+            max-width: 140px;
+        }
+        
+        .container-footer{
+            width: 100%;  
+            background: #101010;
+        }
+        
+        .footer{
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .copyright{
+            color: #C7C7C7;
+        }
+        
+        .copyright a{
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .information a{
+            text-decoration: none;
+            color: #C7C7C7;
+        }
+        @media screen and (max-width:868px) {
+            .topnav{
+                display: none;
+            }
+            ul.topnav li.right, 
+            ul.topnav li {
+                float: none;
+            }
+            .titulo{
+                font-size: 25px;
+            }
+            .abc a{
+                background-color: lightblue;
+                border-radius: 50%;
+                text-decoration: none;
+                color: black;
+            }
+            #sidebar {
+                position: fixed;
+                width: 200px;
+                height: 100%;
+                background: #698ab6;
+                left: -200px;
+                transition: all 500ms linear;
+                z-index: 10;
+                top: 5px;
+              }
+            #sidebar.active {
+                left: 0px;
+              }
+            #sidebar ul li {
+                color: rgba(230, 230, 230, .9);
+                list-style: none;
+                padding: 15px 10px;
+                border-bottom: 1px solid rgba(6, 38, 87, 0.3);
+                text-align: center;
+              }
+              #sidebar ul li a.op:hover{
+                  font-weight: bold;
+              }
+            .op{
+                color: white;
+                text-decoration: none;
+              }
+            #toggle-btn {
+                position: absolute;
+                left: 215px;
+                top: 12px;
+                background: #151719;
+                cursor: pointer;
+                transition: all 0.5s linear;
+              }
+            #toggle-btn span {
+                display: block;
+                width: 40px;
+                text-align: center;
+                font-size: 30px;
+                color: #fff;
+              }
+            #toggle-btn.active {
+                left:5px;
+                top: 5px;
+                background:#777;
+              }
+            .desplegable{
+                background-color: #698ab6;
+                text-align: center;
+                display: block;
+                top: 0px;
+                width: 100%;
+            }
+            .desplegable img{
+                width: 20%;
+            }
+            .abc{
+                position: relative;
+            }
+            .container-body{
+                flex-wrap: wrap;
+            }
+            
+            .colum1{
+                max-width: 100%;
+            }
+            
+            .colum2,
+            .colum3{
+                margin-top: 40px;
+            }
+            .desplegable{
+                width: 100%;
+            }
+        }
+        @media screen and (max-width: 420px) {
+        .topnav{
+            display: none;
+        }
+        ul.topnav li.right, 
+        ul.topnav li {
+            float: none;
+        }
+        .titulo{
+            font-size: 20px;
+        }
+        .abc a{
+            background-color: lightblue;
+            border-radius: 50%;
+            text-decoration: none;
+            color: black;
+        }
+        #sidebar {
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            background: #698ab6;
+            left: -200px;
+            transition: all 500ms linear;
+            z-index: 10;
+            top: 5px;
+          }
+        #sidebar.active {
+            left: 0px;
+          }
+        #sidebar ul li {
+            color: rgba(230, 230, 230, .9);
+            list-style: none;
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(6, 38, 87, 0.3);
+            text-align: center;
+          }
+          #sidebar ul li a.op:hover{
+              font-weight: bold;
+          }
+        .op{
+            color: white;
+            text-decoration: none;
+          }
+        .logo {
+            display: block;
+            margin: 0 auto; 
+            width: 60%;
+          }  
+        #toggle-btn {
+            position: absolute;
+            left: 215px;
+            top: 12px;
+            background: #151719;
+            cursor: pointer;
+            transition: all 0.5s linear;
+          }
+        #toggle-btn span {
+            display: block;
+            width: 40px;
+            text-align: center;
+            font-size: 30px;
+            color: #fff;
+          }
+        #toggle-btn.active {
+            left:5px;
+            top: 5px;
+            background:#777;
+          }
+        .desplegable{
+            background-color: #698ab6;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        .desplegable img{
+            width: 20%;
+        }
+        .subt{
+            left: 10%;
+        }
+        .box4{
+            display: none;
+        }
+        }
+    </Style>
+    <script>
+        window.onload = function() {
+            let btn = document.getElementById('toggle-btn');
+            let side = document.getElementById('sidebar');
+            btn.addEventListener('click', function() {
+              btn.classList.toggle('active');
+              side.classList.toggle('active');
+            });
+          }
+          document.querySelector(".box1").addEventListener("click", box_selected1);
+          document.querySelector(".box2").addEventListener("click", box_selected2);
+          document.querySelector(".box3").addEventListener("click", box_selected3);
+          document.querySelector(".box4").addEventListener("click", box_selected4);
+          
+          //box1  
+          box1 = document.querySelector(".box1");
+          check_bg1 = document.querySelector(".box1 .check");
+          icon_check1 = document.querySelector(".box1 .fa-check");
+          
+          //box2
+          box2 = document.querySelector(".box2");
+          check_bg2 = document.querySelector(".box2 .check");
+          icon_check2 = document.querySelector(".box2 .fa-check");
+          
+          //box3
+          box3 = document.querySelector(".box3");
+          check_bg3 = document.querySelector(".box3 .check");
+          icon_check3 = document.querySelector(".box3 .fa-check");
+          
+          //box4
+          box4 = document.querySelector(".box4");
+          check_bg4 = document.querySelector(".box4 .check");
+          icon_check4 = document.querySelector(".box4 .fa-check");
+
+          value_box = 0;
+          
+          function box_selected1 () {
+              box2.classList.remove('box-selected');
+              check_bg2.classList.remove('check-selected');
+              icon_check2.classList.remove('icon-check');
+          
+              box3.classList.remove('box-selected');
+              check_bg3.classList.remove('check-selected');
+              icon_check3.classList.remove('icon-check');
+          
+              box1.classList.toggle('box-selected');
+              check_bg1.classList.toggle('check-selected');
+              icon_check1.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 1;
+              console.log(value_box);
+          }
+          function box_selected2 () {
+          
+              box1.classList.remove('box-selected');
+              check_bg1.classList.remove('check-selected');
+              icon_check1.classList.remove('icon-check');
+          
+              box3.classList.remove('box-selected');
+              check_bg3.classList.remove('check-selected');
+              icon_check3.classList.remove('icon-check');
+          
+              box2.classList.toggle('box-selected');
+              check_bg2.classList.toggle('check-selected');
+              icon_check2.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 2;
+              console.log(value_box);
+          }
+          function box_selected3 () {
+              box1.classList.remove('box-selected');
+              check_bg1.classList.remove('check-selected');
+              icon_check1.classList.remove('icon-check');
+          
+              box2.classList.remove('box-selected');
+              check_bg2.classList.remove('check-selected');
+              icon_check2.classList.remove('icon-check');
+          
+              box3.classList.toggle('box-selected');
+              check_bg3.classList.toggle('check-selected');
+              icon_check3.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 3;
+              console.log(value_box);
+          }
+          function box_selected4 () {
+            box1.classList.remove('box-selected');
+            check_bg1.classList.remove('check-selected');
+            icon_check1.classList.remove('icon-check');
+        
+            box2.classList.remove('box-selected');
+            check_bg2.classList.remove('check-selected');
+            icon_check2.classList.remove('icon-check');
+        
+            box3.classList.toggle('box-selected');
+            check_bg3.classList.toggle('check-selected');
+            icon_check3.classList.toggle('icon-check');
+
+            box4.classList.toggle('box-selected');
+            check_bg4.classList.toggle('check-selected');
+            icon_check4.classList.toggle('icon-check');
+        
+            value_box = 4;
+            console.log(value_box);
+        }
+    </script>
+</head>
+<body>
+    <a name="arriba"></a>
+    <ul class="topnav">
+        <li class="logo"><img src="img/MediHelp.png" alt="logo"></li>
+        <li class="right buscar"><form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn " type="submit">Search</button>
+            <a href="login.html" class="login" target="blank">Login</a>
+          </form>
+        </li>
+        <li class="right"><a href="contacto.html" target="blank">Contact</a></li>
+        <li class="right"><a href="microorganismos.html">Microorganismos</a></li>
+        <li class="right"><a href="enfermedades.html">Enfermedades</a></li>
+        <li class="right"><a class="active" href="Tratamientos.html">Tratamientos</a></li>
+        <li class="right"><a href="Medicamentos.html">Medicamentos</a></li>
+        <li class="right"><a href="index.html">Home</a></li> 
+    </ul>
+    <div class="desplegable">
+        <img src="img/MediHelp.png" alt="">
+        <div id="sidebar">
+            <div id="toggle-btn">
+              <span>&#9776</span>
+            </div>
+            <ul>
+              <li>
+                <img src="img/MediHelp.png"  class="logo2">
+              </li>
+              <li><a href="index.html" class="op">Home</a></li>
+              <li><a href="Medicamentos.html" class="op active">Medicamentos</a></li>
+              <li><a href="Tratamientos.html" class="op">Tratamientos</a></li>
+              <li><a href="enfermedades.html" class="op">Enfermedades</a></li>
+              <li><a href="microorganismos.html" class="op">Microorganismo</a></li>
+              <li><a href="contacto.html" class="op" target="blank">Contact</a></li>
+              <li><a href="login.html" class="op" target="blank">Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <h1 class="titulo">TRATAMIENTOS</h1>
+    <div class="abc"><p><a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a href="#D">D</a> <a href="#E">E</a> <a href="#F">F</a> <a href="#G">G</a> <a href="#H">H</a> <a href="#I">I</a> <a href="#J">J</a> <a href="#K">K</a> <a href="#L">L</a> <a href="#M">M</a> <a href="#N">N</a> <a href="#O">O</a> <a href="#P">P</a> <a href="#Q">Q</a> <a href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> <a href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a> <a href="#X">X</a> <a href="#Y">Y</a> <a href="#Z">Z</a> </p>
+    </div>
+    <!--A-->
+    <h2 class="subt"> A</h2>
+    <a name="A"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/Actigrafia.jpg" alt="">
+            <h2><b>Actigrafia</b></h2>
+            <div class="container-p">
+                <p>Ees un examen que permite una estimación objetiva de la duración habitual del sueño. Puede ser una herramienta muy útil para estimar los patrones de sueño y la duración del sueño en adultos sanos.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/alisador.png" alt="">
+            <h2><b>Alisador Radicular</b></h2>
+            <div class="container-p">
+                <p>Es el tratamiento contra la periodontitis que consiste en limpiar pieza por pieza los dientes por debajo de la encía y alisar las irregularidades del cemento radicular.</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/Audiometria.jpg" alt="">
+            <h2><b>Audiometria</b></h2>
+            <div class="container-p">
+                <p>Este examen evalúa su capacidad para escuchar sonidos. Los sonidos varían de acuerdo con el volumen o fuerza (intensidad) y con la velocidad de vibración de las ondas sonoras.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/Autoexploracion.jpg" alt="">
+            <h2><b>Autoexploracion Bucal</b></h2>
+            <div class="container-p">
+                <p>Es una técnica sencilla por la que mediante la visualización y palpación podremos adelantarnos a complicaciones que surjan en toda la boca, tanto en la mucosa como en la lengua, amígdalas y dientes.</p>
+            </div>
+        </div>
+    </div>
+    <!--B-->
+    <h2 class="subt"> B</h2>
+    <a name="B"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/biopsiag.jpg" alt="">
+            <h2><b>Biopsia Gangival</b></h2>
+            <div class="container-p">
+                <p>Es un procedimiento de diagnóstico en el cual se extrae una pequeña parte del tejido gingival para examinarla.</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/biopsiat.jpg" alt="">
+            <h2><b>Biopsia Tiroides</b></h2>
+            <div class="container-p">
+                <p>Este tratamiento se usa para encontrar las causas de un nódulo en la glándula tiroides.</p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/blefaroplastia.png" alt="">
+            <h2><b>Blefaroplastia</b></h2>
+            <div class="container-p">
+                <p>Es un tipo de cirugía que se realiza para reparar los párpados caídos y puede consistir en la eliminación de exceso de piel, músculo y grasa.</p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/Blanqueamiento.jpg" alt="">
+            <h2><b>Blanqueamiento Dental</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento dental estético que logra reducir varios tonos el color original de las piezas dentales, dejando los dientes más blancos y brillantes.</p>
+            </div>
+        </div>
+    </div>
+    <!--C-->
+    <h2 class="subt"> C</h2>
+    <a name="C"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/campimetria.jpg" alt="">
+            <h2><b>Campimetria Visual</b></h2>
+            <div class="container-p">
+                <p>Es una prueba oftalmológica que nos permite medir el campo visual, es decir, la amplitud de la visión periférica o lateral una vez que fijas la mirada en un determinado punto u objeto.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/cistometria.jpg" alt="">
+            <h2><b>Cistometria</b></h2>
+            <div class="container-p">
+                <p>Es un examen que se realiza para buscar problemas con el llenado y vaciado de la vejiga. La vejiga forma parte de las vías urinarias. Es un órgano muscular hueco que se relaja y se expande para almacenar la orina</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/craneotomia.jpg" alt="">
+            <h2><b>Craneotomia</b></h2>
+            <div class="container-p">
+                <p>Operación en la que se extrae un pedazo del cráneo. Una craneotomía se realiza para que los médicos puedan extraer un tumor o tejido anormal del cerebro.</p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/CRIPR.jpg" alt="">
+            <h2><b>CRIPR</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento de , fragmentos de ADN repetitivos que las bacterias usan para defenderse de los virus invasores</p>
+            </div>
+        </div>
+    </div>
+    <!--D-->
+    <h2 class="subt"> D</h2>
+    <a name="D"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/Densitometria.jpg" alt="">
+            <h2><b>Densitometria Ósea</b></h2>
+            <div class="container-p">
+                <p><br>Es una prueba para determinar la densidad mineral ósea. Se puede realizar con rayos x, ultrasonidos o isótopos radiactivos.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/Dermatoscopia.jpg" alt="">
+            <h2><b>Dermatoscopia</b></h2>
+            <div class="container-p">
+                <p><br>Es una técnica diagnóstica in vivo, no invasiva, desarrollada para estudiar las lesiones cutáneas. Mejora la precisión diagnóstica de las lesiones hiperpigmentadas y el diagnóstico precoz de las lesiones potencialmente malignas.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/Disfagia.jpg" alt="">
+            <h2><b>Disfagia</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento que ayuda a que las personas puedan tragar bien al momento de injerir sus alimentos.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/Diuretico.jpg" alt="">
+            <h2><b>Diuretico</b></h2>
+            <div class="container-p">
+                <p>Este procedimiento ayudan a eliminar la sal (sodio) y el agua del cuerpo. La mayoría de ellos ayudan a que los riñones liberen más sodio en la orina.</p>
+            </div>
+        </div>
+    </div>
+    <!--E-->
+    <h2 class="subt"> E</h2>
+    <a name="E"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/ecografiate.jpg" alt="">
+            <h2><b>Ecografia Testicular</b></h2>
+            <div class="container-p">
+                <p><br>Se realiza para: Ayudar a determinar por qué uno o ambos testículos se han agrandado. Examinar una masa o protuberancia en uno o ambos testículos. </p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/ecografiatr.jpg" alt="">
+            <h2><b>Ecografia Transvaginal</b></h2>
+            <div class="container-p">
+                <p>Que significa de un lado a otro o a través de la vagina. La sonda de la ecografía se colocará dentro de la vagina durante el examen.</p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/electro.jpg" alt="">
+            <h2><b>Electromiograma</b></h2>
+            <div class="container-p">
+                <p>Es una prueba que se usa para estudiar el funcionamiento del sistema nervioso periférico y los músculos que inerva.</p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/endodoncia.png" alt="">
+            <h2><b>Endodoncia</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento dental conocido comúnmente para “matar el nervio”. Consiste en eliminar la parte profunda del diente cuando se encuentra lesionado o infectado.</p>
+            </div>
+        </div>
+    </div>
+    <!--F-->
+    <h2 class="subt"> F</h2>
+    <a name="F"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/Faringitis.jpg" alt="">
+            <h2><b>Faringitis</b></h2>
+            <div class="container-p">
+                <p>es causada por hinchazón de la parte posterior de la garganta, entre las amígdalas y la laringe. La mayoría de los dolores de garganta son causados por resfriados, gripe, virus coxsackie o mononucleosis.</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/Fenazopirina.jpg" alt="">
+            <h2><b>Fenazopirina</b></h2>
+            <div class="container-p">
+                <p>Procedimiento que alivia el dolor, ardor, irritación y el malestar en las vías urinarias, así como la necesidad de orinar con urgencia y en forma frecuente, todos síntomas provocadas por las infecciones en las vías urinarias, cirugía, lesiones o exámenes.</p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/Fibra.jpg" alt="">
+            <h2><b>Fibra de Vidrio</b></h2>
+            <div class="container-p">
+                <p>Tratamiento que se utiliza comúnmente como material aislante. También se utiliza como agente de refuerzo para muchos productos poliméricos, para formar un material compuesto muy fuerte y ligero denominado plástico reforzado con fibra de vidrio .</p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/Fisioterapia.jpg" alt="">
+            <h2><b>Fisioterapia</b></h2>
+            <div class="container-p">
+                <p>Es una disciplina de la ciencia de la salud que ofrece un tratamiento terapéutico y de rehabilitación no farmacológica para diagnosticar.</p>
+            </div>
+        </div>
+    </div>
+    <!--G-->
+    <h2 class="subt"> G</h2>
+    <a name="G"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/Gastric.jpg" alt="">
+            <h2><b>Gastric Balon</b></h2>
+            <div class="container-p">
+                <p>Es una esfera de silicona flexible y blanda, que se introduce en el estómago del paciente, mediante una endoscopia, con el fin de conseguir la reducción de peso en personas con obesidad mórbida.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/Gingivectomia.jpg" alt="">
+            <h2><b>Gingivectomia</b></h2>
+            <div class="container-p">
+                <p>Es un procedimiento quirúrgico mediante el cual se realiza la escisión y supresión del tejido gingival lesionado.</p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/Glucosamina.jpg" alt="">
+            <h2><b>Glucosamina</b></h2>
+            <div class="container-p">
+                <p>Es una substancia natural que se encuentra en el cuerpo humano El cuerpo la usa para producir otras sustancias que están involucradas en la formación de tendones y el líquido espeso que rodea las articulaciones.</p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/Graqueotomia.jpg" alt="">
+            <h2><b>Graqueotomia</b></h2>
+            <div class="container-p">
+                <p>Es una abertura en frente del cuello que se hace durante un procedimiento de emergencia o una cirugía planeada. </p>
+            </div>
+        </div>
+    </div>
+    <!--H-->
+    <h2 class="subt"> H</h2>
+    <a name="H"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/Hemograma.jpg" alt="">
+            <h2><b>Hemograma</b></h2>
+            <div class="container-p">
+                <p>Sirve para analizar la eficacia de un tratamiento, por ejemplo, la acción de un medicamento, evaluando el efecto de este sobre el recuento de células sanguíneas.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/Hiperinsulinemia.jpg" alt="">
+            <h2><b>Hiperinsulinemia</b></h2>
+            <div class="container-p">
+                <p>Se basa en seguir un régimen alimentario saludable y hacer ejercicios. Se recomienda que visites un nutricionista para que prepare un plan alimentario de acuerdo a tus necesidades.</p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/Histeroscopia.jpeg" alt="">
+            <h2><b>Histeroscopia</b></h2>
+            <div class="container-p">
+                <p>Es el procedimiento diagnóstico que permite la visualización directa del canal cervical y de la cavidad uterina. Consiste en introducir una óptica en el útero y un medio de distensión para separar las paredes del mismo.</p>
+            </div>
+        </div>
+        <div class="box box4 hh">
+            <img src="img/Holter.jpg" alt="">
+            <h2><b>Holter</b></h2>
+            <div class="container-p">
+                <p>Consiste en aplicar un manguito con dispositivo de medida para ir recogiendo los niveles de presión arterial durante todo el día, incluso durante el sueño si es necesario.</p>
+            </div>
+        </div>
+    </div>
+    <!--I-->
+    <h2 class="subt"> I</h2>
+    <a name="I"></a>
+    <div class="container-box">
+        <div class="box box1 ii">
+            <img src="img/Infiltracion.jpg" alt="">
+            <h2><b>Infiltracion</b></h2>
+            <div class="container-p">
+                <p>Consiste en aplicar una inyección con medicamentos corticoides, anestésicos o ácido hialurónico para tratar lesiones, inflamación o reducir el dolor.</p>
+            </div>
+        </div>
+        <div class="box box2 ii">
+            <img src="img/Injerto.jpg" alt="">
+            <h2><b>Injerto de encia</b></h2>
+            <div class="container-p">
+                <p>Es una cirugía bucal que realizamos cuando existe una retracción de encías grave. En muchos casos, las encías retraídas permiten que el hueso alveolar quede expuesto, con las consecuencias que ello conlleva para la salud bucodental.</p>
+            </div>
+        </div>
+        <div class="box box3 ii">
+            <img src="img/InyeccionI.jpg" alt="">
+            <h2><b>Inyeccion de Insulina</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento en el que se administra insulina exógena para la diabetes mellitus tipo 1.</p>
+            </div>
+        </div>
+        <div class="box box4 ii">
+            <img src="img/InyecionS.jpg" alt="">
+            <h2><b>Inyeccion Subcutanea</b></h2>
+            <div class="container-p">
+                <p>Consiste en la administración mediante inyección por debajo de la piel (brazo) de la vacuna diseñada específicamente para el paciente de acuerdo a sus resultados en las pruebas cutáneas.</p>
+            </div>
+        </div>
+    </div>
+    <!--J-->
+    <h2 class="subt"> J</h2>
+    <a name="J"></a>
+    <div class="container-box">
+        <div class="No-Hay">No se ha encontrado Tratamiento</div>
+    </div>
+    <!--K-->
+    <h2 class="subt"> K</h2>
+    <a name="K"></a>
+    <div class="container-box">
+        <div class="No-Hay">No se ha encontrado Tratamiento</div>
+    </div>
+    <!--L-->
+    <h2 class="subt"> L</h2>
+    <a name="L"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/Laminectomia.jpg" alt="">
+            <h2><b>Laminectomia</b></h2>
+            <div class="container-p">
+                <p>Consiste en realizar una pequeña incisión en la piel, siguiendo la vértebra lumbar, para separar los músculos y exponer el hueso. Para conseguir aliviar la presión del nervio pinzado y de la médula.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/Laparoscopia.jpg" alt="">
+            <h2><b>Laparoscopia</b></h2>
+            <div class="container-p">
+                <p>Es un tipo de cirugía que busca problemas en el abdomen o el aparato reproductor de una mujer. Utiliza un tubo delgado llamado laparoscopio, que se inserta en el abdomen a través de una incisión pequeña.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/Ligadura.jpg" alt="">
+            <h2><b>Ligadura de Hemorroide</b></h2>
+            <div class="container-p">
+                <p>Es un procedimiento ambulatorio que coincide en colocar unas pequeñas ligas elásticas en la base de las hemorroides para cortar el suministro de sangre a la misma.</p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/Litotricia.jpg" alt="">
+            <h2><b>Litotricia</b></h2>
+            <div class="container-p">
+                <p>El procedimiento de litotricia generalmente debe demorar de 45 minutos a 1 hora. Se puede colocar una sonda, llamada stent, a través de la espalda o la vejiga hasta el riñón. </p>
+            </div>
+        </div>
+    </div>
+    <!--M-->
+    <h2 class="subt"> M</h2>
+    <a name="M"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/Marcapasos.jpg" alt="">
+            <h2><b>Marcapasos</b></h2>
+            <div class="container-p">
+                <p>El tratamiento consiste en realizar una terapia de shock eléctrico (desfibrilación o cardioversión), implantación de un marcapasos cardíaco temporal o bien administración de medicamentos.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/Mastopexia.jpg" alt="">
+            <h2><b>Mastopexia</b></h2>
+            <div class="container-p">
+                <p>Es la cirugía para la elevación de las mamas, precisamente cuando la paciente no está conforme con el aspecto y posición de su pecho.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/Miofascial.jpg" alt="">
+            <h2><b>Miofascial</b></h2>
+            <div class="container-p">
+                <p>Es una técnica de fisioterapia que consiste en estirar las fascias que, por diversos motivos, están retraídas.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/Myobrace.jpg" alt="">
+            <h2><b>Myobrace</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento preventivo preortodoncia que se enfoca en abordar las causas subyacentes de los dientes mal alineados, a menudo sin la necesidad de frenos / brackets o extracción de dientes.</p>
+            </div>
+        </div>
+    </div>
+    <!--N-->
+    <h2 class="subt"> N</h2>
+    <a name="N"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/Nasogastrico.jpg" alt="">
+            <h2><b>Nasogastrico</b></h2>
+            <div class="container-p">
+                <p>Es una técnica invasiva que consiste en la introducción de una sonda desde los orificios nasales o la boca hasta el estómago. </p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/Neumotorax.jpg" alt="">
+            <h2><b>Neumotorax</b></h2>
+            <div class="container-p">
+                <p>El tratamiento del neumotórax implica introducir una aguja o un tubo en el pecho entre las costillas para eliminar el exceso de aire.</p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/Neuromodulacion.jpg" alt="">
+            <h2><b>Neuromodulacion</b></h2>
+            <div class="container-p">
+                <p>Esta técnica consiste, en la aplicación de una corriente de baja frecuencia cerca del sistema nervioso periférico para aumentar o disminuir la excitabilidad de un grupo de neuronas.</p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/Neuropsicologia.jpg" alt="">
+            <h2><b>Neuropsicologia</b></h2>
+            <div class="container-p">
+                <p>Es un proceso activo que ayuda a los pacientes a comprender mejor las alteraciones que presentan, desarrollar estrategias que permitan compensar las alteraciones neuropsicológicas y optimizar las funciones.</p>
+            </div>
+        </div>
+    </div>
+    <!--O-->
+    <h2 class="subt"> O</h2>
+    <a name="O"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/Opioides.jpg" alt="">
+            <h2><b>Opioides</b></h2>
+            <div class="container-p">
+                <p>Se utilizados para reducir el dolor. Incluyen analgésicos disponibles legalmente a través de una receta médica, así como drogas ilegales tales como la heroína.</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/Ortodoncia.jpg" alt="">
+            <h2><b>Ortodoncia</b></h2>
+            <div class="container-p">
+                <p>Es capaz de resolver los problemas relacionados con la posición de los dientes, mordida incorrecta, trastornos de la Articulación Temporo Mandibular.</p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/Ostomias.jpg" alt="">
+            <h2><b>Ostomias</b></h2>
+            <div class="container-p">
+                <p>Tratamiento en la que es necesario modificar la anatomía de algunos órganos, como el intestino o los uréteres.</p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/Otoscopia.jpg" alt="">
+            <h2><b>Otoscopia</b></h2>
+            <div class="container-p">
+                <p>Es un tipo de persecución terapeuta que consiste en el ejercicio del pabellón desde el boquete del canal sonoro foráneo, que está en la audición.</p>
+            </div>
+        </div>
+    </div>
+    <!--P-->
+    <h2 class="subt"> P</h2>
+    <a name="P"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/Plasmaferesis.jpg" alt="">
+            <h2><b>Plasmaferesis</b></h2>
+            <div class="container-p">
+                <p>Procedimiento terapéutico de depuración sanguínea extracorpórea, la cual consiste en la extracción de un volumen determinado de plasma.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/Prueba Anticuerpos.jpg" alt="">
+            <h2><b>Prueba Anticuerpos</b></h2>
+            <div class="container-p">
+                <p>Consiste ese tratamiento y por qué se usa solo con pacientes no hospitalizados. Primero, recordemos algunos conceptos básicos acerca de lo que son anticuerpos y anticuerpos monoclonales. </p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/Prueba Romberg.jpg" alt="">
+            <h2><b>Prueba Romberg</b></h2>
+            <div class="container-p">
+                <p>Es un procedimiento clínico realizado para encontrar trastornos a nivel de la coordinación, del movimiento y en el equilibrio de una persona.</p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/Puncion Seca.jpg" alt="">
+            <h2><b>Puncion Seca</b></h2>
+            <div class="container-p">
+                <p>Es una técnica semi-invasiva que utiliza agujas de acupuntura para el tratamiento del síndrome de dolor miofascial, síndrome producido por los puntos de gatillo.</p>
+            </div>
+        </div>
+    </div>
+    <!--Q-->
+    <h2 class="subt"> Q</h2>
+    <a name="Q"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/Quimioterapia Adyuvante.jpg" alt="">
+            <h2><b>Quimioterapia Adyuvante</b></h2>
+            <div class="container-p">
+                <p>Se emplea principalmente en cáncer de colon en estadios tempranos no diseminados o de mama, entre otros tumores.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/Quimioterapia Anticancerosa.jpg" alt="">
+            <h2><b>Quimioterapia Anticancerosa</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento médico que consiste en emplear fármacos para destruir las células cancerígenas y reducir o eliminar la enfermedad.</p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/Quimioterapia Poliativa.jpg" alt="">
+            <h2><b>Quimioterapia Poliativa</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento de quimioterapia que se administra para aliviar los síntomas del cáncer, pero no para curar el cáncer ni prolongar la vida.</p>
+            </div>
+        </div>
+        <div class="box box4 hh">
+            <img src="img/Quiropodia.jpg" alt="">
+            <h2><b>Quiropodia</b></h2>
+            <div class="container-p">
+                <p>Es el tratamiento podológico que consiste en la eliminación de callosidades y alteraciones en las uñas de los pies, con el fin de evitar y prevenir posibles molestias provocadas por el uso de un calzado.</p>
+            </div>
+        </div>
+    </div>
+    <!--R-->
+    <h2 class="subt"> R</h2>
+    <a name="R"></a>
+    <div class="container-box">
+        <div class="box box1 ii">
+            <img src="img/Radiografia.jpg" alt="">
+            <h2><b>Radiografia</b></h2>
+            <div class="container-p">
+                <p>Es un tratamiento del cáncer que usa altas dosis de radiación para destruir células cancerosas y reducir tumores.</p>
+            </div>
+        </div>
+        <div class="box box2 ii">
+            <img src="img/Raspado Radicular.jpg" alt="">
+            <h2><b>Raspado Radicular</b></h2>
+            <div class="container-p">
+                <p>Es la técnica que se utiliza para eliminar sarro, placa bacteriana, pigmentaciones además de otros depósitos orgánicos que se encuentran en la superficie dental.</p>
+            </div>
+        </div>
+        <div class="box box3 ii">
+            <img src="img/Reogina Test.jpg" alt="">
+            <h2><b>Reogina Test</b></h2>
+            <div class="container-p">
+                <p>El tratamiento consiste en colocarse una o más inyecciones de una forma de penicilina. La prueba de RPR sirve para detectar en la sangre los anticuerpos que reaccionan contra la sífilis.</p>
+            </div>
+        </div>
+        <div class="box box4 ii">
+            <img src="img/Reparacion Intracraneal.jpg" alt="">
+            <h2><b>Reparacion Intracraneal</b></h2>
+            <div class="container-p">
+                <p>Procedimientos de invasión que, dependiendo de la condición, involucran la navegación interna de los vasos sanguíneos guiada por imágenes para tratar las condiciones vasculares que afectan a los vasos endocraneales.</p>
+            </div>
+        </div>
+    </div>
+    <!--S-->
+    <h2 class="subt"> S</h2>
+    <a name="S"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/Saturas Quirurgica.jpg" alt="">
+            <h2><b>Saturas Quirurgica</b></h2>
+            <div class="container-p">
+                <p>Tratamiento que cumple una serie de características que les permiten ser más o menos aptas según el tejido que se desee tratar.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/Scrotox.png" alt="">
+            <h2><b>Scrotox</b></h2>
+            <div class="container-p">
+                <p>Procedimiento estrictamente médico el cual se usaba con el fin de reducir las dolencias del escroto causadas por la inflamación.</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/Septoplastia.jpg" alt="">
+            <h2><b>Septoplastia</b></h2>
+            <div class="container-p">
+                <p>Es una intervención quirúrgica cuyo objetivo es el enderezamiento del tabique nasal y la eliminación de sus desviaciones, que pueden tener orígenes congénitos o traumáticos.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/Sialograma.jpg" alt="">
+            <h2><b>Sialograma</b></h2>
+            <div class="container-p">
+                <p>Es una prueba radiológica que nos permite visualizar los conductos interiores y exteriores de las glándulas salivares mayores (las glándulas parótidas y submaxilares). </p>
+            </div>
+        </div>
+    </div>
+    <!--T-->
+    <h2 class="subt"> T</h2>
+    <a name="T"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/Tensilon Test.jpg" alt="">
+            <h2><b>Tensilon Test</b></h2>
+            <div class="container-p">
+                <p>Se usa para ayudar a diagnosticar la miastenia gravis (una enfermedad del músculo crónica, progresiva, caracterizada por fatiga y debilidad de los músculos voluntarios).</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/Tonometria.jpg" alt="">
+            <h2><b>Tonometria</b></h2>
+            <div class="container-p">
+                <p>Este tratamiento consiste en medir la presión intraocular de forma indirecta, utilizando un tonómetro colocado en una lámpara de hendidura. </p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/Transplante de Pulmon.jpg" alt="">
+            <h2><b>Transplante de Pulmón</b></h2>
+            <div class="container-p">
+                <p>Es un procedimiento quirúrgico que consiste en reemplazar un pulmón enfermo o que no funciona correctamente por un pulmón sano, generalmente de un donante fallecido.</p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/Transplante de Pancreas.jpg" alt="">
+            <h2><b>Transplante de Pancreas</b></h2>
+            <div class="container-p">
+                <p>Es una intervención quirúrgica que consiste en colocar un páncreas sano de un donante fallecido en una persona cuyo páncreas ya no funciona correctamente.</p>
+            </div>
+        </div>
+    </div>
+    <!--U-->
+    <h2 class="subt"> U</h2>
+    <a name="U"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/Ultrasonido.jpg" alt="">
+            <h2><b>Ultrasonido</b></h2>
+            <div class="container-p">
+                <p>Es una técnica de diagnóstico no invasiva que se utiliza para producir imágenes dentro del cuerpo.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/Uretral.jpg" alt="">
+            <h2><b>Uretral</b></h2>
+            <div class="container-p">
+                <p>Es una técnica médica invasiva que tiene como fin evacuar la orina acumulada en la vejiga, a través de un catéter.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/Uretritis.jpg" alt="">
+            <h2><b>Uretritis</b></h2>
+            <div class="container-p">
+                <p>Consiste en una inflamación de la uretra, que es el conducto encargado de transportar la orina desde la vejiga hacia el exterior.</p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/Uroflujometria.jpg" alt="">
+            <h2><b>Uroflujometria</b></h2>
+            <div class="container-p">
+                <p>Consiste en que el órgano aumenta de tamaño. Esto hace que la uretra esté presionada y que el flujo urinario se obstruya.</p>
+            </div>
+        </div>
+    </div>
+    <!--V-->
+    <h2 class="subt"> V</h2>
+    <a name="V"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/Vasectomia.gif" alt="">
+            <h2><b>Vasectomia</b></h2>
+            <div class="container-p">
+                <p>Es un procedimiento quirúrgico electivo que consiste en cortar los conductos deferentes que son los que llevan los espermatozoides desde el testículo hasta la próstata.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/Venodiseccion.jpg" alt="">
+            <h2><b>Venodiseccion</b></h2>
+            <div class="container-p">
+                <p><br><br>Es un tratamiento que se encarga de desempeñar la función de filtrar la sangre de unos riñones que han dejado de funcionar hasta que se curan a través de un trasplante.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/Vialisis.jpg" alt="">
+            <h2><b>Vialisis</b></h2>
+            <div class="container-p">
+                <p> Es un procedimiento quirúrgico que consiste en disecar una vena superficial de alguna extremidad o del cuello e introducir un catéter en la luz del vaso.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/Vitaminicos.png" alt="">
+            <h2><b>Vitaminicos</b></h2>
+            <div class="container-p">
+                <p>El tratamiento se basa en la identificación de la vitamina o vitaminas deficitarias, para luego proceder a su reposición mediante suplementos vitamínicos.</p>
+            </div>
+        </div>
+    </div>
+    <!--W-->
+    <h2 class="subt"> W</h2>
+    <a name="W"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/Whipple.jpg" alt="">
+            <h2><b>Whipple</b></h2>
+            <div class="container-p">
+                <p>El tratamiento es de duración prolongada, en general, dura uno o dos años y tiene el propósito de destruir las bacterias.</p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/Womografia.jpg" alt="">
+            <h2><b>Womografia</b></h2>
+            <div class="container-p">
+                <p>Es una prueba de diagnóstico por imágenes para observar las arterias que suministran sangre al corazón. </p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/Wypass Gastric.jpg" alt="">
+            <h2><b>Wypass Gastric</b></h2>
+            <div class="container-p">
+                <p>Es una técnica quirúrgica que se utiliza para intentar restaurar el flujo sanguíneo que riega al corazón.</p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/Wiroidectomic.jpg" alt="">
+            <h2><b>Wiroidectomic</b></h2>
+            <div class="container-p">
+                <p>Es un procedimiento quirúrgico que se realiza para el tratamiento de diversas enfermedades de la tiroides y consiste en eliminar la glándula tiroides.</p>
+            </div>
+        </div>
+    </div>
+    <!--X-->
+    <h2 class="subt"> X</h2>
+    <a name="X"></a>
+    <div class="container-box">
+        <div class="No-Hay">No se ha encontrado Tratamiento</div>
+    </div>
+    <!--Y-->
+    <h2 class="subt"> Y</h2>
+    <a name="Y"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/Yolonoscopia.jpg" alt="">
+            <h2><b>Yolonoscopia</b></h2>
+            <div class="container-p">
+                <p>Este tratamiento consiste en explorar la pared interna del intestino grueso (colon) utilizando un endoscopio introducido a través del ano.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/Yesoterapia.jpg" alt="">
+            <h2><b>Yesoterapia</b></h2>
+            <div class="container-p">
+                <p>Este tratamiento se beneficia de las propiedades físicas del yeso (tensoras y modelantes) y actúa por oclusión de la superficie de la piel impidiendo la pérdida del calor corporal.</p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/Yale.jpg" alt="">
+            <h2><b>Yale</b></h2>
+            <div class="container-p">
+                <p>Este tratamiento consiste en ayudar a desinflamar la gargante mediante un masaje.</p>
+            </div>
+        </div>
+    </div>
+    <!--Z-->
+    <h2 class="subt"> Z</h2>
+    <a name="Z"></a>
+    <div class="container-box">
+        <div class="No-Hay">No se ha encontrado Tratamiento</div>
+    </div>
+    <h4 class="arriba"><a href="#arriba">&Icirc;</a></h4>
+    <footer>
+        <div class="container-footer-all">
+            <div class="container-body">
+                <div class="colum1">
+                     <h1>Mas informacion de MediHelp</h1>   
+                     <p>MediHelp es un software que te ayuda  a definir, comprender y analizar  términos médicos en diferentes áreas. El lenguaje médico es cambiante y se modifica al ritmo, cada vez más vertiginoso, de los nuevos avances científicos. Por eso nuestra versión dígital se mantiene en constante actualización de contenidos y mejoras.</p>
+                     <img src="img/MediHelp.png " width="200px">
+                 </div>
+                 <div class="colum2">
+                     <h1>Redes Sociales</h1>
+                     <div class="row">
+                          <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/FaceB.png"></a>
+                          <label>Siguenos en Facebook</label>
+                     </div>
+                     <div class="row">
+                          <a href="https://twitter.com/home?lang=es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"></a>
+                          <label>Siguenos en Twitter</label>
+                     </div>
+                     <div class="row">
+                          <a href="https://www.instagram.com"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png"></a>
+                          <label>Siguenos en Instagram</label>
+                     </div>
+                     <div class="row">
+                          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Google_plus_circle_icon_%282011-2015%29.png"></a>
+                          <label>Siguenos en Google Plus</label>
+                     </div>
+                     <div class="row">
+                          <a href="https://www.pinterest.es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png"></a>
+                          <label>Siguenos en Pinteres</label>
+                     </div>
+                 </div>
+                 <div class="colum3">
+                      <h1>Informacion Contactos</h1>
+                      <div class="row2">
+                          <img src="https://w7.pngwing.com/pngs/598/408/png-transparent-computer-icons-mobile-phones-phone-miscellaneous-telephone-call-logo.png">
+                          <label>+504 9988-3344</label>
+                      </div>
+                      <div class="row2">
+                          <img src="https://logos-marcas.com/wp-content/uploads/2020/11/Gmail-Logo.png">
+                           <label>AtencionAlCliente_MediHelp@gmail.com</label>
+                      </div>
+                 </div>
+             </div>
+          </div>
+          <div class="container-footer">
+                 <div class="footer">
+                      <div class="copyright">
+                          © 2021 Todos los Derechos Reservados | <a href="#">MediHelp</a>
+                      </div>
+                      <div class="information">
+                          <a href="#">Informacion Compañia</a> | <a href="#">Privacion y Politica</a> | <a href="#">Terminos y Condiciones</a>
+                      </div>
+                  </div>
+              </div>
+    </footer>
+</body>
+</html>

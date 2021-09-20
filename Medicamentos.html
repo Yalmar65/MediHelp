@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/MediHelp.png">
+    <title>MediHelp | Medicamentos</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+        }
+        .topnav{
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+        ul.topnav {
+            list-style-type: none;
+            margin: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            overflow: hidden;
+            background-color: #698ab6;
+        }
+        ul.topnav li {float: left;}
+        ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 10px 12px;
+        text-decoration: none;
+        font-size: 14px;
+        }
+        ul.topnav li a:hover:not(.active) {
+            font-weight: bold;
+        }
+        ul.topnav li a.active {
+            border-bottom: 4px solid white;
+        }
+        ul.topnav li.right {
+            float: right;
+        }
+        .buscar{
+            margin-top: 5px;
+        }
+        .btn{
+            color: white;
+            border: 2px solid white;
+            margin-right: 5px;
+        }
+        .btn:hover{
+            background-color: white;
+            color: #698ab6;
+            border: 2px solid #698ab6;
+        }
+        .login{
+            color: #194b8d;
+            background-color: #698ab6;
+            margin: 0px 20px;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        .login:hover{
+            background-color: #ffffff;
+            color: #698ab6;
+        }
+        .logo{
+            padding: 0px;
+        }
+        .logo img{
+            width: 60px;
+        }
+        .titulo{
+            text-shadow: 5px 5px 10px rgb(100, 175, 189);
+            letter-spacing: 10px;
+            text-align: center;
+            font-size: 500%;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .abc{
+            width: 100%;
+            padding: 20px 15px;
+            text-align: center;
+            line-height: 2;
+        }
+        .abc a{
+            padding: 5px 10px;
+            background-color: lightblue;
+            border-radius: 50%;
+            text-decoration: none;
+            color: black;
+            font-size: 90%;
+        }
+        .abc a:hover{
+            background-color: rgb(12, 58, 209);
+            color: #fff;
+            padding: 10px 13px;
+            font-weight: bold;
+        }
+        .arriba a:hover{
+            background-color: rgb(12, 58, 209);
+            color: #fff;
+        }
+        body{
+            background-color: #fbfbfe;
+        }
+        .desplegable{
+            display: none;
+        }
+        .container-box{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .box{
+            width: 250px;
+            height: 250px;
+            margin: 10px;
+            padding: 20px;
+            border: 2px solid #199c96;
+            border-radius: 14px;
+            text-align: center;
+            margin-top: 100px;
+            position: relative;
+            background-color: rgb(100, 175, 189);
+        
+        }
+        
+        .box img{
+            width: 60%;
+            transition: all 400ms;
+        }
+        
+        .box h2{
+            font-size: 16px;
+            margin-top: 10px;
+            transition: all 500ms;
+        }
+        
+        .box .container-p{
+            width: 100%;
+            height: 150px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            padding: 0px 10px;
+            border-radius: 0px 0px 14px 14px;
+        }
+        
+        .box p{
+            font-size: 14px;
+            color: #7a7a7a;
+            opacity: 0;
+            transform: translateY(150px);
+            transition: all 600ms;
+        }
+        
+        .box .check{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%);
+            border: 2px solid #f5f5f5;
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            background: white;
+        }
+        
+        .box .check i{
+            margin-top: 6px;
+            display: none;
+            color: white
+            
+        }
+        
+        
+        .box:hover{
+            background: #fbfbfe;
+        }
+        
+        .box:hover img{
+            transform: translateY(-90px);
+        }
+        
+        .box:hover h2{
+            transform: translateY(-90px);
+        }
+        
+        .box:hover .container-p p{
+            transform: translateY(0px);
+            opacity: 1;
+        }
+        
+        .box-selected{
+            border-color: red;
+            transition: all 600ms;
+        }
+        
+        .icon-check{
+            display: block !important;
+        }
+        
+        .check-selected{
+            background:black !important;
+            border: none;
+            transition: all 600ms;
+        }
+        .container-p p{
+            color: #fff;
+        }
+        .aa:hover{
+            background-color: deepskyblue;
+        }
+        .bb:hover{
+            background-color: rgb(11, 204, 186);
+        }
+        .cc:hover{
+            background-color: rgb(66, 123, 158);
+        }
+        .dd:hover{
+            background-color: LightSeaGreen;
+        }
+        .ee:hover{
+            background-color: MediumAquamarine;
+        }
+        .ff:hover{
+            background-color: DarkTurquoise;
+        }
+        .gg:hover{
+            background-color: cornflowerblue;
+        }
+        .hh:hover{
+            background-color: #698ab6;
+        }
+        .ii:hover{
+            background-color: LightSkyBlue;
+        }
+        .arriba{
+            position: sticky;
+            text-align: right;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+        }
+        .arriba a{
+            text-decoration: none;
+            color: white;
+            background-color: #698ab6;
+            border-radius: 50%;
+            padding: 7px 15px;
+            font-size: 90%;
+            font-weight: bolder;
+        }
+        .subt{
+            color: #698ab6;
+            font-weight: bolder;
+            margin-left: 12%;
+        }
+        footer{
+            width: 100%;
+            background: #0a1227;
+            color: white;   
+            
+        }
+        
+        .container-footer-all{
+            width: 100%;
+            max-width: 1200px;
+            margin: 0px;
+            padding: 20px;
+        }
+        
+        .container-body{
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .colum1{
+            max-width: 400px;
+        }
+        
+        .colum1 h1{
+            font-size: 22px;
+        }
+        
+        .colum1 p{
+            font-size: 14px;
+            color: #C7C7C7;
+            margin-top: 20px;
+        }
+        
+        .colum1 img{
+            margin: 10px 40px;
+        }
+        
+        .colum2{
+            max-width: 400px;
+            
+        }
+        
+        .colum2 h1{
+            font-size: 22px;
+        }
+        
+        .row{
+            margin-top: 20px;
+            display: flex;
+        }
+        
+        .row img{
+            width: 36px;
+            height: 36px;
+        }
+        
+        .row label{
+            margin-top: 10px;
+            margin-left: 15px;
+            color: #C7C7C7;
+        }
+        
+        .colum3{
+            max-width: 400px;
+        }
+        
+        .colum3 h1{
+            font-size: 22px;
+        }
+        
+        .row2{
+            margin-top: 20px;
+            display: flex;
+        }
+        
+        .row2 img{
+            width: 36px;
+            height: 36px;
+        }
+        
+        .row2 label{
+            margin-top: 10px;
+            margin-left: 15px;
+            max-width: 140px;
+        }
+        
+        .container-footer{
+            width: 100%;  
+            background: #101010;
+        }
+        
+        .footer{
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .copyright{
+            color: #C7C7C7;
+        }
+        
+        .copyright a{
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .information a{
+            text-decoration: none;
+            color: #C7C7C7;
+        }
+        @media screen and (max-width:868px) {
+            .topnav{
+                display: none;
+            }
+            ul.topnav li.right, 
+            ul.topnav li {
+                float: none;
+            }
+            .titulo{
+                font-size: 25px;
+            }
+            .abc a{
+                background-color: lightblue;
+                border-radius: 50%;
+                text-decoration: none;
+                color: black;
+            }
+            #sidebar {
+                position: fixed;
+                width: 200px;
+                height: 100%;
+                background: #698ab6;
+                left: -200px;
+                transition: all 500ms linear;
+                z-index: 10;
+                top: 5px;
+              }
+            #sidebar.active {
+                left: 0px;
+              }
+            #sidebar ul li {
+                color: rgba(230, 230, 230, .9);
+                list-style: none;
+                padding: 15px 10px;
+                border-bottom: 1px solid rgba(6, 38, 87, 0.3);
+                text-align: center;
+              }
+              #sidebar ul li a.op:hover{
+                  font-weight: bold;
+              }
+            .op{
+                color: white;
+                text-decoration: none;
+              }
+            #toggle-btn {
+                position: absolute;
+                left: 215px;
+                top: 12px;
+                background: #151719;
+                cursor: pointer;
+                transition: all 0.5s linear;
+              }
+            #toggle-btn span {
+                display: block;
+                width: 40px;
+                text-align: center;
+                font-size: 30px;
+                color: #fff;
+              }
+            #toggle-btn.active {
+                left:5px;
+                top: 5px;
+                background:#777;
+              }
+            .desplegable{
+                background-color: #698ab6;
+                text-align: center;
+                display: block;
+                top: 0px;
+                width: 100%;
+            }
+            .desplegable img{
+                width: 20%;
+            }
+            .abc{
+                position: relative;
+            }
+            .container-body{
+                flex-wrap: wrap;
+            }
+            
+            .colum1{
+                max-width: 100%;
+            }
+            
+            .colum2,
+            .colum3{
+                margin-top: 40px;
+            }
+            .desplegable{
+                width: 100%;
+            }
+        }
+        @media screen and (max-width: 420px) {
+        .topnav{
+            display: none;
+        }
+        ul.topnav li.right, 
+        ul.topnav li {
+            float: none;
+        }
+        .titulo{
+            font-size: 20px;
+        }
+        .abc a{
+            background-color: lightblue;
+            border-radius: 50%;
+            text-decoration: none;
+            color: black;
+        }
+        #sidebar {
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            background: #698ab6;
+            left: -200px;
+            transition: all 500ms linear;
+            z-index: 10;
+            top: 5px;
+          }
+        #sidebar.active {
+            left: 0px;
+          }
+        #sidebar ul li {
+            color: rgba(230, 230, 230, .9);
+            list-style: none;
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(6, 38, 87, 0.3);
+            text-align: center;
+          }
+          #sidebar ul li a.op:hover{
+              font-weight: bold;
+          }
+        .op{
+            color: white;
+            text-decoration: none;
+          }
+        .logo {
+            display: block;
+            margin: 0 auto; 
+            width: 60%;
+          }  
+        #toggle-btn {
+            position: absolute;
+            left: 215px;
+            top: 12px;
+            background: #151719;
+            cursor: pointer;
+            transition: all 0.5s linear;
+          }
+        #toggle-btn span {
+            display: block;
+            width: 40px;
+            text-align: center;
+            font-size: 30px;
+            color: #fff;
+          }
+        #toggle-btn.active {
+            left:5px;
+            top: 5px;
+            background:#777;
+          }
+        .desplegable{
+            background-color: #698ab6;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        .desplegable img{
+            width: 20%;
+        }
+        .subt{
+            left: 10%;
+        }
+        .box4{
+            display: none;
+        }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let btn = document.getElementById('toggle-btn');
+            let side = document.getElementById('sidebar');
+            btn.addEventListener('click', function() {
+              btn.classList.toggle('active');
+              side.classList.toggle('active');
+            });
+          }
+          document.querySelector(".box1").addEventListener("click", box_selected1);
+          document.querySelector(".box2").addEventListener("click", box_selected2);
+          document.querySelector(".box3").addEventListener("click", box_selected3);
+          document.querySelector(".box4").addEventListener("click", box_selected4);
+          
+          //box1  
+          box1 = document.querySelector(".box1");
+          check_bg1 = document.querySelector(".box1 .check");
+          icon_check1 = document.querySelector(".box1 .fa-check");
+          
+          //box2
+          box2 = document.querySelector(".box2");
+          check_bg2 = document.querySelector(".box2 .check");
+          icon_check2 = document.querySelector(".box2 .fa-check");
+          
+          //box3
+          box3 = document.querySelector(".box3");
+          check_bg3 = document.querySelector(".box3 .check");
+          icon_check3 = document.querySelector(".box3 .fa-check");
+          
+          //box4
+          box4 = document.querySelector(".box4");
+          check_bg4 = document.querySelector(".box4 .check");
+          icon_check4 = document.querySelector(".box4 .fa-check");
+
+          value_box = 0;
+          
+          function box_selected1 () {
+              box2.classList.remove('box-selected');
+              check_bg2.classList.remove('check-selected');
+              icon_check2.classList.remove('icon-check');
+          
+              box3.classList.remove('box-selected');
+              check_bg3.classList.remove('check-selected');
+              icon_check3.classList.remove('icon-check');
+          
+              box1.classList.toggle('box-selected');
+              check_bg1.classList.toggle('check-selected');
+              icon_check1.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 1;
+              console.log(value_box);
+          }
+          function box_selected2 () {
+          
+              box1.classList.remove('box-selected');
+              check_bg1.classList.remove('check-selected');
+              icon_check1.classList.remove('icon-check');
+          
+              box3.classList.remove('box-selected');
+              check_bg3.classList.remove('check-selected');
+              icon_check3.classList.remove('icon-check');
+          
+              box2.classList.toggle('box-selected');
+              check_bg2.classList.toggle('check-selected');
+              icon_check2.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 2;
+              console.log(value_box);
+          }
+          function box_selected3 () {
+              box1.classList.remove('box-selected');
+              check_bg1.classList.remove('check-selected');
+              icon_check1.classList.remove('icon-check');
+          
+              box2.classList.remove('box-selected');
+              check_bg2.classList.remove('check-selected');
+              icon_check2.classList.remove('icon-check');
+          
+              box3.classList.toggle('box-selected');
+              check_bg3.classList.toggle('check-selected');
+              icon_check3.classList.toggle('icon-check');
+
+              box4.classList.toggle('box-selected');
+              check_bg4.classList.toggle('check-selected');
+              icon_check4.classList.toggle('icon-check');
+          
+              value_box = 3;
+              console.log(value_box);
+          }
+          function box_selected4 () {
+            box1.classList.remove('box-selected');
+            check_bg1.classList.remove('check-selected');
+            icon_check1.classList.remove('icon-check');
+        
+            box2.classList.remove('box-selected');
+            check_bg2.classList.remove('check-selected');
+            icon_check2.classList.remove('icon-check');
+        
+            box3.classList.toggle('box-selected');
+            check_bg3.classList.toggle('check-selected');
+            icon_check3.classList.toggle('icon-check');
+
+            box4.classList.toggle('box-selected');
+            check_bg4.classList.toggle('check-selected');
+            icon_check4.classList.toggle('icon-check');
+        
+            value_box = 4;
+            console.log(value_box);
+        }
+    </script>
+</head>
+<body>
+    <a name="arriba"></a>
+    <ul class="topnav">
+        <li class="logo"><img src="img/MediHelp.png" alt="logo"></li>
+        <li class="right buscar"><form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn " type="submit">Search</button>
+            <a href="login.html" class="login" target="blank">Login</a>
+          </form>
+        </li>
+        <li class="right"><a href="contacto.html" target="blank">Contact</a></li>
+        <li class="right"><a href="microorganismos.html">Microorganismos</a></li>
+        <li class="right"><a href="enfermedades.html">Enfermedades</a></li>
+        <li class="right"><a href="Tratamientos.html">Tratamientos</a></li>
+        <li class="right"><a class="active" href="Medicamentos.html">Medicamentos</a></li>
+        <li class="right"><a href="index.html">Home</a></li> 
+    </ul>
+    <div class="desplegable">
+        <img src="img/MediHelp.png" alt="">
+        <div id="sidebar">
+            <div id="toggle-btn">
+              <span>&#9776</span>
+            </div>
+            <ul>
+              <li>
+                <img src="img/MediHelp.png"  class="logo2">
+              </li>
+              <li><a href="index.html" class="op">Home</a></li>
+              <li><a href="Medicamentos.html" class="op active">Medicamentos</a></li>
+              <li><a href="Tratamientos.html" class="op">Tratamientos</a></li>
+              <li><a href="enfermedades.html" class="op">Enfermedades</a></li>
+              <li><a href="microorganismos.html" class="op">Microorganismo</a></li>
+              <li><a href="contacto.html" class="op" target="blank">Contact</a></li>
+              <li><a href="login.html" class="op" target="blank">Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <h1 class="titulo">MEDICAMENTOS</h1>
+    <div class="abc"><p><a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a href="#D">D</a> <a href="#E">E</a> <a href="#F">F</a> <a href="#G">G</a> <a href="#H">H</a> <a href="#I">I</a> <a href="#J">J</a> <a href="#K">K</a> <a href="#L">L</a> <a href="#M">M</a> <a href="#N">N</a> <a href="#O">O</a> <a href="#P">P</a> <a href="#Q">Q</a> <a href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> <a href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a> <a href="#X">X</a> <a href="#Y">Y</a> <a href="#Z">Z</a> </p>
+    </div>
+    <!--A-->
+    <h2 class="subt"> A</h2>
+    <a name="A"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/acetamninofen.png" alt="">
+            <h2><b>Acetaminofen</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento analgésico utilizado para aliviar el dolor leve o crónico y para reducir la fiebre.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/Alka.png" alt="">
+            <h2><b>Alka Seltzer</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento antiácido cuya presentación es en comprimidos efervescentes de venta sin receta manufacturado por el laboratorio Bayer Schering Pharma.</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/amoxicilina.png" alt="">
+            <h2><b>Amoxicilina</b></h2>
+            <div class="container-p">
+                <p>Es un antibiótico semisintético derivado de la penicilina. Se trata de una amino penicilina. Actúa contra un amplio espectro de bacterias, tanto Gram positivos como Gram-negativos.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/Aspirinaa.png" alt="">
+            <h2><b>Aspirina</b></h2>
+            <div class="container-p">
+                <p>Su acción consiste en detener la producción de ciertas sustancias naturales que causan fiebre, dolor, inflamación y coágulos sanguíneos.</p>
+            </div>
+        </div>
+    </div>
+    <!--B-->
+    <h2 class="subt"> B</h2>
+    <a name="B"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/benadryl.png" alt="">
+            <h2><b>Benadryl</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento antihistamínico popular que se puede comprar sin receta médica. Es efectivo en el tratamiento de los síntomas de la alergia fría y leve.</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/betistin.png" alt="">
+            <h2><b>Betistin</b></h2>
+            <div class="container-p">
+                <p>Medicamento que está indicado en el tratamiento sintomático del vértigo, acufenos e hipoacusia vinculados a trastornos del oído interno. Mareos ocasionados por alteraciones del equilibrio.</p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/bisolsek.png" alt="">
+            <h2><b>Bisolsek</b></h2>
+            <div class="container-p">
+                <p>Medicamento que actua a partir de los primeros 15 minutos aliviando la tos seca. Tratamiento sintomático de la tos seca.</p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/blotamin.png" alt="">
+            <h2><b>Blotamin</b></h2>
+            <div class="container-p">
+                <p>Útil en el tratamiento de los síntomas asociados con la rinitis alérgica y otras afecciones alérgicas, incluyendo estornudos, rinorrea, congestión y prurito nasal, lagrimeo, ojos rojos y tos.</p>
+            </div>
+        </div>
+    </div>
+    <!--C-->
+    <h2 class="subt"> C</h2>
+    <a name="C"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/cataflam.png" alt="">
+            <h2><b>Cataflam</b></h2>
+            <div class="container-p">
+                <p>Cataflam se usa para tratar el dolor leve a moderado, o los signos y síntomas de la osteoartritis o la artritis reumatoide.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/cefalexina.png" alt="">
+            <h2><b>Cefalexina</b></h2>
+            <div class="container-p">
+                <p>La cefalexina se usa para tratar algunas infecciones provocadas por bacterias como neumonía y otras infecciones del tracto respiratorio; e infecciones de los huesos, piel y oídos.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/cephalexin.png" alt="">
+            <h2><b>Cephalexin</b></h2>
+            <div class="container-p">
+                <p>Es un antibiótico que puede tratar una serie de infecciones bacterianas. Mata las bacterias grampositivas y algunas gramnegativas al interrumpir el crecimiento de la pared celular bacteriana. </p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/clindamicina.png" alt="">
+            <h2><b>Clindamicina</b></h2>
+            <div class="container-p">
+                <p>La clindamicina se usa para tratar ciertos tipos de infecciones bacterianas, incluyendo infecciones de los pulmones, la piel, la sangre, los órganos reproductivos de la mujer, así como los órganos internos.</p>
+            </div>
+        </div>
+    </div>
+    <!--D-->
+    <h2 class="subt"> D</h2>
+    <a name="D"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/decalan.jpg" alt="">
+            <h2><b>Decalan</b></h2>
+            <div class="container-p">
+                <p><br>Pastillas chupables ideales para aliviar los malestares en garganta y boca. Anestésico y Antiséptico.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/dolex.png" alt="">
+            <h2><b>Dolex</b></h2>
+            <div class="container-p">
+                <p><br>Dolex Alivia diversos dolores, desinflama y reduce la fiebre. Es ideal para contrarrestar malestares musculares, de garganta o dolores de cabeza intensos.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/dramanine.png" alt="">
+            <h2><b>Dramanine</b></h2>
+            <div class="container-p">
+                <p> Dramamine es un fármaco que se presenta en tabletas de 50 mg, previene y elimina las náuseas, vómito o mareo provocados por movimiento.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/Dualgos.png" alt="">
+            <h2><b>Dualgos</b></h2>
+            <div class="container-p">
+                <p>Dualgos es un medicamento recetado para el alivio temporal de dolores leves o moderados.</p>
+            </div>
+        </div>
+    </div>
+    <!--E-->
+    <h2 class="subt"> E</h2>
+    <a name="E"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/elixophyllin.png" alt="">
+            <h2><b>Elixophyllin</b></h2>
+            <div class="container-p">
+                <p>Es un broncodilatador que se usa para tratar síntomas de asma, la bronquitis, el enfisema, y otros problemas respiratorios.</p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/emcyt.png" alt="">
+            <h2><b>Emcyt</b></h2>
+            <div class="container-p">
+                <p>Emcyt está indicado para tratar el carcinoma de próstata en estados avanzados. Su uso se presenta de especial manera en pacientes con tumores hormona-refractarios.</p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/ergotamina.png" alt="">
+            <h2><b>Ergotamina</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento antimigrañoso el cual suele comercializarse en conjunto con otros agentes como la cafeína para tratar la migraña..</p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/Excedrin.png" alt="">
+            <h2><b>Excedrin</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento con propiedades analgésicas, y antinflamatorias, antipiréticas eso quiere decir que sirve generalmente para quitar la fiebre, el dolor y la inflamación.</p>
+            </div>
+        </div>
+    </div>
+    <!--F-->
+    <h2 class="subt"> F</h2>
+    <a name="F"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/ferridoce.png" alt="">
+            <h2><b>Ferridoce</b></h2>
+            <div class="container-p">
+                <p><br><br> Ferridoce combate anemias por deficiencias de hierro, problemas de crecimiento, síndrome de mala absorción, falta de apetito y complementa la alimentación.</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/flamydol.png" alt="">
+            <h2><b>Flamydol</b></h2>
+            <div class="container-p">
+                <p>FLAMYDOL es un medicamento con propiedades antiinflamatorias y analgésicas notables.</p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/flutox.png" alt="">
+            <h2><b>Flutox</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento indicado para el tratamiento de las formas improductivas de tos, como tos irritativa o tos nerviosa para adultos y niños a partir de 2 años..</p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/furosemida.png" alt="">
+            <h2><b>furosemida</b></h2>
+            <div class="container-p">
+                <p>La Furosemida es un medicamento diurético, es decir, que aumenta la eliminación de agua a través de la orina. </p>
+            </div>
+        </div>
+    </div>
+    <!--G-->
+    <h2 class="subt"> G</h2>
+    <a name="G"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/ganol.png" alt="">
+            <h2><b>Ganol</b></h2>
+            <div class="container-p">
+                <p>Es un producto farmacéutico, que contiene acetaminofén, con propiedades analgésicas y antipiréticas, indicado parar tratar la fiebre, el resfriado y el dolor leve y moderado.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/gaviscon.png" alt="">
+            <h2><b>Gaviscon</b></h2>
+            <div class="container-p">
+                <p>Es un efectivo remedio que alivia el reflujo gastroesofágico y la acidez estomacal, eliminando la sensación de ardor y quemazón causada por la indigestión</p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/grintuss.png" alt="">
+            <h2><b>Grintuss</b></h2>
+            <div class="container-p">
+                <p><br><br>Grintuss alivian la tos seca y la tos productiva, disminuyendo la irritación en la faringe y eliminando el moco.</p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/Gripen.png" alt="">
+            <h2><b>Gripen</b></h2>
+            <div class="container-p">
+                <p>Gripen combaten las infecciones que son causadas por bacterias. No tratan infecciones causadas por virus.</p>
+            </div>
+        </div>
+    </div>
+    <!--H-->
+    <h2 class="subt"> H</h2>
+    <a name="H"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/halaven.png" alt="">
+            <h2><b>Halaven</b></h2>
+            <div class="container-p">
+                <p>Se usa para tratar el cáncer de mama localmente avanzado o metastásico que ha continuado diseminando después de al menos un tratamiento previo para el cáncer avanzado.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/haltran.png" alt="">
+            <h2><b>Haltran</b></h2>
+            <div class="container-p">
+                <p><br><br>Es un medicamento antiinflamatorio no esteroideo que se usa para tratar el dolor leve a moderado y ayuda a aliviar los síntomas de la artritis</p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/hidroxicina.png" alt="">
+            <h2><b>Hidroxicina</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento ansiolítico indicado para padecimientos psiquiátricos por reducción de la actividad en el sistema nervioso central. .</p>
+            </div>
+        </div>
+        <div class="box box4 hh">
+            <img src="img/histiacil.png" alt="">
+            <h2><b>Histiacil</b></h2>
+            <div class="container-p">
+                <p><br><br><br>Es un medicamento mucolítico y antitusivo que se encuentra conformado por ambroxol y dextrometorfano.</p>
+            </div>
+        </div>
+    </div>
+    <!--I-->
+    <h2 class="subt"> I</h2>
+    <a name="I"></a>
+    <div class="container-box">
+        <div class="box box1 ii">
+            <img src="img/iboprodol.png" alt="">
+            <h2><b>Iboprodol</b></h2>
+            <div class="container-p">
+                <p>Se usa para bajar la fiebre y para aliviar dolores leves como dolores de cabeza, dolores musculares, artritis, cólicos menstruales, molestias del resfriado común, dolores de dientes y dolores de espalda. </p>
+            </div>
+        </div>
+        <div class="box box2 ii">
+            <img src="img/ibuprofen.png" alt="">
+            <h2><b>Ibuprofen</b></h2>
+            <div class="container-p">
+                <p>Actúa deteniendo en el cuerpo la producción de una sustancia que provoca dolor, fiebre e inflamación.</p>
+            </div>
+        </div>
+        <div class="box box3 ii">
+            <img src="img/immuvit.png" alt="">
+            <h2><b>Immuvit</b></h2>
+            <div class="container-p">
+                <p><br><br><br>Medicamento que contiene Ácido fólico, Vitamina B12 y hierro, componentes que pueden enmascarar ciertas formas de anemia.</p>
+            </div>
+        </div>
+        <div class="box box4 ii">
+            <img src="img/insulina.png" alt="">
+            <h2><b>Insulina</b></h2>
+            <div class="container-p">
+                <p>Este medicamento se usa para tomar el lugar de la insulina que normalmente produce el cuerpo.</p>
+            </div>
+        </div>
+    </div>
+    <!--J-->
+    <h2 class="subt"> J</h2>
+    <a name="J"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/Januvia.png" alt="">
+            <h2><b>Januvia</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento antidiabético compuesto por sitagliptina, que sirve para controlar los niveles de azúcar en sangre.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/jatenzo.png" alt="">
+            <h2><b>Jatenzo</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento recetado que contiene testosterona. se usa para tratar a hombres adultos que tienen niveles bajos o nulos de testosterona debido a ciertas afecciones médicas.</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/jublia.png" alt="">
+            <h2><b>Junlia</b></h2>
+            <div class="container-p">
+                <p>JUBLIA es inflamable. Evite el calor y las llamas mientras aplica JUBLIA en la uña del pie.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/juxtapid.png" alt="">
+            <h2><b>Juxtapid</b></h2>
+            <div class="container-p">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.. Dignissimos minus non voluptatibus rem harum iste vero magnam voluptate, id laboriosam?...</p>
+            </div>
+        </div>
+    </div>
+    <!--K-->
+    <h2 class="subt"> K</h2>
+    <a name="K"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/kalitium.png" alt="">
+            <h2><b>Kalitium</b></h2>
+            <div class="container-p">
+                <p>Es un antipsicótico que está indicado en el tratamiento y terapia de mantención de los episodios maníacos de la enfermedad bipolar Tipo I y II en pacientes mayores de 12 años.</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/koflet.png" alt="">
+            <h2><b>Koflet</b></h2>
+            <div class="container-p">
+                <p> jarabe no provoca depresión de los centros nerviosos, por lo tanto, no se observa sedación alguna en los pacientes que lo reciben. Controla rápidamente la tos aguda.</p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/komilon.png" alt="">
+            <h2><b>Komilon</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento efectivo para el tratamiento de la falta de apetito o anorexia. Contiene el primer agente estimulante del apetito.</p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/kopodex.png" alt="">
+            <h2><b>Kopodex</b></h2>
+            <div class="container-p">
+                <p>Es un anticonvulsivante , se puede utilizar en forma segura a esa edad, la causa de la epilepsia.</p>
+            </div>
+        </div>
+    </div>
+    <!--L-->
+    <h2 class="subt"> L</h2>
+    <a name="L"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/liberdux.png" alt="">
+            <h2><b>Liberdux</b></h2>
+            <div class="container-p">
+                <p>Está indicado para el rápido alivio de los síntomas asociados con la rinitis alérgica y otras afecciones alérgicas, incluyendo estornudos, rinorrea, congestión y prurito nasal.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/lioresal.png" alt="">
+            <h2><b>Lioresal</b></h2>
+            <div class="container-p">
+                <p>Se utiliza para reducir y aliviar la excesiva rigidez muscular que se producen en los músculos con algunas enfermedades como la esclerosis múltiple.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/Lizipatos.png" alt="">
+            <h2><b>Lizipatos</b></h2>
+            <div class="container-p">
+                <p>Es un jarabe formulado a base de malvavisco y miel. Tiene efecto calmante inmediato para la tos seca y la irritación de garganta.</p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/Loratadina.png" alt="">
+            <h2><b>Loratadina</b></h2>
+            <div class="container-p">
+                <p>Es una sustancia utilizada para combatir las alergias, especialmente los síntomas asociados a los cuadros de rinitis alérgica.</p>
+            </div>
+        </div>
+    </div>
+    <!--M-->
+    <h2 class="subt"> M</h2>
+    <a name="M"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/Maalox.png" alt="">
+            <h2><b>Maalox</b></h2>
+            <div class="container-p">
+                <p><br>Es un medicamentos denominado antiácidos. Contiene los principios activos hidróxido de aluminio e hidróxido de magnesio, que actúan neutralizando el ácido clorhídrico.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/Mentolina.png" alt="">
+            <h2><b>Mentolina</b></h2>
+            <div class="container-p">
+                <p><br>Se usa como Antitusivo y expectorante que posee la propiedad de estimular el transporte mucociliar, facilitando el drenaje del tracto respiratorio.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/Mucosan.png" alt="">
+            <h2><b>Mucosan</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento que actúan disminuyendo la viscosidad del moco, fluidificándolo y facilitando su eliminación.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/Muflex.png" alt="">
+            <h2><b>Muflex</b></h2>
+            <div class="container-p">
+                <p><br>Es un medicamento que alivia en dolor muscular y de articulaciones.</p>
+            </div>
+        </div>
+    </div>
+    <!--N-->
+    <h2 class="subt"> N</h2>
+    <a name="N"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/Naproxen.png" alt="">
+            <h2><b>Naproxen</b></h2>
+            <div class="container-p">
+                <p>Se usa para tratar el dolor o la inflamación causada por condiciones como artritis, espondilitis anquilosante, bursitis, tendinitis, gota, o cólicos menstruales..</p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/Neo-Melubrina.png" alt="">
+            <h2><b>Neo-Melubrina</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento fuerte recetado para aliviar dolores agudos, crónicos e intensos. Tiene propiedades que ayudan a combatir la fiebre y es efectivo contra espasmos.</p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/Noxpirin.png" alt="">
+            <h2><b>Noxpirin</b></h2>
+            <div class="container-p">
+                <p>Se usa como Medicamento para el manejo de los síntomas del resfriado común.</p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/NyQuil.png" alt="">
+            <h2><b>NyQuil</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento de venta libre que trata los síntomas nocturnos del resfriado común y la gripe, como estornudos, dolor de garganta, dolor de cabeza, dolores y molestias leves, fiebre, secreción nasal y tos.</p>
+            </div>
+        </div>
+    </div>
+    <!--O-->
+    <h2 class="subt"> O</h2>
+    <a name="O"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/Ocaliva.png" alt="">
+            <h2><b>Ocaliva</b></h2>
+            <div class="container-p">
+                <p><br><br>Se usa para tratar a adultos con una enfermedad hepática conocida como colangitis biliar primaria..</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/oftamox.png" alt="">
+            <h2><b>Oftamox</b></h2>
+            <div class="container-p">
+                <p>Es un fármaco de uso tópico ocular, que contiene como principio activo la Moxifloxacina, una fluoroquinolona de cuarta generación.</p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/oki.png" alt="">
+            <h2><b>Oki</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento utilizado principalmente en la formulación en sobres, que ahora ha reemplazado a Aulin en el corazón de los italianos.</p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/Olanib.png" alt="">
+            <h2><b>Olanib</b></h2>
+            <div class="container-p">
+                <p>Olanib es un potente inhibidor oral de la poli (ADP-ribosa) polimerasa (PARP).</p>
+            </div>
+        </div>
+    </div>
+    <!--P-->
+    <h2 class="subt"> P</h2>
+    <a name="P"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/panadol.png" alt="">
+            <h2><b>Panadol</b></h2>
+            <div class="container-p">
+                <p>Es un antiinflamatorio no esteroideo pero lo que convierte a Panadol en uno de los primeros medicamentos de elección de los médicos son sus pocos o nulos efectos secundarios.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/Paracetamol.png" alt="">
+            <h2><b>Paracetamol</b></h2>
+            <div class="container-p">
+                <p>Es el analgésico más comúnmente tomado en todo el mundo y es recomendado como terapia de primera línea en condiciones de dolor.</p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/Penicilina.png" alt="">
+            <h2><b>Penicilina</b></h2>
+            <div class="container-p">
+                <p>La penicilina es un medicamento antibiótico derivado del hongo Penicillium.</p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/Plexus.png" alt="">
+            <h2><b>Plexus</b></h2>
+            <div class="container-p">
+                <p>El uso de este medicamento puede producir los siguientes efectos que normalmente no requieren atención médica.</p>
+            </div>
+        </div>
+    </div>
+    <!--Q-->
+    <h2 class="subt"> Q</h2>
+    <a name="Q"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/Qbrexza.png" alt="">
+            <h2><b>Qbrexza</b></h2>
+            <div class="container-p">
+                <p><br><br>La Qbrexzas una toallita desechable que se utiliza para tratar la hiperhidrosis.</p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/Qualaquin.png" alt="">
+            <h2><b>Qualaquin</b></h2>
+            <div class="container-p">
+                <p>Este medicamento se usa solo o junto con otros medicamentos para tratar la malaria (paludismo) causada por las picaduras de mosquitos.</p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/Questran.png" alt="">
+            <h2><b>Questran</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento que contiene Resina de Colestiramina, el cual ayuda a reducir los niveles de colesterol o tratamiento de hipercolesterolemia.</p>
+            </div>
+        </div>
+        <div class="box box4 hh">
+            <img src="img/Quetiapina.png" alt="">
+            <h2><b>Quetiapina</b></h2>
+            <div class="container-p">
+                <p>La quetiapina es un antipsicótico derivado de las benzodiazepinas. </p>
+            </div>
+        </div>
+    </div>
+    <!--R-->
+    <h2 class="subt"> R</h2>
+    <a name="R"></a>
+    <div class="container-box">
+        <div class="box box1 ii">
+            <img src="img/raloxifeno.png" alt="">
+            <h2><b>Raloxifeno</b></h2>
+            <div class="container-p">
+                <p>El raloxifeno previene y trata la osteoporosis imitando los efectos del estrógeno para aumentar la densidad (grosor) del hueso.</p>
+            </div>
+        </div>
+        <div class="box box2 ii">
+            <img src="img/resfridol.png" alt="">
+            <h2><b>Resfridol</b></h2>
+            <div class="container-p">
+                <p> Medicamento usado en el tratamiento de las enfermedades de la tiroides.</p>
+            </div>
+        </div>
+        <div class="box box3 ii">
+            <img src="img/rilexine.png" alt="">
+            <h2><b>Rilexine</b></h2>
+            <div class="container-p">
+                <p><br><br>Es un antibiótico de acción bactericida de la familia de las cefalosporinas cuyo núcleo básico es el ácido aminocefalónico.</p>
+            </div>
+        </div>
+        <div class="box box4 ii">
+            <img src="img/robitussin.png" alt="">
+            <h2><b>Robitussin</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento que es indicado en casos de gripe y resfriado común, ya que es auxiliar para el alivio de la tos y facilita la expulsión de flema y moco.</p>
+            </div>
+        </div>
+    </div>
+    <!--S-->
+    <h2 class="subt"> S</h2>
+    <a name="S"></a>
+    <div class="container-box">
+        <div class="box box1 aa">
+            <img src="img/saca-grip.png" alt="">
+            <h2><b>Saca-Grip</b></h2>
+            <div class="container-p">
+                <p>Medicamento para la expectoración de las mucosidades en las vías respiratorias superiores, asma, bronquitis, gripe, neumonía.</p>
+            </div>
+        </div>
+        <div class="box box2 aa">
+            <img src="img/sekisan.png" alt="">
+            <h2><b>Sekisan</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento indicado para el tratamiento de las formas improductivas de tos, como tos irritativa o tos nerviosa para adultos y niños a partir de 2 años.</p>
+            </div>
+        </div>
+        <div class="box box3 aa">
+            <img src="img/sudagrid.png" alt="">
+            <h2><b>Sudagrid</b></h2>
+            <div class="container-p">
+                <p>Se usa para aliviar temporalmente la congestión nasal y dolor/presión en los senos paranasales causados por infecciones u otras enfermedades respiratorias.</p>
+            </div>
+        </div>
+        <div class="box box4 aa">
+            <img src="img/Sertal.png" alt="">
+            <h2><b>Sertal</b></h2>
+            <div class="container-p">
+                <p>Es un fármaco sedante y antiespasmódico que sirve para tratar las molestias gastrointestinales, hepatobiliares, urinarias y genitales.</p>
+            </div>
+        </div>
+    </div>
+    <!--T-->
+    <h2 class="subt"> T</h2>
+    <a name="T"></a>
+    <div class="container-box">
+        <div class="box box1 bb">
+            <img src="img/tesalon.png" alt="">
+            <h2><b>Tesalon</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento antitusivo que ayuda a prevenir, reducir o eliminar por completo la tos producida por distintas enfermedades.</p>
+            </div>
+        </div>
+        <div class="box box2 bb">
+            <img src="img/trimetabol.png" alt="">
+            <h2><b>Trimetabol</b></h2>
+            <div class="container-p">
+                <p> Alivia los síntomas de la rinitis alérgicas, dermatitis alérgica, conjuntivitis alérgica y otros tipos de alergia leves.</p>
+            </div>
+        </div>
+        <div class="box box3 bb">
+            <img src="img/Tabcin.png" alt="">
+            <h2><b>Tabcin</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento antigripal que ayuda a mejorar los síntomas del resfriado común, gracias a su fórmula que contiene componentes como ácido acetilsalicílico.</p>
+            </div>
+        </div>
+        <div class="box box4 bb">
+            <img src="img/Tusilexil.png" alt="">
+            <h2><b>Tusilexil</b></h2>
+            <div class="container-p">
+                <p>Es un compuesto que combina en su fórmula, la acción mucorreguladora y expectorante de la carboximetilcisteína, la antitusiva del bromhidrato del dextrometorfano y la antihistamínica descongestionante del maleato de clorfeniramina.</p>
+            </div>
+        </div>
+    </div>
+    <!--U-->
+    <h2 class="subt"> U</h2>
+    <a name="U"></a>
+    <div class="container-box">
+        <div class="box box1 cc">
+            <img src="img/Ukoniq.png" alt="">
+            <h2><b>Ukoniq</b></h2>
+            <div class="container-p">
+                <p> Este medicamento viene en forma de tableta que se toma por vía oral con alimentos a la misma hora todos los días.</p>
+            </div>
+        </div>
+        <div class="box box2 cc">
+            <img src="img/Ulgastrin.png" alt="">
+            <h2><b>Ulgastrin</b></h2>
+            <div class="container-p">
+                <p>Medicamento que  Inhibe la secreción estimulada y basal de ác. gástrico y reduce la producción de pepsina.</p>
+            </div>
+        </div>
+        <div class="box box3 cc">
+            <img src="img/Ultravate.png" alt="">
+            <h2><b>Ultravate</b></h2>
+            <div class="container-p">
+                <p>Este medicamento se usa para tratar una variedad de afecciones cutáneas (por ejemplo, eccema, dermatitis, psoriasis, erupción cutánea).</p>
+            </div>
+        </div>
+        <div class="box box4 cc">
+            <img src="img/Unisom.png" alt="">
+            <h2><b>Unisom</b></h2>
+            <div class="container-p">
+                <p>Es un antihistamínico que se usa para aliviar los síntomas de las alergias, la fiebre del heno y el resfriado común.</p>
+            </div>
+        </div>
+    </div>
+    <!--V-->
+    <h2 class="subt"> V</h2>
+    <a name="V"></a>
+    <div class="container-box">
+        <div class="box box1 dd">
+            <img src="img/viro-grip.png" alt="">
+            <h2><b>Viro-Grip</b></h2>
+            <div class="container-p">
+                <p><br>Tratamiento Extra Fuerte para los malestares de: Resfriado Catarro Gripe Dolor de Cabeza y Cuerpo Flujo y Congestión Nasal.</p>
+            </div>
+        </div>
+        <div class="box box2 dd">
+            <img src="img/Valsartan.jpg" alt="">
+            <h2><b>Valsartan</b></h2>
+            <div class="container-p">
+                <p><br>Se usa para el tratamiento de la presión arterial elevada (hipertensión) en adultos y niños que tienen al menos 1 año.</p>
+            </div>
+        </div>
+        <div class="box box3 dd">
+            <img src="img/Viscof-D.png" alt="">
+            <h2><b>Viscof-D</b></h2>
+            <div class="container-p">
+                <p>Viscof Dp Tablet se utiliza para el dolor de cabeza, dolor de muelas, dolor de oído, dolor en las articulaciones, dolor de períodos, fiebre, resfriado, gripe, supresor del apetito, congestión y otras afecciones.</p>
+            </div>
+        </div>
+        <div class="box box4 dd">
+            <img src="img/VitaFlenaco.png" alt="">
+            <h2><b>Vitaflenaco</b></h2>
+            <div class="container-p">
+                <p><br>Su innovadora fórmula combina diclofenaco y vitaminas del complejo B, aliviando rápidamente el dolor y la inflamación de origen nervioso.</p>
+            </div>
+        </div>
+    </div>
+    <!--W-->
+    <h2 class="subt"> W</h2>
+    <a name="W"></a>
+    <div class="container-box">
+        <div class="box box1 ee">
+            <img src="img/Warfarina.png" alt="">
+            <h2><b>Warfarina</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento anticoagulante oral que se usa para prevenir la formación de trombos y émbolos.</p>
+            </div>
+        </div>
+        <div class="box box2 ee">
+            <img src="img/Welchol.png" alt="">
+            <h2><b>Welchol</b></h2>
+            <div class="container-p">
+                <p><br><br>Se usa para reducir los niveles del colesterol "malo" o lipoproteína de baja densidad (LDL) cuando se combina con una dieta y ejercicio adecuados.</p>
+            </div>
+        </div>
+        <div class="box box3 ee">
+            <img src="img/Wellbutrin.png" alt="">
+            <h2><b>Wellbutrin</b></h2>
+            <div class="container-p">
+                <p>Medicamento que te ayuda a generar sueño y asi puedas descansar bien.</p>
+            </div>
+        </div>
+        <div class="box box4 ee">
+            <img src="img/Winasorb.png" alt="">
+            <h2><b>Winasorb</b></h2>
+            <div class="container-p">
+                <p>Es un producto con acciones analgésica y antipirética; está indicado para el alivio del dolor en: cefalea, dismenorrea, dolor musculoesquelético, mialgias y neuralgias.</p>
+            </div>
+        </div>
+    </div>
+    <!--X-->
+    <h2 class="subt"> X</h2>
+    <a name="X"></a>
+    <div class="container-box">
+        <div class="box box1 ff">
+            <img src="img/Xalatan.png" alt="">
+            <h2><b>Xalatan</b></h2>
+            <div class="container-p">
+                <p>Xalatan se utiliza para tratar unas enfermedades conocidas como glaucoma de ángulo abierto e hipertensión ocular en adultos.</p>
+            </div>
+        </div>
+        <div class="box box2 ff">
+            <img src="img/Xanax.png" alt="">
+            <h2><b>Xanax</b></h2>
+            <div class="container-p">
+                <p>Es una benzodiazepina que se usa para el tratamiento de trastornos de la ansiedad, trastornos de pánico, y la ansiedad causada por la depresión.</p>
+            </div>
+        </div>
+        <div class="box box3 ff">
+            <img src="img/Xermelo.png" alt="">
+            <h2><b>Xermelo</b></h2>
+            <div class="container-p">
+                <p>Este medicamento se utiliza en adultos con una enfermedad llamada "síndrome carcinoide", que se produce cuando un tumor, llamado "tumor neuroendocrino".</p>
+            </div>
+        </div>
+        <div class="box box4 ff">
+            <img src="img/Xtandi.png" alt="">
+            <h2><b>Xtandi</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento que actúa bloqueando la actividad de unas hormonas llamadas andrógenos (como la testosterona). </p>
+            </div>
+        </div>
+    </div>
+    <!--Y-->
+    <h2 class="subt"> Y</h2>
+    <a name="Y"></a>
+    <div class="container-box">
+        <div class="box box1 gg">
+            <img src="img/Yasmin.png" alt="">
+            <h2><b>Yasmin</b></h2>
+            <div class="container-p">
+                <p>Yasmin es un anticonceptivo y se utiliza para evitar el embarazo.</p>
+            </div>
+        </div>
+        <div class="box box2 gg">
+            <img src="img/Yervoy.png" alt="">
+            <h2><b>Yervoy</b></h2>
+            <div class="container-p">
+                <p>Es una medicina contra el cáncer que se usa sola o en combinación con otras medicinas para tratar ciertos tipos de cáncer como: cáncer de la piel.</p>
+            </div>
+        </div>
+        <div class="box box3 gg">
+            <img src="img/Yescarta.png" alt="">
+            <h2><b>Yescarta</b></h2>
+            <div class="container-p">
+                <p>Es una inmunoterapia de células T autólogas modificadas genéticamente dirigidas contra CD19.</p>
+            </div>
+        </div>
+        <div class="box box4 gg">
+            <img src="img/yosprala.png" alt="">
+            <h2><b>Yosprala</b></h2>
+            <div class="container-p">
+                <p>Este medicamento se usa para reducir el riesgo de padecer derrames cerebrales o ataques cardíacos en personas que han sufrido un "mini derrame cerebral"</p>
+            </div>
+        </div>
+    </div>
+    <!--Z-->
+    <h2 class="subt"> Z</h2>
+    <a name="Z"></a>
+    <div class="container-box">
+        <div class="box box1 hh">
+            <img src="img/Zaleplon.png" alt="">
+            <h2><b>Zaleplon</b></h2>
+            <div class="container-p">
+                <p>Este medicamento se usa por períodos cortos para tratar los problemas para conciliar el sueño. </p>
+            </div>
+        </div>
+        <div class="box box2 hh">
+            <img src="img/Zanosar.png" alt="">
+            <h2><b>Zanosar</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento contra el cáncer que interfiere con el crecimiento y la propagación de las células cancerosas en el cuerpo.</p>
+            </div>
+        </div>
+        <div class="box box3 hh">
+            <img src="img/Zantac.png" alt="">
+            <h2><b>Zantac</b></h2>
+            <div class="container-p">
+                <p>Zantac es un medicamento que reduce la producción de ácido en el estómago..</p>
+            </div>
+        </div>
+        <div class="box box4 hh">
+            <img src="img/zentel.png" alt="">
+            <h2><b>Zentel</b></h2>
+            <div class="container-p">
+                <p>Es un medicamento antimicrobiano,cuyo principio activo es el Albendazol, el cual tiene capacidad para atacar parásitos como Entamoeba histolytica.</p>
+            </div>
+        </div>
+    </div>
+    <h4 class="arriba"><a href="#arriba">&Icirc;</a></h4>
+    <footer>
+        <div class="container-footer-all">
+            <div class="container-body">
+                <div class="colum1">
+                     <h1>Mas informacion de MediHelp</h1>   
+                     <p>MediHelp es un software que te ayuda  a definir, comprender y analizar  términos médicos en diferentes áreas. El lenguaje médico es cambiante y se modifica al ritmo, cada vez más vertiginoso, de los nuevos avances científicos. Por eso nuestra versión dígital se mantiene en constante actualización de contenidos y mejoras.</p>
+                     <img src="img/MediHelp.png " width="200px">
+                 </div>
+                 <div class="colum2">
+                     <h1>Redes Sociales</h1>
+                     <div class="row">
+                          <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/FaceB.png"></a>
+                          <label>Siguenos en Facebook</label>
+                     </div>
+                     <div class="row">
+                          <a href="https://twitter.com/home?lang=es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"></a>
+                          <label>Siguenos en Twitter</label>
+                     </div>
+                     <div class="row">
+                          <a href="https://www.instagram.com"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png"></a>
+                          <label>Siguenos en Instagram</label>
+                     </div>
+                     <div class="row">
+                          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Google_plus_circle_icon_%282011-2015%29.png"></a>
+                          <label>Siguenos en Google Plus</label>
+                     </div>
+                     <div class="row">
+                          <a href="https://www.pinterest.es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png"></a>
+                          <label>Siguenos en Pinteres</label>
+                     </div>
+                 </div>
+                 <div class="colum3">
+                      <h1>Informacion Contactos</h1>
+                      <div class="row2">
+                          <img src="https://w7.pngwing.com/pngs/598/408/png-transparent-computer-icons-mobile-phones-phone-miscellaneous-telephone-call-logo.png">
+                          <label>+504 9988-3344</label>
+                      </div>
+                      <div class="row2">
+                          <img src="https://logos-marcas.com/wp-content/uploads/2020/11/Gmail-Logo.png">
+                           <label>AtencionAlCliente_MediHelp@gmail.com</label>
+                      </div>
+                 </div>
+             </div>
+          </div>
+          <div class="container-footer">
+                 <div class="footer">
+                      <div class="copyright">
+                          © 2021 Todos los Derechos Reservados | <a href="#">MediHelp</a>
+                      </div>
+                      <div class="information">
+                          <a href="#">Informacion Compañia</a> | <a href="#">Privacion y Politica</a> | <a href="#">Terminos y Condiciones</a>
+                      </div>
+                  </div>
+              </div>
+     </footer>
+</body>
+</html>

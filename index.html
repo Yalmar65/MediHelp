@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Caompatible" content="ie=edge">
+    <link rel="shortcut icon" href="img/MediHelp.png">
+    <title>MediHelp | Inicio</title>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        * {
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{ 
+            min-height: 100vh;
+            background-image: linear-gradient(-45deg, #abb6f1 50%, #4177b6 50%);
+            font-family: 'Poppins', sans-serif;
+        }
+        .topnav{
+            position: sticky;
+            top: 0;
+            z-index: 11;
+        }
+        ul.topnav {
+            list-style-type: none;
+            margin: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            overflow: hidden;
+            background-color: #698ab6;
+        }
+        ul.topnav li {float: left;}
+        ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 10px 12px;
+        text-decoration: none;
+        font-size: 14px;
+        }
+        ul.topnav li a:hover:not(.active) {
+            font-weight: bold;
+        }
+        ul.topnav li a.active {
+            border-bottom: 4px solid white;
+        }
+        ul.topnav li.right {
+            float: right;
+        }
+        .buscar{
+            margin-top: 5px;
+        }
+        .btn{
+            color: white;
+            border: 2px solid white;
+            margin-right: 5px;
+        }
+        .btn:hover{
+            background-color: white;
+            color: #698ab6;
+            border: 2px solid #698ab6;
+        }
+        .login{
+            color: #194b8d;
+            background-color: #698ab6;
+            margin: 0px 20px;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        .login:hover{
+            background-color: #ffffff;
+            color: #698ab6;
+        }
+        .logo{
+            padding: 0px;
+        }
+        .logo img{
+            width: 60px;
+        }
+        @media screen and (max-width: 600px) {
+        ul.topnav li.right, 
+        ul.topnav li {
+            float: none;
+        }
+        .logo{
+            left: 50vh;
+        }
+        }
+        .subtitulo {
+            margin: 0;
+            color: white;
+            display: inline;
+            font-size: 40px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0d4c70c9;
+            padding: 10px 58px;
+        }
+
+        .ir{ 
+            color: #fff;
+            margin: 7px 0;
+            font-size: 40px;
+            font-weight: 600;
+            text-shadow: 2px 2px 1px rgba(1, 17, 61, 0.973);
+            font-family: 'Poppins', sans-serif;
+            margin-top: 10px;
+            background-color: #636cc9;
+            border-radius: 10px;
+            padding: 0px 30px;
+            box-shadow: 0px 0px 20px black;
+        }
+
+        .linea-division {
+            width: 70%;
+            height: 5px;
+            background-color: #608ac2;
+        }
+        .carousel {
+            min-height: 450px;
+        }
+
+        .carousel .carousel-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            width: 450px;
+            height: 450px;
+            background-color:white;
+            border-radius: 20px;
+        }
+
+        .carousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            border-radius: 15px;
+        }
+
+        .carousel .indicators .indicator-item {
+            border-radius: 0;
+            transform: rotate(45deg);
+            margin: 0 15px;
+            background: #444fc4;
+        }
+
+        footer{
+            width: 100%;
+            background: #0a1227;
+            color: white;   
+            
+        }
+
+        .container-footer-all{
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .container-body{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .colum1{
+            max-width: 400px;
+        }
+
+        .colum1 h1{
+            font-size: 22px;
+        }
+
+        .colum1 p{
+            font-size: 14px;
+            color: #C7C7C7;
+            margin-top: 20px;
+        }
+
+        .colum1 img{
+            margin: 10px 50px;
+        }
+
+        .colum2{
+            max-width: 400px;
+            
+        }
+
+        .colum2 h1{
+            font-size: 22px;
+        }
+
+        .row{
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .row img{
+            width: 36px;
+            height: 36px;
+        }
+
+        .row label{
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #C7C7C7;
+        }
+
+        .colum3{
+            max-width: 400px;
+        }
+
+        .colum3 h1{
+            font-size: 22px;
+        }
+
+        .row2{
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .row2 img{
+            width: 36px;
+            height: 36px;
+        }
+
+        .row2 label{
+            margin-top: 10px;
+            margin-left: 20px;
+            max-width: 140px;
+        }
+
+        .container-footer{
+            width: 100%;  
+            background: #101010;
+        }
+
+        .footer{
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;  
+            padding: 20px;
+        }
+
+        .copyright{
+            color: #C7C7C7;
+        }
+
+        .copyright a{
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .information a{
+            text-decoration: none;
+            color: #C7C7C7;
+        }
+
+
+        @media screen and (max-width: 1100px){
+            
+            .container-body{
+                flex-wrap: wrap;
+            }
+            
+            .colum1{
+                max-width: 100%;
+            }
+            
+            .colum2,
+            .colum3{
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul class="topnav">
+        <li class="logo"><img src="img/MediHelp.png" alt="logo"></li>
+        <li class="right buscar"><form class="d-flex">
+            <a href="login.html" class="login" target="blank">Login</a>
+          </form>
+        </li>
+        <li class="right"><a href="contacto.html" target="blank">Contact</a></li>
+        <li class="right"><a href="inicio.html">Home</a></li> 
+    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="carousel center-align">
+                    <div class="carousel-item">
+                        <h2 class="subtitulo">Tratamientos Médicos</h2>
+                        <div class="linea-division"></div>
+                        <img src="img/tratamientos.png" alt=""></a>
+                        <a class="ir" href="Tratamientos.html">Ir</a>
+                    </div>
+
+                    <div class="carousel-item">
+                        <h2 class="subtitulo">Medicamentos</h2>
+                        <div class= "linea-division"></div>         
+                        <img src="img/medicamentos.png" width="400" alt="">
+                        <a class="ir" href="Medicamentos.html">Ir</a>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <h2 class="subtitulo">Enfermedades</h2>
+                        <div class= "linea-division"></div>        
+                        <img src="img/enfermedades.png" width="400" alt="">
+                        <a class="ir" href="enfermedades.html">Ir</a>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <h2 class="subtitulo">Virus y Bacterias</h2>
+                        <div class= "linea-division"></div>          
+                        <img src="img/virus.png" width="400" alt="">
+                        <a class="ir" href="microorganismos.html">Ir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+       
+        <div class="container-footer-all">
+         
+             <div class="container-body">
+ 
+                 <div class="colum1">
+                     <h1>Mas informacion de MediHelp</h1>
+ 
+                     <p>MediHelp es un software que te ayuda  a definir, comprender y analizar  términos médicos en diferentes áreas. El lenguaje médico es cambiante y se modifica al ritmo, cada vez más vertiginoso, de los nuevos avances científicos. Por eso nuestra versión dígital se mantiene en constante actualización de contenidos y mejoras.</p>
+                     <img src="img/MediHelp.png " width="200px">
+                 </div>
+ 
+                 <div class="colum2">
+ 
+                     <h1>Redes Sociales</h1>
+ 
+                     <div class="row">
+                         <a href="https://www.facebook.com"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/FaceB.png"></a>
+                         <label>Siguenos en Facebook</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://twitter.com/home?lang=es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"></a>
+                         <label>Siguenos en Twitter</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://www.instagram.com"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png"></a>
+                         <label>Siguenos en Instagram</label>
+                     </div>
+                     <div class="row">
+                         <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Google_plus_circle_icon_%282011-2015%29.png"></a>
+                         <label>Siguenos en Google Plus</label>
+                     </div>
+                     <div class="row">
+                         <a href="https://www.pinterest.es"><img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png"></a>
+                         <label>Siguenos en Pinteres</label>
+                     </div>
+                 </div>
+                 <div class="colum3">
+                     <h1>Informacion Contactos</h1>
+                     <div class="row2">
+                         <img src="https://w7.pngwing.com/pngs/598/408/png-transparent-computer-icons-mobile-phones-phone-miscellaneous-telephone-call-logo.png">
+                         <label>+504 9988-3344</label>
+                     </div>
+                     <div class="row2">
+                         <img src="https://logos-marcas.com/wp-content/uploads/2020/11/Gmail-Logo.png">
+                          <label>AtencionAlCliente_MediHelp@gmail.com</label>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="container-footer">
+                <div class="footer">
+                     <div class="copyright">
+                         © 2021 Todos los Derechos Reservados | <a href="#">MediHelp</a>
+                     </div>
+ 
+                     <div class="information">
+                         <a href="#">Informacion Compañia</a> | <a href="#">Privacion y Politica</a> | <a href="#">Terminos y Condiciones</a>
+                     </div>
+                 </div>
+ 
+             </div>
+         
+     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementosCarousel = document.querySelectorAll('.carousel');
+            M.Carousel.init(elementosCarousel, {
+                duration: 150,
+                dist: -80,
+                shift: 3,
+                padding: 5,
+                numVisible: 5,
+                indicators: true,
+                noWrap: false
+            });
+        });
+    </script>
+</body>
+</html>
